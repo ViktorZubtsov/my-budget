@@ -1,5 +1,5 @@
 name: github-actions-push
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: Is push branch
 on: [push]
 jobs:
   build:

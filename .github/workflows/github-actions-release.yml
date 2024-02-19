@@ -1,5 +1,5 @@
 name: github-actions-release
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: Pull request release branch.
 on:
   pull_request:
     branches:
