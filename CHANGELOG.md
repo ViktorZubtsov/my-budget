@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.6...v0.1.7) (2024-02-19)
+
+
+### Bug Fixes
+
+* sddw ([d1e9ed3](https://github.com/ViktorZubtsov/my-budget/commit/d1e9ed3c3c4c9c77b35e58330798ac690801db9d))
+
 ### [0.1.6](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.5...v0.1.6) (2024-02-19)
 
 
