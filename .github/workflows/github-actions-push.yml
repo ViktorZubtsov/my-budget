@@ -1,5 +1,5 @@
 name: github-actions-push
-run-name: Is push branch
+run-name: Push branch
 on: [push]
 jobs:
   build:
