@@ -1,14 +1,14 @@
 {
   "name": "my-budget",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "bump": "standard-version --skip.tag",
     "release": "git flow release start `sh scripts/nextver.sh`",
     "publish": "git flow release finish `sh scripts/ver.sh`"
   },
   "engines": {
-    "node": "20",
-    "npm": ">=10"
+    "node": "18",
+    "npm": ">=9"
   },
   "devDependencies": {
     "commitizen": "^4.3.0",
