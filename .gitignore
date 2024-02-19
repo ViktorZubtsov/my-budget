@@ -1,0 +1,14 @@
+.next
+.idea
+node_modules
+.env
+package-lock.json
+# Sentry Auth Token
+.sentryclirc
+public/sw.js
+public/sw.js.map
+public/workbox*
+tsconfig.tsbuildinfo
+coverage
+.swc
+storybook-static

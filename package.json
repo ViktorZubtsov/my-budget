@@ -1,0 +1,39 @@
+{
+  "name": "my-budget",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "bump": "standard-version --skip.tag",
+    "release": "git flow release start `sh scripts/nextver.sh`",
+    "publish": "git flow release finish `sh scripts/ver.sh`",
+    "dev": "next  dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "eslint": "eslint \"src/**/*.{j,t}s{,x}\" --fix",
+    "prepare": "husky install && npx husky set .husky/pre-commit \"npx lint-staged\" && npx husky set .husky/pre-push \"npm run check:ts\"",
+    "check:ts": "tsc --extendedDiagnostics",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "loki:test": "loki test",
+    "loki:build": "loki test  --requireReference --reactUri file:./storybook-static",
+    "loki:approve": "loki approve",
+    "loki:update": "loki update",
+    "test": "vitest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci"
+  },
+  "lint-staged": {
+    "!(*min).{css,less,scss}": [
+      "stylelint --fix"
+    ],
+    "!(*min).{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": "18.16.1",
+    "npm": ">=9.5.1"
+  }
+}
