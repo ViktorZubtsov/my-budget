@@ -7,8 +7,8 @@
     "publish": "git flow release finish `sh scripts/ver.sh`"
   },
   "engines": {
-    "node": "18",
-    "npm": ">=9"
+    "node": "20",
+    "npm": "10.2.4"
   },
   "devDependencies": {
     "commitizen": "^4.3.0",
