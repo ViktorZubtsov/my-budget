@@ -1,0 +1,16 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.Footer {
+    column-gap: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.Title {
+    margin-bottom: 25px;
+}

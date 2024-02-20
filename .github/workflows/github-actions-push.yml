@@ -2,7 +2,7 @@ name: github-actions-push
 run-name: Push branch
 on: [push]
 jobs:
-  lint:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,6 +15,20 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+  lint:
+    needs: [ install ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: check:ts
+        run: npm run check:ts
   test:
     needs: [lint]
     runs-on: ubuntu-latest
@@ -27,5 +41,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Run Vitest
+        run: npm run test
+  loki:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Loki
+        run: npm run build-storybook && npm run loki:build

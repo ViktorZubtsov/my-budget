@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  goals         Goal[]
+  goalsArchive  GoalArchive[]
+  bankAccounts  BankAccounts[]
+}
+
+model BankAccounts {
+  id          String   @id @default(uuid())
+  userUid     String
+  user        User     @relation(fields: [userUid], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  colorCode   String
+}
+
+model Goal {
+  id          String   @id @default(uuid())
+  userUid     String
+  user        User     @relation(fields: [userUid], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  description String
+  name        String
+  tasks       Task[]
+}
+
+model GoalArchive {
+  id          String   @id @default(uuid())
+  userUid     String
+  user        User     @relation(fields: [userUid], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  description String
+  name        String
+  tasks       TaskArchive[]
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  goalId      String
+  goal        Goal     @relation(fields: [goalId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  bankAccount String
+  price       Int
+  done        Boolean @default(false)
+}
+
+model TaskArchive {
+  id          String   @id @default(uuid())
+  goalId      String
+  goal        GoalArchive     @relation(fields: [goalId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  bankAccount String
+  price       Int
+  done        Boolean
+}
+
+
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"] // You won't need this in Prisma 3.X or higher.
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("MYSQL_URL")
+  shadowDatabaseUrl  = env("MYSQL_URL_SHADOW")
+}
