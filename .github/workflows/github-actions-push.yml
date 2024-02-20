@@ -34,3 +34,6 @@ jobs:
 
       - name: Run Vitest
         run: npm run test
+
+      - name: Run Loki
+        run: npm run build-storybook && npm run loki:build
