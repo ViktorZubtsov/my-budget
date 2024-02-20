@@ -13,7 +13,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "loki:test": "loki test",
-    "loki:build": "loki test  --requireReference --reactUri file:./storybook-static",
+    "loki:build": " chmod +x .loki && chmod +x ./storybook-static && loki test  --requireReference --reactUri file:./storybook-static",
     "loki:approve": "loki approve",
     "loki:update": "loki update",
     "test": "vitest run --coverage",
