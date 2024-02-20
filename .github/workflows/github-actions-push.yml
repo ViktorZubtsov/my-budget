@@ -8,8 +8,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: check:ts
         run: npm run check:ts
@@ -19,9 +24,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run Vitest
         run: npm run test
