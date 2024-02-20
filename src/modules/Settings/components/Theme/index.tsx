@@ -22,7 +22,6 @@ export const ThemeSetting = memo<IThemeSettingProps>(({handleApprove}) => {
     };
     return (
         <ThemeSettingStyled p="10x">
-            <h1>Test</h1>
             <ThemeSettingContent>
                 <ThemeSettingTitle>Тема</ThemeSettingTitle>
                 <RadioGroup aria-labelledby="radiogroup-title-id">

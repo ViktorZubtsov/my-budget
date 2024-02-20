@@ -4,9 +4,9 @@ import {memo, useState} from 'react';
 
 import {AccountsBadge} from '../../../../components/AccountsBadge';
 import {IAccount} from '../../../../model';
-import {AddAccountStyled} from './styled';
 import {DATA_TEST_ID_ACCOUNT, MAX_ACCOUNT_LENGTH} from '../../constants';
 import {TAccountParams} from '../../type';
+import {AddAccountStyled} from './styled';
 
 const items = [
     {
@@ -53,7 +53,6 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
     };
     return (
         <AddAccountStyled>
-            <h1>Test</h1>
             <Select
                 id={DATA_TEST_ID_ACCOUNT.SELECT}
                 value={colorCode}
