@@ -1,0 +1,12 @@
+.Content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 54px;
+    row-gap: 24px;
+}
+
+.Footer {
+    column-gap: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
