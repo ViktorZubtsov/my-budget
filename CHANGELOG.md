@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.7...v0.1.8) (2024-02-21)
+
+
+### Features
+
+* add Base components ([6badba5](https://github.com/ViktorZubtsov/my-budget/commit/6badba5cd2e58f30383b69f0925e7b2b432db6d6))
+* end feature ([0b05209](https://github.com/ViktorZubtsov/my-budget/commit/0b05209ea5e9499f991144d612ea36d6d43839d3))
+* end feature ([6836d8d](https://github.com/ViktorZubtsov/my-budget/commit/6836d8d56da48021bbe921fa5101f808392675c3))
+* **github-actions.yml:** add github-actions.yml ([43e988b](https://github.com/ViktorZubtsov/my-budget/commit/43e988b050ab2226d048aa33934dad4a663be7c5))
+* name: learn-github-actions ([183150b](https://github.com/ViktorZubtsov/my-budget/commit/183150b920cc300624a7828ba98b5230b0d08b4a))
+* update Pk ([bc351a4](https://github.com/ViktorZubtsov/my-budget/commit/bc351a4d8af82e86ada919e22770271853cf3e4b))
+
 ### [0.1.7](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.6...v0.1.7) (2024-02-19)
 
 
