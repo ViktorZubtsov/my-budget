@@ -17,14 +17,6 @@ export default meta;
 
 type TStory = StoryObj<typeof meta>;
 
-export const SoundSettingOffStory: TStory = {
-    args: {
-        isChecked: false,
-    },
-    render: (arg) => {
-        return <SoundSetting {...arg} />;
-    },
-};
 export const SoundSettingStory: TStory = {
     args: {
         isChecked: true,

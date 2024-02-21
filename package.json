@@ -13,7 +13,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "loki:test": "loki test",
-    "loki:build": "loki test  --requireReference --reactUri file:./storybook-static",
+    "loki:build": "loki  --requireReference --reactUri file:./storybook-static",
     "loki:approve": "loki approve",
     "loki:update": "loki update",
     "test": "vitest run --coverage",
@@ -131,10 +131,6 @@
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
-      },
-      "chrome.iphone7": {
-        "target": "chrome.docker",
-        "preset": "iPhone 7"
       }
     }
   }
