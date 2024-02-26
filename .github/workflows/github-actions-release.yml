@@ -38,8 +38,6 @@ jobs:
 
       - name: Run Vitest
         run: npm run test
-      - name: Update
-        run: cd ../../ loki update --storiesFilter="^Setting\\/SoundSetting Sound Setting Story\$" --reactUri="file:./storybook-static"
   loki:
     needs: [test]
     runs-on: ubuntu-latest
