@@ -4,6 +4,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+
 on: [push]
 jobs:
   lint:
@@ -40,25 +41,14 @@ jobs:
       - name: Run Vitest
         run: npm run test
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
-    # Job steps
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
         with:
-          node-version: '20'
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v2.0.0
-        with:
-            path: .
-      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
-        with:
-          install_command: npm install # default: npm ci
-          build_command: npm run build-storybook # default: npm run build-storybook
-          path: storybook-static # default: dist/storybook
-          checkout: false # default: true
+          path: build # change to your build folder
+          install_command: npm install
+          build_command: npm run build-storybook
