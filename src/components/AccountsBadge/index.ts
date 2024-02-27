@@ -10,6 +10,6 @@ interface IAccountsBadgeProps extends BadgeProps {
 }
 
 export const AccountsBadge = styled(Badge)<IAccountsBadgeProps>`
-    background: ${(props) => ACCOUNTS_COLORS[props.$colorCode]};
+    background: ${({$colorCode}) => ACCOUNTS_COLORS[$colorCode]};
     ${textS}
 `;
