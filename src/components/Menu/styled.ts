@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 import {applySpacing, Body1, Button, H2, Sheet, SpacingProps, TextM} from '@salutejs/plasma-ui';
 import {ButtonProps} from '@salutejs/plasma-web';
 import styled from 'styled-components';
