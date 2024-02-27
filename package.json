@@ -11,7 +11,7 @@
     "eslint": "eslint \"src/**/*.{j,t}s{,x}\" --fix",
     "check:ts": "tsc --extendedDiagnostics",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "build-storybook -o docs-build",
+    "build-storybook": "storybook build -o docs-build",
     "loki:test": "loki test",
     "loki:build": "loki  --requireReference --reactUri file:./storybook-static",
     "loki:approve": "loki approve",
