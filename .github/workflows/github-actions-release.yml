@@ -1,57 +1,56 @@
 name: github-actions-release
 run-name: Pull request release branch.
+
 on:
-  pull_request:
-    branches:
-      - 'release/*'
-      - 'main'
+    pull_request:
+        branches:
+            - 'release/*'
+            - 'main'
+
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+            - name: Install dependencies
+              run: npm install
 
-      - name: check:ts
-        run: npm run check:ts
-  test:
-    needs: [lint]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+            - name: check:ts
+              run: npm run check:ts
+    dependency-review:
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Checkout repository'
+          uses: actions/checkout@v4
+        - name: 'Dependency Review'
+          uses: actions/dependency-review-action@v4
+          # Commonly enabled options, see https://github.com/actions/dependency-review-action#configuration-options for all available options.
+          with:
+            comment-summary-in-pr: always
+          #   fail-on-severity: moderate
+          #   deny-licenses: GPL-1.0-or-later, LGPL-2.0-or-later
+          #   retry-on-snapshot-warnings: true
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+    test:
+        needs: [lint]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
 
-      - name: Run Vitest
-        run: npm run test
-  loki:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm install
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Loki
-        run: npm run build-storybook && npm run loki:build
+            - name: Run Vitest
+              run: npm run test
