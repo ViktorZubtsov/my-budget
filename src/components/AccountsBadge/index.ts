@@ -10,6 +10,7 @@ interface IAccountsBadgeProps extends BadgeProps {
 }
 
 export const AccountsBadge = styled(Badge)<IAccountsBadgeProps>`
+    // @ts-ignore
     background: ${({$colorCode}) => ACCOUNTS_COLORS[$colorCode] ?? ACCOUNTS_COLORS.critical};
     ${textS}
 `;
