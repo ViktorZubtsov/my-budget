@@ -19,7 +19,7 @@ type TStory = StoryObj<typeof meta>;
 
 export const PageHeaderStory: TStory = {
     args: {
-        title: 'Title',
+        title: 'Title 2',
     },
     render: (arg) => {
         return <PageHeader {...arg} />;
