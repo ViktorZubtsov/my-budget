@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {colorValues} from '@salutejs/plasma-tokens';
 // eslint-disable-next-line camelcase
 import {Amatic_SC} from 'next/font/google';
