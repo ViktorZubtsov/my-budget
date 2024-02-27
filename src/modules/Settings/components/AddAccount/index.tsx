@@ -5,7 +5,7 @@ import {memo, useState} from 'react';
 import {AccountsBadge} from '@/components/AccountsBadge';
 import {TEST_ID_ACCOUNT} from '@/constant/dataTest';
 import {IAccount} from '@/model';
-import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
+import {MAX_ACCOUNT_LENGTH, MAX_ACCOUNT_NAME_LENGTH} from '@/modules/Settings/constants';
 import {TAccountParams} from '@/modules/Settings/type';
 
 import {AddAccountStyled} from './styled';
@@ -64,16 +64,20 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
                 placeholder="Выберите цвет"
                 helperText="Цвет"
             />
-            <TextField id={TEST_ID_ACCOUNT.NAME} maxLength={30} label="Название счета" onChange={(event) => setName(event.target.value)} />
+            <TextField
+                id={TEST_ID_ACCOUNT.NAME}
+                maxLength={MAX_ACCOUNT_NAME_LENGTH}
+                label="Название счета"
+                onChange={(event) => setName(event.target.value)}
+            />
             <Button
+                text="Добавить"
                 id={TEST_ID_ACCOUNT.ADD_ACCOUNT}
                 isLoading={isFetching}
                 onClick={handleClick}
                 disabled={!colorCode || !name || Boolean(MAX_ACCOUNT_LENGTH <= accountsList.length)}
                 size="s"
-            >
-                Добавить
-            </Button>
+            />
         </AddAccountStyled>
     );
 });
