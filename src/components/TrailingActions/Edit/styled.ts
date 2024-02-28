@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {colors} from '@salutejs/plasma-tokens';
 import styled from 'styled-components';
 

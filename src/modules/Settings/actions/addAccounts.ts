@@ -1,5 +1,5 @@
-import prismaClient from '../../../core/prisma';
-import {IAccount, TUid} from '../../../model';
+import prismaClient from '@/core/prisma';
+import {IAccount, TUid} from '@/model';
 
 interface IAddAccountsProps {
     account: IAccount;

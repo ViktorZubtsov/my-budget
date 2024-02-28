@@ -1,5 +1,10 @@
 name: github-actions-push
 run-name: Push branch
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 on: [push]
 jobs:
   lint:

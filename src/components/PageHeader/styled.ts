@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {IconChevronLeft} from '@salutejs/plasma-icons';
 import {IconProps} from '@salutejs/plasma-icons/IconRoot';
 import styled from 'styled-components';

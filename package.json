@@ -1,6 +1,6 @@
 {
   "name": "my-budget",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "scripts": {
     "bump": "standard-version --skip.tag",
     "release": "git flow release start `sh scripts/nextver.sh`",
@@ -11,13 +11,14 @@
     "eslint": "eslint \"src/**/*.{j,t}s{,x}\" --fix",
     "check:ts": "tsc --extendedDiagnostics",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build -o docs-build",
     "loki:test": "loki test",
     "loki:build": "loki  --requireReference --reactUri file:./storybook-static",
     "loki:approve": "loki approve",
     "loki:update": "loki update",
     "test": "vitest run --coverage",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "chromatic": "npx chromatic --project-token=chpt_2139e5ec945dacf"
   },
   "lint-staged": {
     "!(*min).{js,jsx,ts,tsx}": [
@@ -91,6 +92,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^1.3.0",
+    "chromatic": "^11.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.55.0",
@@ -126,7 +128,7 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,

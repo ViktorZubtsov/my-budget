@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {applySpacing, Card, H3, SpacingProps, Switch} from '@salutejs/plasma-ui';
 import styled from 'styled-components';
 

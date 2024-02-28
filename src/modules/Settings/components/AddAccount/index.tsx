@@ -2,10 +2,12 @@ import {Button, TextField} from '@salutejs/plasma-ui';
 import {Select} from '@salutejs/plasma-web';
 import {memo, useState} from 'react';
 
-import {AccountsBadge} from '../../../../components/AccountsBadge';
-import {IAccount} from '../../../../model';
-import {DATA_TEST_ID_ACCOUNT, MAX_ACCOUNT_LENGTH} from '../../constants';
-import {TAccountParams} from '../../type';
+import {AccountsBadge} from '@/components/AccountsBadge';
+import {TEST_ID_ACCOUNT} from '@/constant/dataTest';
+import {IAccount} from '@/model';
+import {MAX_ACCOUNT_LENGTH, MAX_ACCOUNT_NAME_LENGTH} from '@/modules/Settings/constants';
+import {TAccountParams} from '@/modules/Settings/type';
+
 import {AddAccountStyled} from './styled';
 
 const items = [
@@ -54,7 +56,7 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
     return (
         <AddAccountStyled>
             <Select
-                id={DATA_TEST_ID_ACCOUNT.SELECT}
+                id={TEST_ID_ACCOUNT.SELECT}
                 value={colorCode}
                 // @ts-ignore
                 items={items}
@@ -62,16 +64,20 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
                 placeholder="Выберите цвет"
                 helperText="Цвет"
             />
-            <TextField id={DATA_TEST_ID_ACCOUNT.NAME} maxLength={30} label="Название счета" onChange={(event) => setName(event.target.value)} />
+            <TextField
+                id={TEST_ID_ACCOUNT.NAME}
+                maxLength={MAX_ACCOUNT_NAME_LENGTH}
+                label="Название счета"
+                onChange={(event) => setName(event.target.value)}
+            />
             <Button
-                id={DATA_TEST_ID_ACCOUNT.ADD_ACCOUNT}
+                text="Добавить"
+                id={TEST_ID_ACCOUNT.ADD_ACCOUNT}
                 isLoading={isFetching}
                 onClick={handleClick}
                 disabled={!colorCode || !name || Boolean(MAX_ACCOUNT_LENGTH <= accountsList.length)}
                 size="s"
-            >
-                Добавить
-            </Button>
+            />
         </AddAccountStyled>
     );
 });
