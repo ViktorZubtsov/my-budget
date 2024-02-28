@@ -2,10 +2,11 @@ import {TextM} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
 import {memo} from 'react';
 
-import {AccountsBadge} from '../../../../components/AccountsBadge';
-import {IAccount} from '../../../../model';
+import {AccountsBadge} from '@/components/AccountsBadge';
+import {IAccount} from '@/model';
+import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
+
 import {EmptyText, Header, MyAccountsStyled} from './styled';
-import {DATA_TEST_ID_ACCOUNT, MAX_ACCOUNT_LENGTH} from '../../constants';
 
 interface IMyAccountsProps {
     accountsList: IAccount[];
@@ -21,7 +22,7 @@ export const MyAccounts = memo<IMyAccountsProps>(({accountsList}) => {
                     {accountsList.length}&nbsp;/&nbsp;{MAX_ACCOUNT_LENGTH}
                 </TextM>
             </Header>
-            <MyAccountsStyled id={DATA_TEST_ID_ACCOUNT.LIST}>
+            <MyAccountsStyled>
                 {!accountsList?.length && <EmptyText>У вас нет счетов</EmptyText>}
                 {accountsList && accountsList.map(({colorCode, id, name}) => <AccountsBadge key={id} $colorCode={colorCode} text={name} size="l" />)}
             </MyAccountsStyled>

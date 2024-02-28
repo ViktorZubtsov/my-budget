@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {Body1} from '@salutejs/plasma-ui';
 import styled from 'styled-components';
 

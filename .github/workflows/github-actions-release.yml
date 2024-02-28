@@ -1,57 +1,83 @@
 name: github-actions-release
 run-name: Pull request release branch.
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+    # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using this option
+    pull-requests: write
 on:
-  pull_request:
-    branches:
-      - 'release/*'
-      - 'main'
+    pull_request:
+        branches:
+            - 'release/*'
+            - 'main'
+
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+            - name: Install dependencies
+              run: npm install
 
-      - name: check:ts
-        run: npm run check:ts
-  test:
-    needs: [lint]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+            - name: check:ts
+              run: npm run check:ts
+    dependency-review:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout repository'
+              uses: actions/checkout@v4
+            - name: 'Dependency Review'
+              uses: actions/dependency-review-action@v4
+              # Commonly enabled options, see https://github.com/actions/dependency-review-action#configuration-options for all available options.
+              with:
+                  comment-summary-in-pr: always
+              #   fail-on-severity: moderate
+              #   deny-licenses: GPL-1.0-or-later, LGPL-2.0-or-later
+              #   retry-on-snapshot-warnings: true
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+    test:
+        needs: [lint]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
 
-      - name: Run Vitest
-        run: npm run test
-  loki:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm install
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+            - name: Run Vitest
+              run: npm run test
+    deploy:
+    # Operating System
+      runs-on: ubuntu-latest
+    # Job steps
+      steps:
+          - uses: actions/checkout@v3
+            with:
+                fetch-depth: 0
+          - name: Use Node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Loki
-        run: npm run build-storybook && npm run loki:build
+          - name: Install dependencies
+            run: npm install
+          #👇 Adds Chromatic as a step in the workflow
+          - uses: chromaui/action@v1
+            # Options required for Chromatic's GitHub Action
+            with:
+                #👇 Chromatic projectToken,
+                projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+                token: ${{ secrets.GITHUB_TOKEN }}

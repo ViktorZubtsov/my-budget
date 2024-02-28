@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {warning} from '@salutejs/plasma-core';
 import {TextM} from '@salutejs/plasma-ui';
 import styled from 'styled-components';

@@ -1,11 +1,12 @@
 import {H3} from '@salutejs/plasma-ui';
 import React, {memo} from 'react';
 
-import {IAccount} from '../../../../model';
+import {IAccount} from '@/model';
+import {AddAccount} from '@/modules/Settings/components/AddAccount';
+import {MyAccounts} from '@/modules/Settings/components/MyAccounts';
+import {TAccountParams} from '@/modules/Settings/type';
+
 import {AccountsCardStyled, Content} from './styled';
-import {AddAccount} from '../AddAccount';
-import {MyAccounts} from '../MyAccounts';
-import {TAccountParams} from '../../type';
 
 interface IAccountsCardProps {
     accountsList: IAccount[];
