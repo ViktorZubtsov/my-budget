@@ -4,8 +4,8 @@ import {memo} from 'react';
 
 import {AccountsBadge} from '@/components/AccountsBadge';
 import {IAccount} from '@/model';
+import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
 
-import {MAX_ACCOUNT_LENGTH} from '../../constants';
 import {EmptyText, Header, MyAccountsStyled} from './styled';
 
 interface IMyAccountsProps {

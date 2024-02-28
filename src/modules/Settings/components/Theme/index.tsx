@@ -1,7 +1,8 @@
 import {Button, Radiobox, RadioGroup} from '@salutejs/plasma-ui';
 import {memo, useState} from 'react';
 
-import {LOCAL_STORAGE_KEYS, THEME} from '../../../../constant';
+import {LOCAL_STORAGE_KEYS, THEME} from '@/constant';
+
 import {ThemeSettingContent, ThemeSettingStyled, ThemeSettingTitle} from './styled';
 
 type TTheme = keyof typeof THEME;

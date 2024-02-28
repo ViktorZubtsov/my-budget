@@ -1,6 +1,6 @@
 import {v4} from 'uuid';
 
-import {TAccountParams} from '../type';
+import {TAccountParams} from '@/modules/Settings/type';
 
 export async function updateAccounts(url: string, {arg}: {arg: TAccountParams}) {
     const {colorCode, name} = arg;
