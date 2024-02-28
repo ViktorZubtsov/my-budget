@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {Spinner, SpinnerProps} from '@salutejs/plasma-web';
 import styled from 'styled-components';
 
