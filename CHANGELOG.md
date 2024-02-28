@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.8...v0.2.1) (2024-02-28)
+
+
+### Features
+
+* **addaccount:** add unit test to AddAccount componen ([45391ab](https://github.com/ViktorZubtsov/my-budget/commit/45391ab553c7d2c8a6bafc2dd6c4ded59b31b974))
+* **pageheader:** add PageHeader Test ([3aca5e6](https://github.com/ViktorZubtsov/my-budget/commit/3aca5e6ea3e1afecd5d881dd2a61223ae5de23aa))
+
 ### [0.2.0](https://github.com/ViktorZubtsov/my-budget/compare/v0.1.8...v0.1.10) (2024-02-28)
 
 
