@@ -1,12 +1,13 @@
 import {Container} from '@salutejs/plasma-ui';
 import {useRouter} from 'next/router';
 
-import {PageHeader} from '../../../../components/PageHeader';
-import {LOCAL_STORAGE_KEYS} from '../../../../constant';
-import {AccountsCard} from '../../components/AccountsCard';
-import {SoundSetting} from '../../components/Sound';
-import {ThemeSetting} from '../../components/Theme';
-import {useAccount} from '../../hooks/useAccount';
+import {PageHeader} from '@/components/PageHeader';
+import {LOCAL_STORAGE_KEYS} from '@/constant';
+import {AccountsCard} from '@/modules/Settings/components/AccountsCard';
+import {SoundSetting} from '@/modules/Settings/components/Sound';
+import {ThemeSetting} from '@/modules/Settings/components/Theme';
+import {useAccount} from '@/modules/Settings/hooks/useAccount';
+
 import {SettingsPageContent} from './styled';
 
 const SettingsPage = () => {

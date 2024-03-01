@@ -5,6 +5,7 @@ interface IAddAccountsProps {
     account: IAccount;
     uid: TUid;
 }
+
 export const addAccounts = async ({uid, account}: IAddAccountsProps) => {
     const {name, id, colorCode} = account;
 
