@@ -22,7 +22,7 @@ const SettingsPage = () => {
         }
     }, []);
 
-    useEffect(setDefaultValue, []);
+    useEffect(setDefaultValue, [setDefaultValue]);
 
     return (
         <Container>
