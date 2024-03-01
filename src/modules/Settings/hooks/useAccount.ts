@@ -2,11 +2,11 @@ import {toast} from 'react-toastify';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 
-import errorHandler from '../../../core/exceptions/ErrorHandler';
-import {getAccountKey} from '../../../core/SWRKeys';
-import {IAccount} from '../../../model';
-import {updateAccounts} from '../actions/updateAccounts';
-import {TAccountParams} from '../type';
+import errorHandler from '@/core/exceptions/ErrorHandler';
+import {getAccountKey} from '@/core/SWRKeys';
+import {IAccount} from '@/model';
+import {updateAccounts} from '@/modules/Settings/actions/updateAccounts';
+import {TAccountParams} from '@/modules/Settings/type';
 
 interface IUseAccountResult {
     accountsList: IAccount[];

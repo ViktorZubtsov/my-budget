@@ -1,8 +1,8 @@
 import {NextRequest, NextResponse} from 'next/server';
 
-import {IAccount} from '../../../model';
-import {addAccounts} from '../../../modules/Settings/actions/addAccounts';
-import {getAccountsList} from '../../../modules/Settings/actions/getAccountsList';
+import {IAccount} from '@/model';
+import {addAccounts} from '@/modules/Settings/actions/addAccounts';
+import {getAccountsList} from '@/modules/Settings/actions/getAccountsList';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
