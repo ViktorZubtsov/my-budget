@@ -17,26 +17,27 @@ describe('ThemeSetting', () => {
     const itemSber = screen.getByText(THEME.DARK_SBER);
     const subTitle = screen.getByTestId(TEST_ID_THEME.THEME_SETTING_SUB_TITLE);
     const button = screen.getByRole('button');
+    const getSubTitle = (name: string) => `Выбранна тема: ${name}`;
 
     test('Chainge Joy theme', () => {
         fireEvent.click(itemJoy);
         fireEvent.click(button);
 
-        expect(subTitle.textContent).toBe(`Выбранна тема: ${THEME.DARK_JOY}`);
+        expect(subTitle.textContent).toBe(getSubTitle(THEME.DARK_JOY));
         expect(handleClick).toHaveBeenCalled();
     });
     test('Chainge Eva theme', () => {
         fireEvent.click(itemEva);
         fireEvent.click(button);
 
-        expect(subTitle.textContent).toBe(`Выбранна тема: ${THEME.DARK_EVA}`);
+        expect(subTitle.textContent).toBe(getSubTitle(THEME.DARK_EVA));
         expect(handleClick).toHaveBeenCalled();
     });
     test('Chainge Sber theme', () => {
         fireEvent.click(itemSber);
         fireEvent.click(button);
 
-        expect(subTitle.textContent).toBe(`Выбранна тема: ${THEME.DARK_SBER}`);
+        expect(subTitle.textContent).toBe(getSubTitle(THEME.DARK_SBER));
         expect(handleClick).toHaveBeenCalled();
     });
 });
