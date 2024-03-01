@@ -17,6 +17,11 @@ export const SoundSetting = memo<ISoundSettingProps>(({isChecked = false}) => {
         setChecked(e.target.checked);
         return localStorage.setItem(LOCAL_STORAGE_KEYS.VIBRATION, String(e.target.checked));
     };
+
+    useEffect(() => {
+        setChecked(isChecked);
+    }, [isChecked]);
+
     return (
         <CardStyled p="10x">
             <Content>
