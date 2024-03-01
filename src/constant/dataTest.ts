@@ -12,3 +12,9 @@ export const TEST_ID_ACCOUNT = {
     NAME: 'account-name',
     SELECT: 'account-select',
 };
+
+export const TEST_ID_THEME = {
+    THEME_SETTING_SUB_TITLE: 'themeSettingsSubTitle',
+    THEME_SETTING_RADIO: 'themeSettingRadio',
+    THEME_SETTING_APPROVE: 'themeSettingApprove',
+};
