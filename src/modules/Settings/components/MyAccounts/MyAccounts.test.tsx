@@ -12,6 +12,7 @@ const MOCK_ACCOUNT: IAccount = {
     id: '1',
     name: 'Name',
 };
+
 describe('MyAccounts', () => {
     const {rerender} = render(<MyAccounts accountsList={[]} />);
     const counterItem = screen.getByTestId(TEST_MY_ACCOUNTS.COUNTER);
