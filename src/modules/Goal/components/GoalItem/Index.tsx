@@ -3,10 +3,11 @@ import {useRouter} from 'next/router';
 import React, {memo} from 'react';
 import {SwipeableList, SwipeableListItem} from 'react-swipeable-list';
 
-import {trailingActionDelete} from '../../../../components/TrailingActions/ActionsDelete';
-import {IGoal} from '../../../../model';
+import {trailingActionDelete} from '@/components/TrailingActions/ActionsDelete';
+import {IGoal} from '@/model';
 
 import style from './styles.module.scss';
+
 export interface IGoalItemProps {
     goal: IGoal;
     isBlock?: boolean;

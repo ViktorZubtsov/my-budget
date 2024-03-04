@@ -1,7 +1,7 @@
 import React from 'react';
 import {SwipeAction, TrailingActions} from 'react-swipeable-list';
 
-import Delete from '../Delete';
+import Delete from '@/components/TrailingActions/Delete';
 
 export const trailingActionDelete = ({handleRemove}: {handleRemove: () => void}) => (
     <TrailingActions>
