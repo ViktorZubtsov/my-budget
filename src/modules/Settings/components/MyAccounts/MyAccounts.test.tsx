@@ -2,16 +2,12 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import {describe, expect, test} from 'vitest';
 
 import {TEST_MY_ACCOUNTS} from '@/constant/dataTest';
+import {MOCK_ACCOUNT} from '@/mock';
 import {IAccount} from '@/model';
 import {MyAccounts} from '@/modules/Settings/components/MyAccounts/index';
 import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
 
 const EMPTY_TEXT = 'У вас нет счетов';
-const MOCK_ACCOUNT: IAccount = {
-    colorCode: 'critical',
-    id: '1',
-    name: 'Name',
-};
 
 describe('MyAccounts', () => {
     const {rerender} = render(<MyAccounts accountsList={[]} />);
