@@ -26,16 +26,16 @@ export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, 
             {onRemove && (
                 <SwipeableList>
                     <SwipeableListItem
-                        data-testid={'test'}
                         blockSwipe={isBlock}
                         maxSwipe={1}
+                        onClick={goToGoal}
                         trailingActions={trailingActionDelete({handleRemove: () => onRemove({id})})}
                     >
-                        <GoalElement onClick={goToGoal} name={name} description={description} />
+                        <GoalElement name={name} description={description} />
                     </SwipeableListItem>
                 </SwipeableList>
             )}
-            {!onRemove && <GoalElement onClick={() => {}} name={name} description={description} />}
+            {!onRemove && <GoalElement name={name} description={description} />}
         </GoalItemWrap>
     );
 });

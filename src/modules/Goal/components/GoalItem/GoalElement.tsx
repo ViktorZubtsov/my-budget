@@ -4,9 +4,9 @@ import {TEST_ID_GOAL_ITEM} from '@/constant/dataTest';
 import {IGoal} from '@/model';
 import {GoalItemStyled} from '@/modules/Goal/components/GoalItem/styled';
 
-export const GoalElement = ({name, description, onClick}: {name: IGoal['name']; description: IGoal['description']; onClick: () => void}) => {
+export const GoalElement = ({name, description}: {name: IGoal['name']; description: IGoal['description']}) => {
     return (
-        <GoalItemStyled data-testid={TEST_ID_GOAL_ITEM.GOAL_ITEM} pt="1x" pb="1x" pl="5x" pr="5x" onClick={onClick}>
+        <GoalItemStyled data-testid={TEST_ID_GOAL_ITEM.GOAL_ITEM} pt="1x" pb="1x" pl="5x" pr="5x">
             <TextBox>
                 <TextBoxTitle style={h5}>{name}</TextBoxTitle>
                 <TextBoxSubTitle>{description}</TextBoxSubTitle>
