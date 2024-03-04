@@ -1,4 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-swipeable-list/dist/styles.css';
 
 import {darkEva, darkJoy, darkSber} from '@salutejs/plasma-tokens/themes';
 import {SSRProvider} from '@salutejs/plasma-ui';
@@ -7,13 +8,13 @@ import {NotificationsProvider} from '@salutejs/plasma-web';
 import dynamic from 'next/dynamic';
 import {memo, ReactNode, useCallback, useEffect, useState} from 'react';
 import {ToastContainer} from 'react-toastify';
-import {YMInitializer} from 'react-yandex-metrika';
 import {createGlobalStyle} from 'styled-components';
 
-import ErrorBoundary from '../../components/ErrorBoundary';
-import Loading from '../../components/Loading';
-import {LOCAL_STORAGE_KEYS, THEME} from '../../constant';
-import {MainStyle} from '../../style';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import Loading from '@/components/Loading';
+import {LOCAL_STORAGE_KEYS, THEME} from '@/constant';
+import {MainStyle} from '@/style';
+
 const GlobalStyle = memo<{onSuccess: () => void}>(({onSuccess}) => {
     const Style = dynamic(() => import('./GlobalStyle'));
 
@@ -70,9 +71,6 @@ const Provider = ({children}: {children: ReactNode}) => {
                 <ToastContainer />
             </DeviceThemeProvider>
             <MainStyle />
-            {isProd && (
-                <YMInitializer accounts={[95362739]} options={{accurateTrackBounce: true, clickmap: true, trackLinks: true, webvisor: true}} />
-            )}
         </>
     );
 };
