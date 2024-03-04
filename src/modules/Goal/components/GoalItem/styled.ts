@@ -15,4 +15,6 @@ export const GoalItemStyled = styled.div<SpacingProps>`
     ${applySpacing}
 `;
 
-export const GoalItemWrap = styled.div<SpacingProps>``;
+export const GoalItemWrap = styled.div<SpacingProps>`
+    ${applySpacing}
+`;

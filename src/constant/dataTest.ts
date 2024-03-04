@@ -23,3 +23,7 @@ export const TEST_ID_THEME = {
     THEME_SETTING_RADIO: 'themeSettingRadio',
     THEME_SETTING_SUB_TITLE: 'themeSettingsSubTitle',
 };
+
+export const TEST_ID_GOAL_ITEM = {
+    GOAL_ITEM: 'goalItem',
+};
