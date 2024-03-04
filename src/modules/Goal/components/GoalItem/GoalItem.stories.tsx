@@ -29,3 +29,13 @@ export const GoalItemStory: TStory = {
         return <GoalItem {...arg} />;
     },
 };
+export const GoalItemNotDescriptionStory: TStory = {
+    args: {
+        goal: {...MOCK_GOAL, description: ''},
+        isBlock: false,
+        onRemove: () => {},
+    },
+    render: (arg) => {
+        return <GoalItem {...arg} />;
+    },
+};
