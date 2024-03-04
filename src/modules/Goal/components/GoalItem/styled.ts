@@ -8,8 +8,10 @@ export const GoalItemStyled = styled.div<SpacingProps>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 10px;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
     ${applySpacing}
 `;
 

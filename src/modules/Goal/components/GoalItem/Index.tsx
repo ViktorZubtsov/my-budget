@@ -15,7 +15,7 @@ export interface IGoalItemProps {
 
 export const GoalElement = ({name, description, onClick}: {name: IGoal['name']; description: IGoal['description']; onClick: () => void}) => {
     return (
-        <GoalItemStyled>
+        <GoalItemStyled mb="4x" pl="5x" pr="5x">
             <TextBox>
                 <TextBoxTitle style={h5}>{name}</TextBoxTitle>
                 <TextBoxSubTitle>{description}</TextBoxSubTitle>
