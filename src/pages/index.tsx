@@ -16,9 +16,9 @@ export const getServerSideProps = (async (context) => {
     return {
         props: {
             fallback: {
-                [`${getAccountKey(uid)}`]: {accountsList: list},
-                [`${getGoalListKey(uid)}`]: {goalList: goalList},
-                [`${getArchiveGoalListKey(uid)}`]: {archiveGoalList: []},
+                [`${getAccountKey(uid)}`]: list,
+                [`${getGoalListKey(uid)}`]: goalList,
+                [`${getArchiveGoalListKey(uid)}`]: [],
             },
         },
     };

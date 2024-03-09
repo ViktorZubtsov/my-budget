@@ -5,7 +5,8 @@ import {IGoal} from '@/model';
 
 export const useGoal = () => {
     const userId = 'clpdnwkhm0000dgnrlljhvj2e';
-    const {data} = useSWR<{goalList: IGoal[]}>(getGoalListKey(userId), {revalidateOnMount: false});
+    const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: false});
+
     const addGoal = () => {
         return new Promise(() => {});
     };
@@ -37,6 +38,6 @@ export const useGoal = () => {
     //     };
     return {
         addGoal,
-        goalsList: data?.goalList ?? [],
+        goalsList: data ?? [],
     };
 };

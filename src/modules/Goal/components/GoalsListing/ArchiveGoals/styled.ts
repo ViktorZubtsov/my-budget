@@ -9,7 +9,7 @@ export const ArchiveGoalsStyled = styled.div<SpacingProps>`
 export const Wrap = styled.div`
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
+    row-gap: 8px;
 `;
 
 export const FetchingWrap = styled.div`

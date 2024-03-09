@@ -16,7 +16,7 @@ interface IUseAccountResult {
 
 export const useAccount = (): IUseAccountResult => {
     const userId = 'clpdnwkhm0000dgnrlljhvj2e';
-    const {data} = useSWR<{accountsList: IAccount[]}>(getAccountKey(userId), {revalidateOnMount: false});
+    const {data} = useSWR<IAccount[]>(getAccountKey(userId), {revalidateOnMount: false});
 
     const {trigger, isMutating, error} = useSWRMutation(getAccountKey(userId), updateAccounts, {
         onError: (err) => errorHandler(err),
@@ -28,7 +28,7 @@ export const useAccount = (): IUseAccountResult => {
     };
 
     return {
-        accountsList: data?.accountsList ?? [],
+        accountsList: data ?? [],
         addAccount,
         isMutating,
     };

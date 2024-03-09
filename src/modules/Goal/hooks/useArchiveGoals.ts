@@ -5,10 +5,10 @@ import {IGoal} from '@/model';
 
 export const useArchiveGoals = () => {
     const userId = 'clpdnwkhm0000dgnrlljhvj2e';
-    const {data, isLoading} = useSWR<{data: IGoal[]}>(getArchiveGoalListKey(userId));
+    const {data, isLoading} = useSWR<IGoal[]>(getArchiveGoalListKey(userId));
 
     return {
-        archiveGoalList: data?.data ?? [],
+        archiveGoalList: data ?? [],
         isLoading,
     };
 };
