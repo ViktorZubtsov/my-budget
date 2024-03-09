@@ -3,8 +3,8 @@ import {memo, useState} from 'react';
 
 import {AddButton} from '../../../../components/AddButton';
 import {mobileVibrate} from '../../../../helpers';
+import {useGoal} from '../../hooks/useGoal';
 import {GoalEditor, TGoalFields} from '../GoalEditor';
-import {useGoal} from '../../hooks';
 
 export const AddGoal = memo(() => {
     const [isOpen, setIsOpen] = useState<boolean>(false);

@@ -1,4 +1,5 @@
-import {AuthBlock} from '../../components/AuthBlock';
+import {AuthBlock} from '@/modules/Auth/components/AuthBlock';
+
 import {AuthPageContainer} from './styled';
 
 export const AuthPage = () => {

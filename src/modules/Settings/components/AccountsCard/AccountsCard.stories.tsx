@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {IAccount} from '@/model';
+import {MOCK_ACCOUNT} from '@/mock';
 import {AccountsCard} from '@/modules/Settings/components/AccountsCard/index';
 
 import {decorators} from '../../../../helpers';
@@ -18,11 +18,7 @@ const meta = {
 export default meta;
 
 type TStory = StoryObj<typeof meta>;
-const MOCK_ACCOUNT: IAccount = {
-    colorCode: 'critical',
-    id: '1',
-    name: 'Name',
-};
+
 export const AccountsCardStoryEmpty: TStory = {
     args: {
         accountsList: [],
