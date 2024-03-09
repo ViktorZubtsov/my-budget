@@ -7,7 +7,7 @@ import {EmptyList} from '@/components/EmptyList';
 import {useFetch} from '@/hooks';
 import {IGoal} from '@/model';
 import {GoalElement} from '@/modules/Goal/components/GoalItem/GoalElement';
-import {ArchiveGoalsStyled, Wrap} from '@/modules/Goal/components/GoalsListing/ArchiveGoals/styled';
+import {ArchiveGoalsStyled, FetchingWrap, Wrap} from '@/modules/Goal/components/GoalsListing/ArchiveGoals/styled';
 
 export const ArchiveGoals = () => {
     const {data} = useSession();
@@ -25,15 +25,9 @@ export const ArchiveGoals = () => {
     return (
         <ArchiveGoalsStyled>
             {isFetching && (
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        width: '100%',
-                    }}
-                >
+                <FetchingWrap>
                     <Spinner style={{zIndex: 999}} size={64} />
-                </div>
+                </FetchingWrap>
             )}
 
             {!isFetching && (
