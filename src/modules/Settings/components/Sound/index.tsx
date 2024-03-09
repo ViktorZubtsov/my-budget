@@ -1,6 +1,6 @@
 import {IconVolumeOff, IconVolumeUp} from '@salutejs/plasma-icons';
 import {Switch} from '@salutejs/plasma-ui';
-import React, {ChangeEventHandler, memo, useCallback, useEffect, useState} from 'react';
+import React, {ChangeEventHandler, memo, useEffect, useState} from 'react';
 
 import {LOCAL_STORAGE_KEYS} from '@/constant';
 

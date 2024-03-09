@@ -1,7 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
 import {MOCK_ACCOUNT} from '@/mock';
-import {IAccount} from '@/model';
 import {AccountsCard} from '@/modules/Settings/components/AccountsCard/index';
 
 import {decorators} from '../../../../helpers';
