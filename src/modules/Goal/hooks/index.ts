@@ -1,7 +1,8 @@
 import useSWR from 'swr';
 
-import {getGoalListKey} from '../../../core/SWRKeys';
-import {IGoal} from '../../../model';
+import {getGoalListKey} from '@/core/SWRKeys';
+import {IGoal} from '@/model';
+
 export const useGoal = () => {
     const userId = 'clpdnwkhm0000dgnrlljhvj2e';
     const {data} = useSWR<{goalList: IGoal[]}>(getGoalListKey(userId), {revalidateOnMount: false});
