@@ -9,13 +9,13 @@ import {useLoaderStore} from '@/store/loaderStore';
 import {ActiveGoalsStyled} from './styled';
 
 export const ActiveGoals = memo(() => {
-    const {goalsList} = useGoal();
+    const {goalsList, removeGoal} = useGoal();
     const {isProcessLoader} = useLoaderStore();
 
     return (
         <ActiveGoalsStyled pb="16x">
             {!goalsList.length && <EmptyList text="Список целей пуст" />}
-            {goalsList && goalsList.map((goal) => <GoalItem isBlock={isProcessLoader} key={goal.id} goal={goal} onRemove={() => {}} />)}
+            {goalsList && goalsList.map((goal) => <GoalItem isBlock={isProcessLoader} key={goal.id} goal={goal} onRemove={removeGoal} />)}
             <AddGoal />
         </ActiveGoalsStyled>
     );
