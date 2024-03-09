@@ -7,8 +7,7 @@ import {EmptyList} from '@/components/EmptyList';
 import {useFetch} from '@/hooks';
 import {IGoal} from '@/model';
 import {GoalElement} from '@/modules/Goal/components/GoalItem/GoalElement';
-
-import style from './styles.module.scss';
+import {ArchiveGoalsStyled, Wrap} from '@/modules/Goal/components/GoalsListing/ArchiveGoals/styled';
 
 export const ArchiveGoals = () => {
     const {data} = useSession();
@@ -24,7 +23,7 @@ export const ArchiveGoals = () => {
     useEffect(() => loadList(), [loadList]);
 
     return (
-        <div className={style.ArchiveGoals}>
+        <ArchiveGoalsStyled>
             {isFetching && (
                 <div
                     style={{
@@ -38,7 +37,7 @@ export const ArchiveGoals = () => {
             )}
 
             {!isFetching && (
-                <div className={style.wrap}>
+                <Wrap>
                     {list.length ? (
                         list.map((goal) => (
                             <div onClick={() => push(`/archive/${goal.id}`)}>
@@ -48,8 +47,8 @@ export const ArchiveGoals = () => {
                     ) : (
                         <EmptyList text="Архив пуст" />
                     )}
-                </div>
+                </Wrap>
             )}
-        </div>
+        </ArchiveGoalsStyled>
     );
 };
