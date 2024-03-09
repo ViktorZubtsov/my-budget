@@ -1,8 +1,10 @@
 import {IconApps, IconTimerStroke} from '@salutejs/plasma-icons';
 import {H5, TabItem, Tabs} from '@salutejs/plasma-ui';
 
-import {useTabs} from '../../../../hooks';
-import {ActiveGoals} from '../../components/GoalsListing/ActiveGoals';
+import {useTabs} from '@/hooks';
+import {ActiveGoals} from '@/modules/Goal/components/GoalsListing/ActiveGoals';
+import {ArchiveGoals} from '@/modules/Goal/components/GoalsListing/ArchiveGoals';
+
 import {MainGoals} from './styled';
 
 export default function MainGoalsPage() {
@@ -19,6 +21,7 @@ export default function MainGoalsPage() {
                 </TabItem>
             </Tabs>
             {0 === currentTab && <ActiveGoals />}
+            {1 === currentTab && <ArchiveGoals />}
         </MainGoals>
     );
 }

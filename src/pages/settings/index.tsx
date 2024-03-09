@@ -1,15 +1,15 @@
 import type {GetServerSideProps} from 'next';
 
-import {$Auth} from '../../core/classes/Auth';
-import {User} from '../../core/classes/User';
-import {getAccountKey} from '../../core/SWRKeys';
-import {IAccount} from '../../model';
-import {getAccountsList} from '../../modules/Settings/actions/getAccountsList';
-import SettingsPage from '../../modules/Settings/page/SettingsPage';
+import {$Auth} from '@/core/classes/Auth';
+import {User} from '@/core/classes/User';
+import {getAccountKey} from '@/core/SWRKeys';
+import {IAccount} from '@/model';
+import {getAccountsList} from '@/modules/Settings/actions/getAccountsList';
+import SettingsPage from '@/modules/Settings/page/SettingsPage';
 
 type TProps = {
     fallback: {
-        [key: string]: {accountsList: IAccount[]};
+        [key: string]: IAccount[];
     };
 };
 
@@ -21,7 +21,7 @@ export const getServerSideProps = (async (context) => {
     return {
         props: {
             fallback: {
-                [`${getAccountKey(uid)}`]: {accountsList: list},
+                [`${getAccountKey(uid)}`]: list,
             },
         },
     };

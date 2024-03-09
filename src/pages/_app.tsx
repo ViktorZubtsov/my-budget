@@ -4,11 +4,10 @@ import {SessionProvider} from 'next-auth/react';
 import {ReactElement, ReactNode, StrictMode} from 'react';
 import {SWRConfig} from 'swr';
 
-import {fetcher} from '../core/http';
-import RootLayout from '../layouts/layout';
-import {AuthProvider} from '../modules/Auth/providers';
-import {ProcessLoaderProvider} from '../providers';
-
+import {fetcher} from '@/core/http';
+import RootLayout from '@/layouts/layout';
+import {AuthProvider} from '@/modules/Auth/providers';
+import {ProcessLoaderProvider} from '@/providers';
 export type TNextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
 };

@@ -2,8 +2,9 @@ import {Button, Radiobox, RadioGroup} from '@salutejs/plasma-ui';
 import {memo, useState} from 'react';
 
 import {LOCAL_STORAGE_KEYS, THEME} from '@/constant';
+import {TEST_ID_THEME} from '@/constant/dataTest';
 
-import {ThemeSettingContent, ThemeSettingStyled, ThemeSettingTitle} from './styled';
+import {ThemeSettingContent, ThemeSettingStyled, ThemeSettingSubTitle, ThemeSettingTitle} from './styled';
 
 type TTheme = keyof typeof THEME;
 
@@ -25,13 +26,13 @@ export const ThemeSetting = memo<IThemeSettingProps>(({handleApprove}) => {
         <ThemeSettingStyled p="10x">
             <ThemeSettingContent>
                 <ThemeSettingTitle>Тема</ThemeSettingTitle>
+                <ThemeSettingSubTitle data-testid={TEST_ID_THEME.THEME_SETTING_SUB_TITLE}>Выбранна тема: {THEME[checked]}</ThemeSettingSubTitle>
                 <RadioGroup aria-labelledby="radiogroup-title-id">
                     {Object.keys(THEME).map((key) => (
                         <Radiobox
                             key={key}
-                            role={`radio-${key}`}
                             name="radio-1"
-                            id={`theme-setting-${key}`}
+                            id={`${TEST_ID_THEME.THEME_SETTING_RADIO}-${key}`}
                             label={key}
                             checked={checked === key}
                             onChange={() => handleChange(key)}
@@ -39,7 +40,7 @@ export const ThemeSetting = memo<IThemeSettingProps>(({handleApprove}) => {
                     ))}
                 </RadioGroup>
                 <div>
-                    <Button id="theme-setting-approve" onClick={onApprove}>
+                    <Button id={TEST_ID_THEME.THEME_SETTING_APPROVE} onClick={onApprove}>
                         Применить
                     </Button>
                 </div>

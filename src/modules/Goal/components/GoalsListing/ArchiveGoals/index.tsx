@@ -1,59 +1,36 @@
-'use client';
-import {Button} from '@salutejs/plasma-ui';
-import {ButtonProps, Spinner, withSkeleton, WithSkeletonProps} from '@salutejs/plasma-web';
+import {Spinner} from '@salutejs/plasma-web';
 import {useRouter} from 'next/navigation';
-import {useSession} from 'next-auth/react';
-import {useCallback, useEffect, useState} from 'react';
 
-import {EmptyList} from '../../../../../components/EmptyList';
-import {useFetch} from '../../../../../hooks';
-import {IGoal} from '../../../../../model';
-import {getGoalsArchiveListByUid} from '../../../actions/getGoalsArchiveListByUid';
-import {GoalElement, GoalItem} from '../../GoalItem/Index';
-
-import style from './styles.module.scss';
+import {EmptyList} from '@/components/EmptyList';
+import {GoalElement} from '@/modules/Goal/components/GoalItem/GoalElement';
+import {ArchiveGoalsStyled, FetchingWrap, Wrap} from '@/modules/Goal/components/GoalsListing/ArchiveGoals/styled';
+import {useArchiveGoals} from '@/modules/Goal/hooks/useArchiveGoals';
 
 export const ArchiveGoals = () => {
-    const {data} = useSession();
-    const {isFetching, setIsFetching} = useFetch();
+    const {archiveGoalList, isLoading} = useArchiveGoals();
     const {push} = useRouter();
 
-    const [list, setList] = useState<IGoal[]>([]);
-    const loadList = useCallback(() => {
-        setIsFetching(true);
-        getGoalsArchiveListByUid(data?.user.id).then((res) => {
-            setList(res);
-            setIsFetching(false);
-        });
-    }, [data, setIsFetching]);
-
-    useEffect(() => loadList(), [loadList]);
-
     return (
-        <div className={style.ArchiveGoals}>
-            {isFetching && (
-                <div
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        width: '100%',
-                    }}
-                >
+        <ArchiveGoalsStyled pb="16x">
+            {isLoading && (
+                <FetchingWrap>
                     <Spinner style={{zIndex: 999}} size={64} />
-                </div>
+                </FetchingWrap>
             )}
 
-            {!isFetching && (
-                <div className={style.wrap}>
-                    {list.length ? (
-                        list.map((goal) => (
-                            <GoalElement key={goal.id} name={goal.name} description={goal.description} onClick={() => push(`/archive/${goal.id}`)} />
+            {!isLoading && (
+                <Wrap>
+                    {Boolean(archiveGoalList.length) ? (
+                        archiveGoalList.map((goal) => (
+                            <div onClick={() => push(`/archive/${goal.id}`)}>
+                                <GoalElement key={goal.id} name={goal.name} description={goal.description} />
+                            </div>
                         ))
                     ) : (
                         <EmptyList text="Архив пуст" />
                     )}
-                </div>
+                </Wrap>
             )}
-        </div>
+        </ArchiveGoalsStyled>
     );
 };

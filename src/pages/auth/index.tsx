@@ -1,6 +1,6 @@
 import {NextPage} from 'next';
 
-import {AuthPage} from '../../modules/Auth/page/Auth';
+import {AuthPage} from '@/modules/Auth/page/Auth';
 
 const Auth: NextPage = () => {
     return <AuthPage />;

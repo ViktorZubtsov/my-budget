@@ -1,7 +1,7 @@
 import {redirect} from 'next/navigation';
 import {Component, ReactNode} from 'react';
 
-import errorHandler from '../../core/exceptions/ErrorHandler';
+import errorHandler from '@/core/exceptions/ErrorHandler';
 
 interface IProps {
     children?: ReactNode;

@@ -1,8 +1,8 @@
 import {useSession} from 'next-auth/react';
 import {ReactNode, useMemo} from 'react';
 
-import {AuthContext} from '../context';
-import {IAuthProvider} from '../types';
+import {AuthContext} from '@/modules/Auth/context';
+import {IAuthProvider} from '@/modules/Auth/types';
 
 export const AuthProvider = ({children}: {children: ReactNode}) => {
     const session = useSession();
