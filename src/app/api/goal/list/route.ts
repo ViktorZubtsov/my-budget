@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({data});
 }
-export async function DELETE(request: NextRequest): Promise<typeof NextResponse> {
+export async function DELETE(request: NextRequest): Promise<NextResponse> {
     const searchParams = request.nextUrl.searchParams;
     const {goalId, goal} = await request.json();
     const uid = searchParams.get('uid') as string;
@@ -22,5 +22,5 @@ export async function DELETE(request: NextRequest): Promise<typeof NextResponse>
         uid,
     });
 
-    return NextResponse;
+    return new NextResponse();
 }
