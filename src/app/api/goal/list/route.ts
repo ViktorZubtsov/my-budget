@@ -16,15 +16,11 @@ export async function DELETE(request: NextRequest) {
     const {goalId, goal} = await request.json();
     const uid = searchParams.get('uid') as string;
 
-    removeGoalById({
+    await removeGoalById({
         goal,
         goalId,
         uid,
-    })
-        .then(() => {
-            return NextResponse;
-        })
-        .catch((error) => {
-            return NextResponse.json({error}, {status: error.status});
-        });
+    });
+
+    return NextResponse;
 }
