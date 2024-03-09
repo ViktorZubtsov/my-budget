@@ -1,15 +1,12 @@
-'use client';
-import {Button} from '@salutejs/plasma-ui';
-import {ButtonProps, Spinner, withSkeleton, WithSkeletonProps} from '@salutejs/plasma-web';
+import {Spinner} from '@salutejs/plasma-web';
 import {useRouter} from 'next/navigation';
 import {useSession} from 'next-auth/react';
 import {useCallback, useEffect, useState} from 'react';
 
-import {EmptyList} from '../../../../../components/EmptyList';
-import {useFetch} from '../../../../../hooks';
-import {IGoal} from '../../../../../model';
-import {getGoalsArchiveListByUid} from '../../../actions/getGoalsArchiveListByUid';
-import {GoalElement, GoalItem} from '../../GoalItem/Index';
+import {EmptyList} from '@/components/EmptyList';
+import {useFetch} from '@/hooks';
+import {IGoal} from '@/model';
+import {GoalElement} from '@/modules/Goal/components/GoalItem/GoalElement';
 
 import style from './styles.module.scss';
 
@@ -21,11 +18,8 @@ export const ArchiveGoals = () => {
     const [list, setList] = useState<IGoal[]>([]);
     const loadList = useCallback(() => {
         setIsFetching(true);
-        getGoalsArchiveListByUid(data?.user.id).then((res) => {
-            setList(res);
-            setIsFetching(false);
-        });
-    }, [data, setIsFetching]);
+        setIsFetching(false);
+    }, [setIsFetching]);
 
     useEffect(() => loadList(), [loadList]);
 
@@ -47,7 +41,9 @@ export const ArchiveGoals = () => {
                 <div className={style.wrap}>
                     {list.length ? (
                         list.map((goal) => (
-                            <GoalElement key={goal.id} name={goal.name} description={goal.description} onClick={() => push(`/archive/${goal.id}`)} />
+                            <div onClick={() => push(`/archive/${goal.id}`)}>
+                                <GoalElement key={goal.id} name={goal.name} description={goal.description} />
+                            </div>
                         ))
                     ) : (
                         <EmptyList text="Архив пуст" />
