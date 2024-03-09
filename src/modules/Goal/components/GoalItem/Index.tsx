@@ -10,7 +10,7 @@ import {GoalItemWrap} from '@/modules/Goal/components/GoalItem/styled';
 export interface IGoalItemProps {
     goal: IGoal;
     isBlock?: boolean;
-    onRemove?: (id: {id: IGoal['id']}) => void;
+    onRemove?: ({id}: {id: IGoal['id']}) => void;
 }
 
 export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, isBlock}) {

@@ -1,22 +1,18 @@
-'use server';
-import {revalidateTag} from 'next/cache';
-
-import prismaClient from '../../../core/prisma';
-import {IGoal, IUser, TTask, TUid} from '../../../model';
+import prismaClient from '@/core/prisma';
+import {IGoal, TTask, TUid} from '@/model';
 
 export interface IGoalArchive extends IGoal {
     tasks: TTask[];
 }
 
-interface IRemoveGoalParams {
+export interface IRemoveGoalParams {
     goalId: IGoal['id'];
-    removeOBJ: IGoal;
     uid: TUid;
     goal: IGoalArchive | null;
 }
 
 export const removeGoalById = async ({goalId, goal, uid}: IRemoveGoalParams) => {
-    await prismaClient.$transaction([
+    return prismaClient.$transaction([
         prismaClient.goalArchive.create({
             data: {
                 description: goal?.description ?? '',
@@ -38,5 +34,16 @@ export const removeGoalById = async ({goalId, goal, uid}: IRemoveGoalParams) => 
         prismaClient.$queryRaw`DELETE FROM  Task where goalId = ${goalId}`,
         prismaClient.$queryRaw`DELETE FROM  Goal where id =  ${goalId}`,
     ]);
-    revalidateTag('goal');
 };
+
+export async function removeGoalQuery(url: string, {arg}: {arg: Omit<IRemoveGoalParams, 'uid'>}) {
+    const {goalId, goal} = arg;
+
+    await fetch(url, {
+        body: JSON.stringify({
+            goal,
+            goalId,
+        }),
+        method: 'DELETE',
+    });
+}
