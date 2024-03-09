@@ -21,7 +21,7 @@ export const ArchiveGoals = () => {
     useEffect(() => loadList(), [loadList]);
 
     return (
-        <ArchiveGoalsStyled>
+        <ArchiveGoalsStyled pb="16x">
             {isFetching && (
                 <FetchingWrap>
                     <Spinner style={{zIndex: 999}} size={64} />

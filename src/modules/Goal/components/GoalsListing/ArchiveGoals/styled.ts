@@ -1,9 +1,9 @@
 // @ts-nocheck
-
+import {applySpacing, SpacingProps} from '@salutejs/plasma-ui';
 import styled from 'styled-components';
 
-export const ArchiveGoalsStyled = styled.div`
-    padding-bottom: 80px;
+export const ArchiveGoalsStyled = styled.div<SpacingProps>`
+    ${applySpacing}
 `;
 
 export const Wrap = styled.div`
