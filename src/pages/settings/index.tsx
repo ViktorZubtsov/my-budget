@@ -16,12 +16,11 @@ type TProps = {
 export const getServerSideProps = (async (context) => {
     const session = await $Auth.getAuthSession(context);
     const uid = new User(session).getUid();
-    const list = await getAccountsList({uid});
 
     return {
         props: {
             fallback: {
-                [`${getAccountKey(uid)}`]: list,
+                [`${getAccountKey(uid)}`]: [],
             },
         },
     };
