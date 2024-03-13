@@ -16,7 +16,6 @@ import {useSearchParams} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 import React, {useCallback, useRef} from 'react';
 import GoogleButton from 'react-google-button';
-import ym from 'react-yandex-metrika';
 
 import {AuthBlockCard, AuthBlockStyled} from './styled';
 
@@ -38,9 +37,6 @@ export const AuthBlock = () => {
     });
 
     const onClick = () => {
-        if ('production' === process.env.NODE_ENV) {
-            ym('reachGoal');
-        }
         return signIn('google', {callbackUrl});
     };
     const content = [
