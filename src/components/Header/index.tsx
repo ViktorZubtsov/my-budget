@@ -1,12 +1,12 @@
 import {Container} from '@salutejs/plasma-ui';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {memo, useContext} from 'react';
 
-import {HeaderSpinner, HeaderStyled, LeftContainer} from './styled';
-import {LogoBlock} from '../LogoBlock';
-import Menu from '../Menu';
 import {ProcessLoaderContext} from '../../context';
 import {AuthContext} from '../../modules/Auth/context';
+import {LogoBlock} from '../LogoBlock';
+import Menu from '../Menu';
+import {HeaderSpinner, HeaderStyled, LeftContainer} from './styled';
 
 interface IHeaderProps {
     logoImg: string;
