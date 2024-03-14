@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server';
 
+import {addGoalToUser, IAddGoalToUserParams} from '@/modules/Goal/actions/addGoalToUser';
 import {getGoalsListByUid} from '@/modules/Goal/actions/getGoalsListByUid';
 import {removeGoalById} from '@/modules/Goal/actions/removeGoalById';
 
@@ -19,6 +20,19 @@ export async function DELETE(request: NextRequest) {
     await removeGoalById({
         goal,
         goalId,
+        uid,
+    });
+
+    return NextResponse.json({});
+}
+
+export async function POST(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams;
+    const {goal} = (await request.json()) as {goal: IAddGoalToUserParams['goal']};
+    const uid = searchParams.get('uid') as string;
+
+    await addGoalToUser({
+        goal,
         uid,
     });
 
