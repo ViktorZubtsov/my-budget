@@ -1,5 +1,6 @@
+'use client';
 import {Container} from '@salutejs/plasma-ui';
-import {useRouter} from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useCallback, useEffect, useState} from 'react';
 
 import {PageHeader} from '@/components/PageHeader';
