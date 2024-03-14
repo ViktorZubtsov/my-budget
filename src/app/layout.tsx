@@ -1,5 +1,7 @@
 import {ReactNode} from 'react';
+import {Suspense} from 'react';
 
+import Loading from '@/app/loading';
 import {User} from '@/core/classes/User';
 import {RootProvider} from '@/core/provider/Root';
 import {SWRProvider} from '@/core/provider/SWRProvider';
@@ -20,15 +22,17 @@ export default async function RootLayout({children}: {children: ReactNode}) {
                 <meta name="theme-color" content="rgba(20,116,70,0.6)" />
             </head>
             <body>
-                <SWRProvider
-                    fallback={{
-                        [`${getAccountKey(uid)}`]: list,
-                        [`${getGoalListKey(uid)}`]: goalList,
-                        [`${getArchiveGoalListKey(uid)}`]: [],
-                    }}
-                >
-                    <RootProvider>{children}</RootProvider>
-                </SWRProvider>
+                <Suspense fallback={<Loading />}>
+                    <SWRProvider
+                        fallback={{
+                            [`${getAccountKey(uid)}`]: list,
+                            [`${getGoalListKey(uid)}`]: goalList,
+                            [`${getArchiveGoalListKey(uid)}`]: [],
+                        }}
+                    >
+                        <RootProvider>{children}</RootProvider>
+                    </SWRProvider>
+                </Suspense>
             </body>
         </html>
     );
