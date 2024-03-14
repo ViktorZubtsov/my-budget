@@ -1,3 +1,5 @@
+'use client';
+
 import {IconApps, IconTimerStroke} from '@salutejs/plasma-icons';
 import {H5, TabItem, Tabs} from '@salutejs/plasma-ui';
 
