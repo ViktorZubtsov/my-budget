@@ -10,6 +10,9 @@ const meta = {
     decorators: decorators,
     parameters: {
         layout: 'fullscreen',
+        nextjs: {
+            appDirectory: true,
+        },
     },
     tags: ['autodocs'],
     title: 'Goal/GoalElement',

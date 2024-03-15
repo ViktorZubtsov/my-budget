@@ -7,7 +7,6 @@ import {useTabs} from '../../../../hooks';
 import {IAccount, TTask} from '../../../../model';
 import {TaskListing} from '../../../Task/sectoin/TaskListing';
 import {TasksChart} from '../../../Task/sectoin/TasksChart';
-
 import styles from './styles.module.scss';
 
 export const GoalXListing = ({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {

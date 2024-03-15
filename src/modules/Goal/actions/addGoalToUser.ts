@@ -1,10 +1,7 @@
-'use server';
-import {revalidatePath, revalidateTag} from 'next/cache';
+import prismaClient from '@/core/prisma';
+import {IGoal, IUser} from '@/model';
 
-import prismaClient from '../../../core/prisma';
-import {IGoal, IUser} from '../../../model';
-
-interface IAddGoalToUserParams {
+export interface IAddGoalToUserParams {
     uid: IUser['id'];
     goal: {
         description: IGoal['description'];
@@ -16,9 +13,19 @@ interface IAddGoalToUserParams {
 export const addGoalToUser = async ({goal, uid}: IAddGoalToUserParams) => {
     const {description, name, id} = goal;
 
-    await prismaClient.$queryRaw<IGoal[]>`
+    return prismaClient.$queryRaw<IGoal[]>`
         INSERT INTO Goal (id, updatedAt, description, name, userUid) 
         VALUES (${id},${new Date()},${description}, ${name}, ${uid});
     `;
-    revalidateTag('goal');
 };
+
+export async function createGoalQuery(url: string, {arg}: {arg: {goal: IAddGoalToUserParams['goal']}}) {
+    const {goal} = arg;
+
+    await fetch(url, {
+        body: JSON.stringify({
+            goal,
+        }),
+        method: 'POST',
+    });
+}
