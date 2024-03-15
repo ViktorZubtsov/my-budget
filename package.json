@@ -17,8 +17,7 @@
     "loki:approve": "loki approve",
     "loki:update": "loki update",
     "test": "vitest run --coverage",
-    "test:watch": "vitest",
-    "chromatic": "npx chromatic --project-token chpt_3952775bbb242b7"
+    "test:watch": "vitest"
   },
   "lint-staged": {
     "!(*min).{js,jsx,ts,tsx}": [
