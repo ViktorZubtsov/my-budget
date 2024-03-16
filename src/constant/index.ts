@@ -23,7 +23,9 @@ export const THEME = {
 export const PROJECT_NAME = 'My Budget';
 
 export const ERROR_TEXT = {
-    REQUIRED: 'Поле обязательно для заполнения',
-    MIN_LENGTH: (value: number) => `Поле должно содержать минимум ${value} символа`,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     MAX_LENGTH: (value: number) => `Поле должно содержать максимум ${value} символов`,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    MIN_LENGTH: (value: number) => `Поле должно содержать минимум ${value} символа`,
+    REQUIRED: 'Поле обязательно для заполнения',
 };
