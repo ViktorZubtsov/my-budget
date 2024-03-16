@@ -53,3 +53,13 @@ export const onError = (err: any) => {
     toast.error('Что-то пошло не так', {theme: 'dark'});
     errorHandler(err);
 };
+
+export function generateWord(length: number) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}

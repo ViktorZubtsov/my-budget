@@ -1,13 +1,23 @@
 import * as yup from 'yup';
 
-export const MAX_LENGTH = 60;
-export const MIN_LENGTH = 3;
+import {ERROR_TEXT} from '@/constant';
+
+export const GOAL_MAX_LENGTH = 60;
+export const GOAL_MIN_LENGTH = 3;
+export const GOAL_MAX_LENGTH_ERROR = ERROR_TEXT.MAX_LENGTH(GOAL_MAX_LENGTH);
+
+export const GOAL_ERROR = {
+    GOAL_DESCRIPTION_MAX_LENGTH: GOAL_MAX_LENGTH_ERROR,
+    GOAL_NAME_MAX_LENGTH: GOAL_MAX_LENGTH_ERROR,
+    GOAL_NAME_MIN_LENGTH: ERROR_TEXT.MIN_LENGTH(GOAL_MIN_LENGTH),
+    GOAL_NAME_REQUIRED: ERROR_TEXT.REQUIRED,
+};
 
 export const GOAL_FIELDS_SCHEMA = yup.object().shape({
-    description: yup.string().max(MAX_LENGTH, `Поле должно содержать максимум ${MAX_LENGTH} символов`),
+    description: yup.string().max(GOAL_MAX_LENGTH, GOAL_ERROR.GOAL_DESCRIPTION_MAX_LENGTH),
     name: yup
         .string()
-        .required('Поле обязательно для заполнения')
-        .min(MIN_LENGTH, `Поле должно содержать минимум ${MIN_LENGTH} символа`)
-        .max(MAX_LENGTH, `Поле должно содержать максимум ${MAX_LENGTH} символов`),
+        .required(GOAL_ERROR.GOAL_NAME_REQUIRED)
+        .min(GOAL_MIN_LENGTH, GOAL_ERROR.GOAL_NAME_MIN_LENGTH)
+        .max(GOAL_MAX_LENGTH, GOAL_ERROR.GOAL_NAME_MAX_LENGTH),
 });
