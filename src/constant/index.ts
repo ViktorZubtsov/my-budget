@@ -1,4 +1,5 @@
 import {colors} from '@salutejs/plasma-tokens';
+
 export const LOCAL_STORAGE_KEYS = {
     ACCOUNT_BADGE_WARNING: 'ACCOUNT_BADGE_WARNING',
     THEME: 'THEME',
@@ -20,3 +21,9 @@ export const THEME = {
     DARK_SBER: 'DARK_SBER',
 };
 export const PROJECT_NAME = 'My Budget';
+
+export const ERROR_TEXT = {
+    REQUIRED: 'Поле обязательно для заполнения',
+    MIN_LENGTH: (value: number) => `Поле должно содержать минимум ${value} символа`,
+    MAX_LENGTH: (value: number) => `Поле должно содержать максимум ${value} символов`,
+};
