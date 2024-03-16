@@ -2,12 +2,14 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import {act} from 'react-dom/test-utils';
 import {describe, expect, test, vi} from 'vitest';
 
-import {ResizeObserver} from '@/helpers';
+import {generateWord, ResizeObserver} from '@/helpers';
 import {GOAL_EDITOR_SUBMIT_TEXT, GOAL_EDITOR_TITLE} from '@/modules/Goal/components/GoalEditor/constants';
 import {GoalEditor} from '@/modules/Goal/components/GoalEditor/index';
-import {GOAL_ERROR, GOAL_MIN_LENGTH} from '@/modules/Goal/constants';
+import {GOAL_ERROR, GOAL_MAX_LENGTH} from '@/modules/Goal/constants';
 
 const TEST_VALUE = 'TEST_VALUE';
+const TEST_MIN_VALUE = '12';
+const TEST_MAX_VALUE = generateWord(GOAL_MAX_LENGTH + 1);
 const TEST_DESCR_VALUE = 'TEST_DESCR_VALUE';
 const handleClick = vi.fn();
 const handeClose = vi.fn();
@@ -38,6 +40,7 @@ describe('GoalEditor', () => {
         fireEvent.change(descInput, {target: {value: TEST_DESCR_VALUE}});
 
         expect(nameInput.value).toBe(TEST_VALUE);
+        expect(descInput.value).toBe(TEST_DESCR_VALUE);
 
         await act(async () => {
             fireEvent.click(submitButton);
@@ -49,7 +52,7 @@ describe('GoalEditor', () => {
         });
     });
 
-    test('Check empty  description', async () => {
+    test('Check empty description', async () => {
         fireEvent.change(nameInput, {target: {value: TEST_VALUE}});
 
         expect(nameInput.value).toBe(TEST_VALUE);
@@ -63,6 +66,7 @@ describe('GoalEditor', () => {
             name: TEST_VALUE,
         });
     });
+
     test('Check min name', async () => {
         const handleSubmit = vi.fn();
         rerender(
@@ -75,20 +79,21 @@ describe('GoalEditor', () => {
                 submitText={GOAL_EDITOR_SUBMIT_TEXT}
             />
         );
-        fireEvent.change(nameInput, {target: {value: '12'}});
+        fireEvent.change(nameInput, {target: {value: TEST_MIN_VALUE}});
 
-        expect(nameInput.value).toBe('12');
+        expect(nameInput.value).toBe(TEST_MIN_VALUE);
 
         await act(async () => {
             fireEvent.click(submitButton);
         });
-        // Проверяем, что отображаются сообщения об ошибках
+
         await waitFor(() => {
             expect(screen.getByText(GOAL_ERROR.GOAL_NAME_MIN_LENGTH));
         });
         expect(handleSubmit).not.toHaveBeenCalled();
     });
-    test('Check max name, des', async () => {
+
+    test('Check max name', async () => {
         const handleSubmit = vi.fn();
         rerender(
             <GoalEditor
@@ -100,14 +105,42 @@ describe('GoalEditor', () => {
                 submitText={GOAL_EDITOR_SUBMIT_TEXT}
             />
         );
-        fireEvent.change(nameInput, {target: {value: '12'}});
+        fireEvent.change(nameInput, {target: {value: TEST_MAX_VALUE}});
 
-        expect(nameInput.value).toBe('12');
+        expect(nameInput.value).toBe(TEST_MAX_VALUE);
 
         await act(async () => {
             fireEvent.click(submitButton);
         });
-        // Проверяем, что отображаются сообщения об ошибках
+
+        await waitFor(() => {
+            expect(screen.getByText(GOAL_ERROR.GOAL_NAME_MAX_LENGTH));
+        });
+        expect(handleSubmit).not.toHaveBeenCalled();
+    });
+
+    test('Check max desc', async () => {
+        const handleSubmit = vi.fn();
+        rerender(
+            <GoalEditor
+                handeClose={handeClose}
+                isFetch={false}
+                isOpen={true}
+                title={GOAL_EDITOR_TITLE}
+                onSubmit={handleSubmit}
+                submitText={GOAL_EDITOR_SUBMIT_TEXT}
+            />
+        );
+        fireEvent.change(descInput, {target: {value: TEST_MAX_VALUE}});
+        fireEvent.change(nameInput, {target: {value: TEST_VALUE}});
+
+        expect(descInput.value).toBe(TEST_MAX_VALUE);
+        expect(nameInput.value).toBe(TEST_VALUE);
+
+        await act(async () => {
+            fireEvent.click(submitButton);
+        });
+
         await waitFor(() => {
             expect(screen.getByText(GOAL_ERROR.GOAL_NAME_MAX_LENGTH));
         });
