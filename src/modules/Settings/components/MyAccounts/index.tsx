@@ -5,6 +5,7 @@ import {memo} from 'react';
 import {AccountsBadge} from '@/components/AccountsBadge';
 import {TEST_MY_ACCOUNTS} from '@/constant/dataTest';
 import {IAccount} from '@/model';
+import {EMPTY_TEXT} from '@/modules/Settings/components/MyAccounts/constants';
 import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
 
 import {EmptyText, Header, MyAccountsStyled} from './styled';
@@ -24,7 +25,7 @@ export const MyAccounts = memo<IMyAccountsProps>(({accountsList}) => {
                 </TextM>
             </Header>
             <MyAccountsStyled>
-                {!accountsList?.length && <EmptyText data-testid={TEST_MY_ACCOUNTS.EMPTY_TEXT}>У вас нет счетов</EmptyText>}
+                {!accountsList?.length && <EmptyText data-testid={TEST_MY_ACCOUNTS.EMPTY_TEXT}>{EMPTY_TEXT}</EmptyText>}
                 {accountsList && accountsList.map(({colorCode, id, name}) => <AccountsBadge key={id} $colorCode={colorCode} text={name} size="l" />)}
             </MyAccountsStyled>
         </MyAccountsStyled>

@@ -1,41 +1,15 @@
 import {Button, TextField} from '@salutejs/plasma-ui';
 import {Select} from '@salutejs/plasma-web';
-import {memo, useState} from 'react';
+import {memo, useMemo, useState} from 'react';
 
 import {AccountsBadge} from '@/components/AccountsBadge';
 import {TEST_ID_ACCOUNT} from '@/constant/dataTest';
-import {IAccount} from '@/model';
+import {IAccount, TAccountsColors} from '@/model';
+import {ACCOUNTS_OPTIONS} from '@/modules/Settings/components/AddAccount/constants';
 import {MAX_ACCOUNT_LENGTH, MAX_ACCOUNT_NAME_LENGTH} from '@/modules/Settings/constants';
 import {TAccountParams} from '@/modules/Settings/type';
 
 import {AddAccountStyled} from './styled';
-
-const items = [
-    {
-        label: <AccountsBadge $colorCode="critical" size="l" text="Красный" />,
-        value: 'critical',
-    },
-    {
-        label: <AccountsBadge $colorCode="green" size="l" text="Зеленый" />,
-        value: 'green',
-    },
-    {
-        label: <AccountsBadge $colorCode="warning" size="l" text="Оранжевый" />,
-        value: 'warning',
-    },
-    {
-        label: <AccountsBadge $colorCode="whiteSecondary" size="l" text="Белый вторичный" />,
-        value: 'whiteSecondary',
-    },
-    {
-        label: <AccountsBadge $colorCode="whiteTertiary" size="l" text="Белый третичный" />,
-        value: 'whiteTertiary',
-    },
-    {
-        label: <AccountsBadge $colorCode="dark" size="l" text="Черный" />,
-        value: 'dark',
-    },
-];
 
 interface IAddAccountProps {
     accountsList: IAccount[];
@@ -46,6 +20,16 @@ interface IAddAccountProps {
 export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetching}) => {
     const [colorCode, setValue] = useState(null);
     const [name, setName] = useState('');
+    const buttonIsDisabled = !colorCode || !name || Boolean(MAX_ACCOUNT_LENGTH <= accountsList.length);
+
+    const accounts = useMemo(() => {
+        return ACCOUNTS_OPTIONS.map(({text, value}) => {
+            return {
+                label: <AccountsBadge $colorCode={value as TAccountsColors} size="l" text={text} />,
+                value,
+            };
+        });
+    }, []);
 
     const handleClick = () => {
         onClick({
@@ -59,7 +43,7 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
                 id={TEST_ID_ACCOUNT.SELECT}
                 value={colorCode}
                 // @ts-ignore
-                items={items}
+                items={accounts}
                 onChange={setValue}
                 placeholder="Выберите цвет"
                 helperText="Цвет"
@@ -75,7 +59,7 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
                 id={TEST_ID_ACCOUNT.ADD_ACCOUNT}
                 isLoading={isFetching}
                 onClick={handleClick}
-                disabled={!colorCode || !name || Boolean(MAX_ACCOUNT_LENGTH <= accountsList.length)}
+                disabled={buttonIsDisabled}
                 size="s"
             />
         </AddAccountStyled>

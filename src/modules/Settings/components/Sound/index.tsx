@@ -3,6 +3,7 @@ import {Switch} from '@salutejs/plasma-ui';
 import React, {ChangeEventHandler, memo, useEffect, useState} from 'react';
 
 import {LOCAL_STORAGE_KEYS} from '@/constant';
+import {TEST_ID_SOUND_SETTING} from '@/constant/dataTest';
 
 import {CardStyled, Content, Title} from './styled';
 
@@ -28,17 +29,22 @@ export const SoundSetting = memo<ISoundSettingProps>(({isChecked = false}) => {
                 <Title>
                     Вибрация{' '}
                     {checked ? (
-                        <div data-testid={'soundSettingOn'}>
+                        <div data-testid={TEST_ID_SOUND_SETTING.SOUND_SETTING_ON}>
                             <IconVolumeUp size="s" color="inherit" />
                         </div>
                     ) : (
-                        <div data-testid={'soundSettingOff'}>
+                        <div data-testid={TEST_ID_SOUND_SETTING.SOUND_SETTING_OFF}>
                             <IconVolumeOff size="s" color="inherit" />
                         </div>
                     )}
                 </Title>
 
-                <Switch data-testid={'soundSettingSwitch'} label="Вибрация на события" checked={checked} onChange={handleSwitch} />
+                <Switch
+                    data-testid={TEST_ID_SOUND_SETTING.SOUND_SETTING_SWITCH}
+                    label="Вибрация на события"
+                    checked={checked}
+                    onChange={handleSwitch}
+                />
             </Content>
         </CardStyled>
     );

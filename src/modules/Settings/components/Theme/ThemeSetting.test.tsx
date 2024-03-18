@@ -1,4 +1,4 @@
-import {fireEvent, render, screen} from '@testing-library/react';
+import {fireEvent, render} from '@testing-library/react';
 import {describe, expect, test, vi} from 'vitest';
 
 import {THEME} from '@/constant';
@@ -11,12 +11,13 @@ const component = <ThemeSetting handleApprove={handleClick} />;
 
 describe('ThemeSetting', () => {
     global.ResizeObserver = ResizeObserver;
-    render(component);
-    const itemJoy = screen.getByText(THEME.DARK_JOY);
-    const itemEva = screen.getByText(THEME.DARK_EVA);
-    const itemSber = screen.getByText(THEME.DARK_SBER);
-    const subTitle = screen.getByTestId(TEST_ID_THEME.THEME_SETTING_SUB_TITLE);
-    const button = screen.getByRole('button');
+    const {getByText, getByTestId, getByRole} = render(component);
+
+    const itemJoy = getByText(THEME.DARK_JOY);
+    const itemEva = getByText(THEME.DARK_EVA);
+    const itemSber = getByText(THEME.DARK_SBER);
+    const subTitle = getByTestId(TEST_ID_THEME.THEME_SETTING_SUB_TITLE);
+    const button = getByRole('button');
     const getSubTitle = (name: string) => `Выбранна тема: ${name}`;
 
     test('Chainge Joy theme', () => {
