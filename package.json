@@ -109,7 +109,7 @@
     "prisma": "^5.11.0",
     "sass": "^1.72.0",
     "standard-version": "^9.5.0",
-    "storybook": "^7.6.4",
+    "storybook": "^8.0.0",
     "vitest": "^1.4.0"
   },
   "config": {
