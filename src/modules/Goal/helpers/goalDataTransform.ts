@@ -1,6 +1,6 @@
-import {IGoal} from '@/model';
+import {IGoal, IGoalShort} from '@/model';
 
-export const goalDataTransform = (list: IGoal[]) => {
+export const goalDataTransform = (list: IGoalShort[]) => {
     if (list.length) {
         return list[0];
     }

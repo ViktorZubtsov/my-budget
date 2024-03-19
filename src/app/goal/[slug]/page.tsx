@@ -5,7 +5,7 @@ import {User} from '@/core/classes/User';
 import {SWRProvider} from '@/core/provider/SWRProvider';
 import {getGoalXKey} from '@/core/SWRKeys';
 import {getGoalById} from '@/modules/Goal/actions/getGoalById';
-import {goalDataTransform} from '@/modules/Goal/helpers/goalDataTransform';
+import {GoalXPage} from '@/modules/Goal/page/GoalX';
 
 const GoalX = async ({params}: {params: {slug: string}}) => {
     const uid = new User(null).getUid();
@@ -16,10 +16,10 @@ const GoalX = async ({params}: {params: {slug: string}}) => {
         <Suspense fallback={<Loading />}>
             <SWRProvider
                 fallback={{
-                    [`${getGoalXKey(uid, goalId)}`]: goalDataTransform(goal),
+                    [`${getGoalXKey(uid, goalId)}`]: goal,
                 }}
             >
-                <div>sde</div>
+                <GoalXPage goalId={goalId} />
             </SWRProvider>
         </Suspense>
     );
