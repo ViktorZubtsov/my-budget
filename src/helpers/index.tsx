@@ -1,6 +1,7 @@
 import {toast} from 'react-toastify';
 
 import errorHandler from '@/core/exceptions/ErrorHandler';
+import {IAccount, TAccountsColors} from '@/model';
 
 import {LOCAL_STORAGE_KEYS} from '../constant';
 import Provider from '../core/provider';
@@ -60,6 +61,19 @@ export function generateWord(length: number) {
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+export function generateAccount(length: number): IAccount[] {
+    let result: IAccount[] = [];
+
+    for (let i = 0; i < length; i++) {
+        result.push({
+            colorCode: 'critical',
+            id: generateWord(5),
+            name: generateWord(10),
+        });
     }
     return result;
 }

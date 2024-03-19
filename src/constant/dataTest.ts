@@ -27,3 +27,9 @@ export const TEST_ID_THEME = {
 export const TEST_ID_GOAL_ITEM = {
     GOAL_ITEM: 'goalItem',
 };
+
+export const TEST_ID_SOUND_SETTING = {
+    SOUND_SETTING_OFF: 'soundSettingOff',
+    SOUND_SETTING_ON: 'soundSettingOn',
+    SOUND_SETTING_SWITCH: 'soundSettingSwitch',
+};
