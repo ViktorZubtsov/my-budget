@@ -1,19 +1,19 @@
 'use client';
 import {IconBankCardAlt1, IconFolder} from '@salutejs/plasma-icons';
-import {Container, H5, TabItem, Tabs} from '@salutejs/plasma-ui';
+import {TabItem, Tabs} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
 
-import {useTabs} from '../../../../hooks';
-import {IAccount, TTask} from '../../../../model';
-import {TaskListing} from '../../../Task/sectoin/TaskListing';
-import {TasksChart} from '../../../Task/sectoin/TasksChart';
-import styles from './styles.module.scss';
+import {useTabs} from '@/hooks';
+import {IAccount, TTask} from '@/model';
+import {GoalXListingStyled} from '@/modules/Goal/components/GoalXListing/styled';
+import {TaskListing} from '@/modules/Task/sectoin/TaskListing';
+import {TasksChart} from '@/modules/Task/sectoin/TasksChart';
 
 export const GoalXListing = ({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
     const {currentTab, setCurrentTab} = useTabs({});
 
     return (
-        <Container className={styles.GoalXListing}>
+        <GoalXListingStyled>
             <Tabs size="l" view="secondary" stretch={true} pilled={false} scaleOnPress={true} outlined={false} index={currentTab} animated={true}>
                 <TabItem contentLeft={<IconFolder size="s" color="inherit" />} onClick={() => setCurrentTab(0)}>
                     <H4>Список</H4>
@@ -26,6 +26,6 @@ export const GoalXListing = ({taskList, accountsList}: {taskList: TTask[]; accou
                 {0 === currentTab && <TaskListing accountsList={accountsList} taskList={taskList} />}
                 {1 === currentTab && <TasksChart taskList={taskList} />}
             </div>
-        </Container>
+        </GoalXListingStyled>
     );
 };

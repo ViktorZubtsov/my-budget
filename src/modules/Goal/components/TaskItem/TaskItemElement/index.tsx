@@ -4,8 +4,8 @@ import {Badge, Card, CardContent, h5, MarkedItem, MarkedList, Price, textS} from
 import classNames from 'classnames';
 import React, {memo, useMemo} from 'react';
 
-import {ACCOUNTS_COLORS} from '../../../../../constant';
-import {IAccount, TAccountsColors, TTask} from '../../../../../model';
+import {ACCOUNTS_COLORS} from '@/constant';
+import {IAccount, TAccountsColors, TTask} from '@/model';
 
 import styles from './styles.module.scss';
 

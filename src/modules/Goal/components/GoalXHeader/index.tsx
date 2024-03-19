@@ -1,12 +1,11 @@
 'use client';
-import {IconChevronLeft} from '@salutejs/plasma-icons';
-import {Container, TextM} from '@salutejs/plasma-ui';
+
+import {Container} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
 import {useRouter} from 'next/navigation';
 
-import {IGoal} from '../../../../model';
-
-import styles from './styles.module.scss';
+import {IGoal} from '@/model';
+import {GoalXHeaderContent, GoalXHeaderIcon, GoalXHeaderStyled, Subtitle} from '@/modules/Goal/components/GoalXHeader/styled';
 
 export const GoalXHeader = ({goal}: {goal?: IGoal}) => {
     const {back} = useRouter();
@@ -17,15 +16,15 @@ export const GoalXHeader = ({goal}: {goal?: IGoal}) => {
 
     return (
         <Container>
-            <div className={styles.GoalXHeader}>
+            <GoalXHeaderStyled>
                 <div onClick={back}>
-                    <IconChevronLeft className={styles.Icon} size="s" color="inherit" />
+                    <GoalXHeaderIcon size="s" color="inherit" />
                 </div>
-                <div className={styles.GoalXHeaderContent}>
+                <GoalXHeaderContent>
                     <H4>{name}</H4>
-                    <TextM className={styles.Subtitle}>{description}</TextM>
-                </div>
-            </div>
+                    <Subtitle>{description}</Subtitle>
+                </GoalXHeaderContent>
+            </GoalXHeaderStyled>
         </Container>
     );
 };

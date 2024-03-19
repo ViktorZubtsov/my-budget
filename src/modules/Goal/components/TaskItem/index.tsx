@@ -1,9 +1,10 @@
 import React, {memo} from 'react';
 import {SwipeableList, SwipeableListItem, Type as ListType} from 'react-swipeable-list';
 
-import {leadingActionsAccept} from '../../../../components/TrailingActions/ActionsAccept';
-import {trailingActionsEditDelete} from '../../../../components/TrailingActions/ActionsEditDelete';
-import {IAccount, TTask} from '../../../../model';
+import {leadingActionsAccept} from '@/components/TrailingActions/ActionsAccept';
+import {trailingActionsEditDelete} from '@/components/TrailingActions/ActionsEditDelete';
+import {IAccount, TTask} from '@/model';
+
 import {TaskItemElement} from './TaskItemElement';
 
 interface ITaskItemProps {
