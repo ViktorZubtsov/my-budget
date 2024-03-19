@@ -1,10 +1,12 @@
 import {toast} from 'react-toastify';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
+import {v4} from 'uuid';
 
-import errorHandler from '@/core/exceptions/ErrorHandler';
 import {getGoalListKey} from '@/core/SWRKeys';
+import {onError} from '@/helpers';
 import {IGoal, TTask} from '@/model';
+import {createGoalQuery} from '@/modules/Goal/actions/addGoalToUser';
 import {removeGoalQuery} from '@/modules/Goal/actions/removeGoalById';
 import {useLoaderStore} from '@/store/loaderStore';
 
@@ -13,16 +15,25 @@ export const useGoal = () => {
     const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: false});
 
     const {trigger} = useSWRMutation(getGoalListKey(userId), removeGoalQuery, {
-        onError: (err) => {
-            toast.error('Что-то пошло не так', {theme: 'dark'});
-            errorHandler(err);
-        },
+        onError,
         onSuccess: () => toast.success('Цель удалена', {theme: 'dark'}),
     });
 
-    const addGoal = () => {
-        return new Promise(() => {});
+    const {trigger: createGoal, isMutating: isGoalLoader} = useSWRMutation(getGoalListKey(userId), createGoalQuery, {
+        onError,
+        onSuccess: () => toast.success('Цель успешно создана', {theme: 'dark'}),
+    });
+
+    const addGoal = ({description, name}: {description: string; name: string}) => {
+        return createGoal({
+            goal: {
+                description,
+                id: v4(),
+                name,
+            },
+        });
     };
+
     const removeGoal = ({id}: {id: IGoal['id']}) => {
         const goal = data?.find((item) => item.id === id);
 
@@ -35,35 +46,10 @@ export const useGoal = () => {
         }
     };
 
-    //     const addGoal = (uid: TUid, {name, description}: {name: IGoal['name']; description: IGoal['description']}) => {
-    //         const baseObj = {
-    //             description,
-    //             id: v4(),
-    //             name,
-    //         } as IGoal;
-    // import {getGoalListKey} from '@/core/SWRKeys';
-    // import {IGoal} from '@/model';
-    // export const useGoal = () => {
-    //     const userId = 'clpdnwkhm0000dgnrlljhvj2e';
-    //     const {data} = useSWR<{goalList: IGoal[]}>(getGoalListKey(userId), {revalidateOnMount: false});
-    //
-    //         return new Promise((resolve, reject) => {
-    //             addGoalToUser({goal: baseObj, uid})
-    //                 .then(() => {
-    //                     toast.success('Цель успешно создана', {theme: 'dark'});
-    //                     resolve(true);
-    //                 })
-    //                 .catch((err) => {
-    //                     toast.error('Ошибка, попробуйте позже', {theme: 'dark'});
-    //                     reject(errorHandler(err));
-    //                 });
-    //         });
-    //     return {
-    //         goalsList: data?.goalList ?? [],
-    //     };
     return {
         addGoal,
         goalsList: data ?? [],
+        isGoalLoader,
         removeGoal,
     };
 };

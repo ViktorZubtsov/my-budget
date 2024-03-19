@@ -1,9 +1,7 @@
-import {Body1, H3, Sheet} from '@salutejs/plasma-ui';
+import {H3, Sheet} from '@salutejs/plasma-ui';
 import {ReactNode} from 'react';
 
 import {SheetModalContent} from './styled';
-
-import styles from './styles.module.scss';
 
 interface ISheetModal {
     isOpen: boolean;

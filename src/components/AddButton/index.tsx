@@ -1,8 +1,9 @@
 import {IconPlus} from '@salutejs/plasma-icons';
 import {Button} from '@salutejs/plasma-ui';
 
+import {DATA_TEST} from '@/constant/dataTest';
+
 import {AddButtonStyled} from './styled';
-import {DATA_TEST} from '../../constant/dataTest';
 
 interface IAddButtonProps {
     isFixed?: boolean;
