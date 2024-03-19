@@ -1,6 +1,6 @@
 import {User} from '@prisma/client';
 
-import {ACCOUNTS_COLORS} from '../constant';
+import {ACCOUNTS_COLORS} from '@/constant';
 
 import {Goal, Task} from '.prisma/client';
 
