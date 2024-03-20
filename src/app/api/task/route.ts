@@ -1,17 +1,12 @@
-import {NextResponse} from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 
-import prismaClient from '@/core/prisma';
+import {getAllTasksForGoal} from '@/modules/Task/actions/getAllTasksForGoal';
 
-export async function POST(request: Request) {
-    const {bankAccount, price, name, taskId} = await request.json();
+export async function GET(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams;
+    const goalId = searchParams.get('goalId') as string;
 
-    const data = await prismaClient.$queryRaw`
-                update   Task
-                set   
-                bankAccount =  ${bankAccount},
-                price =  ${price},
-                name =  ${name}
-                where id = ${taskId}
-    `;
+    const data = await getAllTasksForGoal({goalId});
+
     return NextResponse.json({data});
 }

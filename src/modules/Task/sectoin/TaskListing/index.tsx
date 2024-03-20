@@ -1,17 +1,17 @@
-import {H5, Price, TextM} from '@salutejs/plasma-ui';
 import {memo, useMemo, useState} from 'react';
+
+import {TaskSum} from '@/modules/Task/components/TaskSum';
+import {GoalXListStyled} from '@/modules/Task/sectoin/TaskListing/styled';
 
 import {AddButton} from '../../../../components/AddButton';
 import {EmptyList} from '../../../../components/EmptyList';
 import {mobileVibrate} from '../../../../helpers';
 import {IAccount, TTask} from '../../../../model';
-import {TaskItem} from '../../../Goal/components/TaskItem';
-import {EditTask} from '../../components/EditTask';
-import {useTask} from '../../hooks';
 import {useLoaderStore} from '../../../../store/loaderStore';
-
 import {AddTask} from '../../components/AddTask';
-import styles from './styles.module.scss';
+import {EditTask} from '../../components/EditTask';
+import {TaskItem} from '../../components/TaskItem';
+import {useTask} from '../../hooks';
 
 export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
     const {isProcessLoader} = useLoaderStore();
@@ -42,16 +42,9 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
 
     return (
         <>
-            {Boolean(sum) && (
-                <div className={styles.SumWrap}>
-                    <H5>Сумма:</H5>
-                    <Price currency="rub" stroke={false} minimumFractionDigits={2}>
-                        {sum ?? 0}
-                    </Price>
-                </div>
-            )}
+            {Boolean(sum) && <TaskSum sum={sum} />}
 
-            <div className={styles.GoalXList}>
+            <GoalXListStyled>
                 {!taskList.length && <EmptyList text="Список задач пуст" />}
                 {Boolean(taskList.length) &&
                     taskList.map((task) => (
@@ -68,7 +61,7 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
                             task={task}
                         />
                     ))}
-            </div>
+            </GoalXListStyled>
             <AddButton isFixed onClick={() => setIsShowAddTask(true)} />
             <EditTask
                 accountsList={accountsList}
