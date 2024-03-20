@@ -5,12 +5,11 @@ import {AddButton} from '../../../../components/AddButton';
 import {EmptyList} from '../../../../components/EmptyList';
 import {mobileVibrate} from '../../../../helpers';
 import {IAccount, TTask} from '../../../../model';
+import {useLoaderStore} from '../../../../store/loaderStore';
 import {TaskItem} from '../../../Goal/components/TaskItem';
+import {AddTask} from '../../components/AddTask';
 import {EditTask} from '../../components/EditTask';
 import {useTask} from '../../hooks';
-import {useLoaderStore} from '../../../../store/loaderStore';
-
-import {AddTask} from '../../components/AddTask';
 import styles from './styles.module.scss';
 
 export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {

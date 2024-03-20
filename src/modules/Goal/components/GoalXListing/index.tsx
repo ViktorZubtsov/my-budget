@@ -1,4 +1,3 @@
-'use client';
 import {IconBankCardAlt1, IconFolder} from '@salutejs/plasma-icons';
 import {TabItem, Tabs} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
