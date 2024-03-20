@@ -4,8 +4,7 @@ import {SwipeableList, SwipeableListItem, Type as ListType} from 'react-swipeabl
 import {leadingActionsAccept} from '@/components/TrailingActions/ActionsAccept';
 import {trailingActionsEditDelete} from '@/components/TrailingActions/ActionsEditDelete';
 import {IAccount, TTask} from '@/model';
-
-import {TaskItemElement} from './TaskItemElement';
+import {TaskElement} from '@/modules/Task/components/TaskElement';
 
 interface ITaskItemProps {
     task: TTask;
@@ -37,7 +36,7 @@ export const TaskItem = memo<ITaskItemProps>(({task, onAccept, onEdit, onRemove,
                         },
                     })}
                 >
-                    <TaskItemElement task={task} accountsList={accountsList} />
+                    <TaskElement task={task} accountsList={accountsList} />
                 </SwipeableListItem>
             </SwipeableList>
         </div>

@@ -4,8 +4,8 @@ import {memo, useMemo} from 'react';
 
 import {EmptyList} from '@/components/EmptyList';
 import {IAccount, TTask} from '@/model';
-import {TaskItemElement} from '@/modules/Goal/components/TaskItem/TaskItemElement';
 
+import {TaskElement} from '../../components/TaskElement';
 import styles from './styles.module.scss';
 
 export const ArchiveTaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
@@ -26,10 +26,7 @@ export const ArchiveTaskListing = memo(({taskList, accountsList}: {taskList: TTa
 
             <div className={styles.GoalXList}>
                 {!taskList.length && <EmptyList text="Список задач пуст" />}
-                {Boolean(taskList.length) &&
-                    taskList.map((task) => (
-                        <TaskItemElement className={styles.taskItemElement} accountsList={accountsList} key={task.id} task={task} />
-                    ))}
+                {Boolean(taskList.length) && taskList.map((task) => <TaskElement accountsList={accountsList} key={task.id} task={task} />)}
             </div>
         </Container>
     );

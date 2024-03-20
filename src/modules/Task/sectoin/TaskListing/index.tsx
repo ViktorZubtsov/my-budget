@@ -8,9 +8,9 @@ import {EmptyList} from '../../../../components/EmptyList';
 import {mobileVibrate} from '../../../../helpers';
 import {IAccount, TTask} from '../../../../model';
 import {useLoaderStore} from '../../../../store/loaderStore';
-import {TaskItem} from '../../../Goal/components/TaskItem';
 import {AddTask} from '../../components/AddTask';
 import {EditTask} from '../../components/EditTask';
+import {TaskItem} from '../../components/TaskItem';
 import {useTask} from '../../hooks';
 
 export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {

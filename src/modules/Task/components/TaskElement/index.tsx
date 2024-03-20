@@ -1,0 +1,53 @@
+import {accent} from '@salutejs/plasma-core';
+import {IconDone} from '@salutejs/plasma-icons';
+import {CardContent, h5, MarkedList} from '@salutejs/plasma-ui';
+import React, {memo, useMemo} from 'react';
+
+import {AccountsBadge} from '@/components/AccountsBadge';
+import {IAccount, TAccountsColors, TTask} from '@/model';
+import {
+    BadgeWrap,
+    Content,
+    PricesWrap,
+    TaskElementMarkedItem,
+    TaskElementPrice,
+    TaskElementStyled,
+} from '@/modules/Task/components/TaskElement/styled';
+
+interface ITaskItemElementProps {
+    task: TTask;
+    accountsList: IAccount[];
+}
+
+export const TaskElement = memo<ITaskItemElementProps>(({task, accountsList}) => {
+    const {name, bankAccount, price, done} = task;
+
+    const currentBankAccount = useMemo(() => accountsList.find(({id}) => id === bankAccount) as IAccount, [bankAccount, accountsList]);
+
+    return (
+        <TaskElementStyled>
+            <CardContent>
+                <Content>
+                    <PricesWrap>
+                        <MarkedList>
+                            <TaskElementMarkedItem $isDone={done} style={h5} text={name}>
+                                {Boolean(done) && <IconDone size="xs" color={accent} />}
+                            </TaskElementMarkedItem>
+                        </MarkedList>
+                        <TaskElementPrice $isDone={done} currency="rub" stroke={false}>
+                            {Number(price)}
+                        </TaskElementPrice>
+                    </PricesWrap>
+                    <BadgeWrap>
+                        <AccountsBadge
+                            text={currentBankAccount?.name ?? 'Нет названия'}
+                            size="l"
+                            $isDone={done}
+                            $colorCode={currentBankAccount?.colorCode as TAccountsColors}
+                        />
+                    </BadgeWrap>
+                </Content>
+            </CardContent>
+        </TaskElementStyled>
+    );
+});
