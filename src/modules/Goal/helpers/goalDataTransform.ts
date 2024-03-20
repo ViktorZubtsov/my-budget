@@ -1,4 +1,4 @@
-import {IGoal, IGoalShort} from '@/model';
+import {IGoalShort} from '@/model';
 
 export const goalDataTransform = (list: IGoalShort[]) => {
     if (list.length) {
