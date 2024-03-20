@@ -16,7 +16,7 @@ export const MOCK_ACCOUNT: IAccount = {
 };
 
 export const MOCK_TASK: TTask = {
-    bankAccount: 'bankAccount',
+    bankAccount: MOCK_ACCOUNT.id,
     createdAt: new Date(),
     done: false,
     goalId: 'goal-id',

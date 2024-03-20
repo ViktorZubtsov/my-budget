@@ -4,6 +4,7 @@ import {CardContent, h5, MarkedList} from '@salutejs/plasma-ui';
 import React, {memo, useMemo} from 'react';
 
 import {AccountsBadge} from '@/components/AccountsBadge';
+import {TEST_ID_TASK} from '@/constant/dataTest';
 import {IAccount, TAccountsColors, TTask} from '@/model';
 import {
     BadgeWrap,
@@ -34,12 +35,13 @@ export const TaskElement = memo<ITaskItemElementProps>(({task, accountsList}) =>
                                 {Boolean(done) && <IconDone size="xs" color={accent} />}
                             </TaskElementMarkedItem>
                         </MarkedList>
-                        <TaskElementPrice $isDone={done} currency="rub" stroke={false}>
+                        <TaskElementPrice data-testid={TEST_ID_TASK.TASK_ITEM_PRICE} $isDone={done} currency="rub" stroke={false}>
                             {Number(price)}
                         </TaskElementPrice>
                     </PricesWrap>
                     <BadgeWrap>
                         <AccountsBadge
+                            data-testid={TEST_ID_TASK.TASK_ITEM_BADGE}
                             text={currentBankAccount?.name ?? 'Нет названия'}
                             size="l"
                             $isDone={done}
