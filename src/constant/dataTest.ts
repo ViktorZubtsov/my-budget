@@ -33,3 +33,6 @@ export const TEST_ID_SOUND_SETTING = {
     SOUND_SETTING_ON: 'soundSettingOn',
     SOUND_SETTING_SWITCH: 'soundSettingSwitch',
 };
+export const TEST_ID_TASK = {
+    TASK_SUM: 'taskSum',
+};

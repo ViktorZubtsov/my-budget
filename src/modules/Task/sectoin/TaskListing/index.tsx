@@ -1,5 +1,6 @@
-import {H5, Price, TextM} from '@salutejs/plasma-ui';
 import {memo, useMemo, useState} from 'react';
+
+import {TaskSum} from '@/modules/Task/components/TaskSum';
 
 import {AddButton} from '../../../../components/AddButton';
 import {EmptyList} from '../../../../components/EmptyList';
@@ -41,14 +42,7 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
 
     return (
         <>
-            {Boolean(sum) && (
-                <div className={styles.SumWrap}>
-                    <H5>Сумма:</H5>
-                    <Price currency="rub" stroke={false} minimumFractionDigits={2}>
-                        {sum ?? 0}
-                    </Price>
-                </div>
-            )}
+            {Boolean(sum) && <TaskSum sum={sum} />}
 
             <div className={styles.GoalXList}>
                 {!taskList.length && <EmptyList text="Список задач пуст" />}
