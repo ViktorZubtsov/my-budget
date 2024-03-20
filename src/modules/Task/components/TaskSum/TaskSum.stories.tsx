@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {TaskSum} from '@/modules/Task/components/TaskSum';
+import {TaskSum} from '@/modules/Task/components/TaskSum/index';
 
 import {decorators} from '../../../../helpers';
 
