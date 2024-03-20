@@ -5,6 +5,7 @@ import {TEST_ID_TASK} from '@/constant/dataTest';
 import {TaskSum} from '@/modules/Task/components/TaskSum/index';
 
 const TEST_VALUE = 10_895.2356;
+const TEST_NEW_TITLE = 'Title';
 const TEST_UNDEFINED_VALUE = '0,00 ₽';
 const TEST_SUM_VALUE = '10 895,24 ₽';
 const TEST_DIGITS_VALUE = '10 895,236 ₽';
@@ -14,6 +15,12 @@ describe('TaskSum', () => {
 
     test('Renders the title', async () => {
         expect(getByText('Сумма'));
+    });
+
+    test('Renders new  title', async () => {
+        rerender(<TaskSum sum={TEST_VALUE} title={TEST_NEW_TITLE} />);
+
+        expect(getByText(TEST_NEW_TITLE));
     });
 
     test('Renders with no sum, defaulting to 0', () => {
