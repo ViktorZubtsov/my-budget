@@ -15,7 +15,7 @@ import {useLoaderStore} from '@/store/loaderStore';
 export const useGoal = () => {
     const {userId} = useContext(AuthContext);
 
-    const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: false});
+    const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: true});
 
     const {trigger} = useSWRMutation(getGoalListKey(userId), removeGoalQuery, {
         onError,
