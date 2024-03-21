@@ -1,12 +1,11 @@
 'use client';
-import {Container, H5, Price} from '@salutejs/plasma-ui';
 import {memo, useMemo} from 'react';
 
 import {EmptyList} from '@/components/EmptyList';
 import {IAccount, TTask} from '@/model';
-
-import {TaskElement} from '../../components/TaskElement';
-import styles from './styles.module.scss';
+import {TaskElement} from '@/modules/Task/components/TaskElement';
+import {TaskSum} from '@/modules/Task/components/TaskSum';
+import {ArchiveTaskContent, ArchiveTaskListingStyled} from '@/modules/Task/sectoin/ArchiveTaskListing/styled';
 
 export const ArchiveTaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
     const sum = useMemo<number | undefined>(() => {
@@ -14,20 +13,13 @@ export const ArchiveTaskListing = memo(({taskList, accountsList}: {taskList: TTa
     }, [taskList]);
 
     return (
-        <Container className={styles.archiveTaskListing}>
-            {Boolean(sum) && (
-                <div className={styles.SumWrap}>
-                    <H5>Сумма</H5>
-                    <Price currency="rub" stroke={false} minimumFractionDigits={2}>
-                        {sum ?? 0}
-                    </Price>
-                </div>
-            )}
+        <ArchiveTaskListingStyled>
+            {Boolean(sum) && <TaskSum sum={sum} />}
 
-            <div className={styles.GoalXList}>
+            <ArchiveTaskContent>
                 {!taskList.length && <EmptyList text="Список задач пуст" />}
                 {Boolean(taskList.length) && taskList.map((task) => <TaskElement accountsList={accountsList} key={task.id} task={task} />)}
-            </div>
-        </Container>
+            </ArchiveTaskContent>
+        </ArchiveTaskListingStyled>
     );
 });
