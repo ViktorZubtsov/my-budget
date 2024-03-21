@@ -1,23 +1,20 @@
 import {memo} from 'react';
 
+import {useFetch} from '@/hooks';
+import {TTask} from '@/model';
 import {useAccount} from '@/modules/Settings/hooks/useAccount';
-
-import {mobileVibrate} from '../../../../helpers';
-import {useFetch} from '../../../../hooks';
-import {IAccount, TTask} from '../../../../model';
-import {useTask} from '../../hooks/useTask';
-import {TaskEditor, TTaskFields} from '../TaskEditor';
+import {TaskEditor, TTaskFields} from '@/modules/Task/components/TaskEditor';
+import {useTask} from '@/modules/Task/hooks/useTask';
 
 const TITLE = 'Изменить задачу';
 interface IEditTask {
     isOpen: boolean;
-    selectedTask: {price: TTask['price']; bankAccount: TTask['bankAccount']; name: TTask['name']};
     taskId: TTask['id'];
     onClose: () => void;
 }
-export const EditTask = memo(({onClose, isOpen, selectedTask}: IEditTask) => {
+export const EditTask = memo(({onClose, isOpen, taskId}: IEditTask) => {
     const {accountsList} = useAccount();
-    const {} = useTask();
+    const {selectedTask} = useTask();
     const {isFetching, setIsFetching} = useFetch();
 
     const handleSaveTask = ({price, name, bankAccount}: TTaskFields) => {
@@ -42,7 +39,7 @@ export const EditTask = memo(({onClose, isOpen, selectedTask}: IEditTask) => {
             isOpen={isOpen}
             onClose={onClose}
             title={TITLE}
-            defaultValues={selectedTask}
+            defaultValues={selectedTask(taskId)}
             isFetching={isFetching}
             isEdit
             onSubmit={handleSaveTask}

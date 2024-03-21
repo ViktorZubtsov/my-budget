@@ -1,5 +1,4 @@
-import {useState} from 'react';
-import {useContext} from 'react';
+import {useCallback, useContext, useMemo, useState} from 'react';
 import {toast} from 'react-toastify';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -14,7 +13,7 @@ export const useTask = () => {
     const {id: goalId} = useContext(GoalContext);
     const [isShow, setIsShow] = useState('');
     const {data} = useSWR<TTask[]>(getTaskListKey(goalId), {revalidateOnMount: false});
-
+    const taskList = data ?? [];
     const {trigger: checkTaskTrigger, isMutating} = useSWRMutation(getTaskListKey(goalId), checkedTaskQuery, {
         onError,
         onSuccess: () => {
@@ -23,6 +22,18 @@ export const useTask = () => {
         },
     });
 
+    const sum = useMemo<number | undefined>(() => {
+        return taskList?.reduce((previousValue, currentValue) => Number(previousValue) + Number(currentValue.price), 0);
+    }, [taskList]);
+
+    const selectedTask = useCallback(
+        (taskId: TTask['id']) => {
+            const {bankAccount, name, price} = taskList?.find(({id}) => id === taskId) ?? {bankAccount: '', name: '', price: 0};
+
+            return {bankAccount, name, price};
+        },
+        [taskList]
+    );
     //
     // const createTask = async (goalId: IGoal['id'], {bankAccount, price, name}: TUseTaskParams) => {
     //     return new Promise((resolve, reject) => {
@@ -75,6 +86,8 @@ export const useTask = () => {
         checkTask,
         isShow,
         setIsShow,
-        taskList: data ?? [],
+        taskList,
+        selectedTask,
+        sum,
     };
 };
