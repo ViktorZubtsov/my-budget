@@ -19,7 +19,7 @@ export const GoalXPage = ({goalId}: {goalId: IGoal['id']}) => {
     return (
         <div>
             <GoalXHeader goal={goal} />
-            <GoalXListing taskList={taskList} accountsList={accountsList} />
+            <GoalXListing goal={goal} taskList={taskList} accountsList={accountsList} />
         </div>
     );
 };

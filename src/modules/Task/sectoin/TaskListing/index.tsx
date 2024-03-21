@@ -6,14 +6,14 @@ import {GoalXListStyled} from '@/modules/Task/sectoin/TaskListing/styled';
 import {AddButton} from '../../../../components/AddButton';
 import {EmptyList} from '../../../../components/EmptyList';
 import {mobileVibrate} from '../../../../helpers';
-import {IAccount, TTask} from '../../../../model';
+import {IAccount, IGoalShort, TTask} from '../../../../model';
 import {useLoaderStore} from '../../../../store/loaderStore';
 import {AddTask} from '../../components/AddTask';
 import {EditTask} from '../../components/EditTask';
 import {TaskItem} from '../../components/TaskItem';
 import {useTask} from '../../hooks';
 
-export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
+export const TaskListing = memo(({taskList, accountsList, goal}: {taskList: TTask[]; accountsList: IAccount[]; goal: IGoalShort}) => {
     const {isProcessLoader} = useLoaderStore();
     const [isShowAddTask, setIsShowAddTask] = useState<boolean>(false);
     const [isShowEditTask, setIsShowEditTask] = useState<boolean>(false);
@@ -25,7 +25,7 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
         return {bankAccount, name, price};
     }, [taskId, taskList]);
 
-    const {removeTask, checkTask} = useTask({taskList});
+    const {removeTask, checkTask} = useTask({goalId: goal.id});
     const handleRemove = (id: TTask['id']) => {
         mobileVibrate();
         useLoaderStore.setState({isProcessLoader: true});
@@ -33,9 +33,7 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
             useLoaderStore.setState({isProcessLoader: false});
         });
     };
-    const handleAccept = (id: TTask['id']) => {
-        return checkTask(id);
-    };
+
     const sum = useMemo<number | undefined>(() => {
         return taskList?.reduce((previousValue, currentValue) => Number(previousValue) + Number(currentValue.price), 0);
     }, [taskList]);
@@ -56,7 +54,7 @@ export const TaskListing = memo(({taskList, accountsList}: {taskList: TTask[]; a
                             accountsList={accountsList}
                             isBlock={isProcessLoader}
                             onRemove={handleRemove}
-                            onAccept={handleAccept}
+                            onAccept={checkTask}
                             key={task.id}
                             task={task}
                         />

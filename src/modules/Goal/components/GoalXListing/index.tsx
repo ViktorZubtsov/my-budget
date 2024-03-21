@@ -3,12 +3,12 @@ import {TabItem, Tabs} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
 
 import {useTabs} from '@/hooks';
-import {IAccount, TTask} from '@/model';
+import {IAccount, IGoalShort, TTask} from '@/model';
 import {GoalXListingStyled} from '@/modules/Goal/components/GoalXListing/styled';
 import {TaskListing} from '@/modules/Task/sectoin/TaskListing';
 import {TasksChart} from '@/modules/Task/sectoin/TasksChart';
 
-export const GoalXListing = ({taskList, accountsList}: {taskList: TTask[]; accountsList: IAccount[]}) => {
+export const GoalXListing = ({taskList, accountsList, goal}: {taskList: TTask[]; accountsList: IAccount[]; goal: IGoalShort}) => {
     const {currentTab, setCurrentTab} = useTabs({});
 
     return (
@@ -22,7 +22,7 @@ export const GoalXListing = ({taskList, accountsList}: {taskList: TTask[]; accou
                 </TabItem>
             </Tabs>
             <div>
-                {0 === currentTab && <TaskListing accountsList={accountsList} taskList={taskList} />}
+                {0 === currentTab && <TaskListing goal={goal} accountsList={accountsList} taskList={taskList} />}
                 {1 === currentTab && <TasksChart taskList={taskList} />}
             </div>
         </GoalXListingStyled>
