@@ -13,21 +13,13 @@ import {GoalXListStyled} from '@/modules/Task/sectoin/TaskListing/styled';
 import {useLoaderStore} from '@/store/loaderStore';
 
 export const TaskListing = memo(() => {
-    const {taskList, sum, checkTask} = useTask();
+    const {taskList, sum, checkTask, removeTask} = useTask();
     const {accountsList} = useAccount();
 
     const {isProcessLoader} = useLoaderStore();
     const [isShowAddTask, setIsShowAddTask] = useState<boolean>(false);
     const [isShowEditTask, setIsShowEditTask] = useState<boolean>(false);
     const [taskId, setTaskId] = useState<TTask['id']>('');
-
-    // const handleRemove = (id: TTask['id']) => {
-    //     mobileVibrate();
-    //     useLoaderStore.setState({isProcessLoader: true});
-    //     removeTask(id).finally(() => {
-    //         useLoaderStore.setState({isProcessLoader: false});
-    //     });
-    // };
 
     return (
         <>
@@ -44,7 +36,7 @@ export const TaskListing = memo(() => {
                             }}
                             accountsList={accountsList}
                             isBlock={isProcessLoader}
-                            onRemove={() => {}}
+                            onRemove={removeTask}
                             onAccept={checkTask}
                             key={task.id}
                             task={task}

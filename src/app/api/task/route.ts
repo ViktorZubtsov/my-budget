@@ -1,6 +1,7 @@
 import {NextRequest, NextResponse} from 'next/server';
 
 import {checkedTask, IDeleteTaskParams} from '@/modules/Task/actions/checkedTask';
+import {deleteTask} from '@/modules/Task/actions/deleteTask';
 import {getAllTasksForGoal} from '@/modules/Task/actions/getAllTasksForGoal';
 
 export async function GET(request: NextRequest) {
@@ -15,7 +16,15 @@ export async function GET(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
     const {taskId, isDone} = (await request.json()) as IDeleteTaskParams;
 
-    const data = checkedTask({isDone, taskId});
+    const data = await checkedTask({isDone, taskId});
+
+    return NextResponse.json({data});
+}
+
+export async function DELETE(request: NextRequest) {
+    const {taskId} = (await request.json()) as IDeleteTaskParams;
+
+    const data = await deleteTask({taskId});
 
     return NextResponse.json({data});
 }

@@ -5,20 +5,30 @@ import useSWRMutation from 'swr/mutation';
 
 import {getTaskListKey} from '@/core/SWRKeys';
 import {mobileVibrate, onError} from '@/helpers';
-import {IGoalShort, TTask} from '@/model';
+import {TTask} from '@/model';
 import {GoalContext} from '@/modules/Goal/context';
 import {checkedTaskQuery} from '@/modules/Task/actions/checkedTask';
+import {removeTaskQuery} from '@/modules/Task/actions/deleteTask';
+import {useLoaderStore} from '@/store/loaderStore';
 
 export const useTask = () => {
     const {id: goalId} = useContext(GoalContext);
     const [isShow, setIsShow] = useState('');
     const {data} = useSWR<TTask[]>(getTaskListKey(goalId), {revalidateOnMount: false});
     const taskList = data ?? [];
-    const {trigger: checkTaskTrigger, isMutating} = useSWRMutation(getTaskListKey(goalId), checkedTaskQuery, {
+    const {trigger: checkTaskTrigger} = useSWRMutation(getTaskListKey(goalId), checkedTaskQuery, {
         onError,
         onSuccess: () => {
             mobileVibrate();
             toast.success('Задача отмечена', {theme: 'dark'});
+        },
+    });
+    const {trigger: removeTaskTrigger} = useSWRMutation(getTaskListKey(goalId), removeTaskQuery, {
+        onError,
+        onSuccess: () => {
+            mobileVibrate();
+            useLoaderStore.setState({isProcessLoader: false});
+            toast.success('Задача удалена', {theme: 'dark'});
         },
     });
 
@@ -61,33 +71,26 @@ export const useTask = () => {
     //             });
     //     });
     // };
-    // const removeTask = async (taskId: TTask['id']) => {
-    //     return new Promise((resolve, reject) => {
-    //         deleteTask({
-    //             taskId,
-    //         })
-    //             .then((res) => {
-    //                 toast.success('Задача удалена', {theme: 'dark'});
-    //                 return resolve(res);
-    //             })
-    //             .catch((err) => {
-    //                 toast.error(`${err}`, {theme: 'dark'});
-    //                 reject(errorHandler(err));
-    //             });
-    //     });
-    // };
     const checkTask = async (taskId: TTask['id']) => {
         const {done} = data?.find(({id}) => id === taskId) ?? {done: false};
 
         return checkTaskTrigger({isDone: !done, taskId});
     };
 
+    const removeTask = async (taskId: TTask['id']) => {
+        useLoaderStore.setState({isProcessLoader: true});
+        return removeTaskTrigger({taskId}).finally(() => {
+            useLoaderStore.setState({isProcessLoader: false});
+        });
+    };
+
     return {
         checkTask,
         isShow,
         setIsShow,
-        taskList,
         selectedTask,
+        removeTask,
+        taskList,
         sum,
     };
 };
