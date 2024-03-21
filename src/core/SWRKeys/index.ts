@@ -1,4 +1,4 @@
-import {IGoal, TUid} from '@/model';
+import {IGoal, TTask, TUid} from '@/model';
 
 export const KEY_ACCOUNT = '/api/account';
 export const KEY_GOAL_LIST = '/api/goal/list';

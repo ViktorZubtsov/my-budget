@@ -1,17 +1,23 @@
-'use server';
-import {revalidateTag} from 'next/cache';
+import prismaClient from '@/core/prisma';
+import {TTask} from '@/model';
 
-import prismaClient from '../../../core/prisma';
-import {IGoal, TTask} from '../../../model';
-
-interface IDeleteTaskParams {
+export interface IDeleteTaskParams {
     taskId: TTask['id'];
-    task: {
-        done?: TTask['done'];
-    };
+    isDone: TTask['done'];
 }
 
-export const checkedTask = async ({taskId, task}: IDeleteTaskParams) => {
-    await prismaClient.$queryRaw`update   Task set  done =  ${task.done} where id = ${taskId}`;
-    revalidateTag('task');
+export const checkedTask = async ({taskId, isDone}: IDeleteTaskParams) => {
+    return prismaClient.$queryRaw`update   Task set  done =  ${isDone} where id = ${taskId}`;
 };
+
+export async function checkedTaskQuery(url: string, {arg}: {arg: IDeleteTaskParams}) {
+    const {taskId, isDone} = arg;
+
+    await fetch(url, {
+        body: JSON.stringify({
+            isDone,
+            taskId,
+        }),
+        method: 'PATCH',
+    });
+}

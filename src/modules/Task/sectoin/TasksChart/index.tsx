@@ -4,13 +4,15 @@ import {Pie} from 'react-chartjs-2';
 
 import {EmptyList} from '@/components/EmptyList';
 import {getRandomColors} from '@/helpers';
-import {TTask} from '@/model';
 import {TaskSum} from '@/modules/Task/components/TaskSum';
+import {useTask} from '@/modules/Task/hooks/useTask';
 import {TasksChartContent} from '@/modules/Task/sectoin/TasksChart/styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const TasksChart = ({taskList}: {taskList: TTask[]}) => {
+export const TasksChart = () => {
+    const {taskList} = useTask();
+
     const pieData = useMemo(() => {
         return {
             datasets: [
