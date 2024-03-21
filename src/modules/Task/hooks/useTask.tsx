@@ -87,10 +87,10 @@ export const useTask = () => {
     return {
         checkTask,
         isShow,
+        removeTask,
         selectedTask,
         setIsShow,
-        removeTask,
-        taskList,
         sum,
+        taskList,
     };
 };
