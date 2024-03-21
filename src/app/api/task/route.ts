@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server';
 
+import {addTask, ICreateTaskParams} from '@/modules/Task/actions/addTask';
 import {checkedTask, IDeleteTaskParams} from '@/modules/Task/actions/checkedTask';
 import {deleteTask} from '@/modules/Task/actions/deleteTask';
 import {getAllTasksForGoal} from '@/modules/Task/actions/getAllTasksForGoal';
@@ -25,6 +26,16 @@ export async function DELETE(request: NextRequest) {
     const {taskId} = (await request.json()) as IDeleteTaskParams;
 
     const data = await deleteTask({taskId});
+
+    return NextResponse.json({data});
+}
+
+export async function POST(request: NextRequest) {
+    const searchParams = request.nextUrl.searchParams;
+    const goalId = searchParams.get('goalId') as string;
+    const {task} = (await request.json()) as {task: ICreateTaskParams['task']};
+
+    const data = await addTask({goalId, task});
 
     return NextResponse.json({data});
 }

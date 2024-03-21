@@ -7,6 +7,7 @@ import {getTaskListKey} from '@/core/SWRKeys';
 import {mobileVibrate, onError} from '@/helpers';
 import {TTask} from '@/model';
 import {GoalContext} from '@/modules/Goal/context';
+import {addTaskQuery, ICreateTaskParams} from '@/modules/Task/actions/addTask';
 import {checkedTaskQuery} from '@/modules/Task/actions/checkedTask';
 import {removeTaskQuery} from '@/modules/Task/actions/deleteTask';
 import {useLoaderStore} from '@/store/loaderStore';
@@ -31,6 +32,13 @@ export const useTask = () => {
             toast.success('Задача удалена', {theme: 'dark'});
         },
     });
+    const {trigger: addTaskTrigger, isMutating: isCreateLoader} = useSWRMutation(getTaskListKey(goalId), addTaskQuery, {
+        onError,
+        onSuccess: () => {
+            mobileVibrate();
+            toast.success('Задача успешно создана', {theme: 'dark'});
+        },
+    });
 
     const sum = useMemo<number | undefined>(() => {
         return taskList?.reduce((previousValue, currentValue) => Number(previousValue) + Number(currentValue.price), 0);
@@ -44,20 +52,11 @@ export const useTask = () => {
         },
         [taskList]
     );
-    //
-    // const createTask = async (goalId: IGoal['id'], {bankAccount, price, name}: TUseTaskParams) => {
-    //     return new Promise((resolve, reject) => {
-    //         addTask({goalId, task: {bankAccount, name, price}})
-    //             .then((res) => {
-    //                 toast.success('Задача успешно создана', {theme: 'dark'});
-    //                 resolve(res);
-    //             })
-    //             .catch((err) => {
-    //                 toast.error(`${err}`, {theme: 'dark'});
-    //                 reject(errorHandler(err));
-    //             });
-    //     });
-    // };
+
+    const createTask = async ({bankAccount, price, name}: ICreateTaskParams['task']) => {
+        return addTaskTrigger({task: {bankAccount, name, price}});
+    };
+
     // const editTask = async (taskId: TTask['id'], {bankAccount, price, name}: TUseTaskParams) => {
     //     return new Promise((resolve, reject) => {
     //         updateTask({task: {bankAccount, name, price}, taskId})
@@ -86,11 +85,13 @@ export const useTask = () => {
 
     return {
         checkTask,
+        isCreateLoader,
         isShow,
         removeTask,
         selectedTask,
         setIsShow,
         sum,
         taskList,
+        createTask,
     };
 };
