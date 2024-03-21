@@ -87,8 +87,8 @@ export const useTask = () => {
     return {
         checkTask,
         isShow,
-        setIsShow,
         selectedTask,
+        setIsShow,
         removeTask,
         taskList,
         sum,
