@@ -1,5 +1,6 @@
 import {memo, useMemo, useState} from 'react';
 
+import {useAccount} from '@/modules/Settings/hooks/useAccount';
 import {TaskSum} from '@/modules/Task/components/TaskSum';
 import {GoalXListStyled} from '@/modules/Task/sectoin/TaskListing/styled';
 
@@ -11,9 +12,12 @@ import {useLoaderStore} from '../../../../store/loaderStore';
 import {AddTask} from '../../components/AddTask';
 import {EditTask} from '../../components/EditTask';
 import {TaskItem} from '../../components/TaskItem';
-import {useTask} from '../../hooks';
+import {useTask} from '../../hooks/useTask';
 
-export const TaskListing = memo(({taskList, accountsList, goal}: {taskList: TTask[]; accountsList: IAccount[]; goal: IGoalShort}) => {
+export const TaskListing = memo(() => {
+    const {taskList, checkTask} = useTask();
+    const {accountsList} = useAccount();
+
     const {isProcessLoader} = useLoaderStore();
     const [isShowAddTask, setIsShowAddTask] = useState<boolean>(false);
     const [isShowEditTask, setIsShowEditTask] = useState<boolean>(false);
@@ -25,14 +29,13 @@ export const TaskListing = memo(({taskList, accountsList, goal}: {taskList: TTas
         return {bankAccount, name, price};
     }, [taskId, taskList]);
 
-    const {removeTask, checkTask} = useTask({goalId: goal.id});
-    const handleRemove = (id: TTask['id']) => {
-        mobileVibrate();
-        useLoaderStore.setState({isProcessLoader: true});
-        removeTask(id).finally(() => {
-            useLoaderStore.setState({isProcessLoader: false});
-        });
-    };
+    // const handleRemove = (id: TTask['id']) => {
+    //     mobileVibrate();
+    //     useLoaderStore.setState({isProcessLoader: true});
+    //     removeTask(id).finally(() => {
+    //         useLoaderStore.setState({isProcessLoader: false});
+    //     });
+    // };
 
     const sum = useMemo<number | undefined>(() => {
         return taskList?.reduce((previousValue, currentValue) => Number(previousValue) + Number(currentValue.price), 0);
@@ -53,7 +56,7 @@ export const TaskListing = memo(({taskList, accountsList, goal}: {taskList: TTas
                             }}
                             accountsList={accountsList}
                             isBlock={isProcessLoader}
-                            onRemove={handleRemove}
+                            onRemove={() => {}}
                             onAccept={checkTask}
                             key={task.id}
                             task={task}
@@ -61,15 +64,8 @@ export const TaskListing = memo(({taskList, accountsList, goal}: {taskList: TTas
                     ))}
             </GoalXListStyled>
             <AddButton isFixed onClick={() => setIsShowAddTask(true)} />
-            <EditTask
-                accountsList={accountsList}
-                taskList={taskList}
-                taskId={taskId}
-                isOpen={isShowEditTask}
-                selectedTask={selectedTask}
-                onClose={() => setIsShowEditTask(false)}
-            />
-            <AddTask accountsList={accountsList} taskList={taskList} onClose={() => setIsShowAddTask(false)} isOpen={isShowAddTask} />
+            <EditTask taskId={taskId} isOpen={isShowEditTask} selectedTask={selectedTask} onClose={() => setIsShowEditTask(false)} />
+            <AddTask onClose={() => setIsShowAddTask(false)} isOpen={isShowAddTask} />
         </>
     );
 });
