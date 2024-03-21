@@ -15,7 +15,7 @@ export const useTask = () => {
     const {id: goalId} = useContext(GoalContext);
     const [isShow, setIsShow] = useState('');
     const {data} = useSWR<TTask[]>(getTaskListKey(goalId), {revalidateOnMount: false});
-    const taskList = data ?? [];
+    const taskList = useMemo(() => data ?? [], [data]);
     const {trigger: checkTaskTrigger} = useSWRMutation(getTaskListKey(goalId), checkedTaskQuery, {
         onError,
         onSuccess: () => {
