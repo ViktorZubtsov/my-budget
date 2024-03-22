@@ -3,7 +3,7 @@ import {H4} from '@salutejs/plasma-web';
 import {memo} from 'react';
 
 import {AccountsBadge} from '@/components/AccountsBadge';
-import {TEST_MY_ACCOUNTS} from '@/constant/dataTest';
+import {TEST_ID_ACCOUNT, TEST_MY_ACCOUNTS} from '@/constant/dataTest';
 import {IAccount} from '@/model';
 import {EMPTY_TEXT} from '@/modules/Settings/components/MyAccounts/constants';
 import {MAX_ACCOUNT_LENGTH} from '@/modules/Settings/constants';
@@ -24,7 +24,7 @@ export const MyAccounts = memo<IMyAccountsProps>(({accountsList}) => {
                     {accountsList.length} / {MAX_ACCOUNT_LENGTH}
                 </TextM>
             </Header>
-            <MyAccountsStyled>
+            <MyAccountsStyled data-testid={TEST_ID_ACCOUNT.LIST}>
                 {!accountsList?.length && <EmptyText data-testid={TEST_MY_ACCOUNTS.EMPTY_TEXT}>{EMPTY_TEXT}</EmptyText>}
                 {accountsList && accountsList.map(({colorCode, id, name}) => <AccountsBadge key={id} $colorCode={colorCode} text={name} size="l" />)}
             </MyAccountsStyled>
