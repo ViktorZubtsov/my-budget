@@ -1,6 +1,6 @@
 {
   "name": "my-budget",
-  "version": "0.4.0",
+  "version": "0.4.6",
   "scripts": {
     "bump": "standard-version --skip.tag",
     "release": "git flow release start `sh scripts/nextver.sh`",

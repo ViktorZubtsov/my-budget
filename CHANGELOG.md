@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.5...v0.4.6) (2024-03-22)
+
+### [0.4.5](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.3...v0.4.5) (2024-03-22)
+
+### [0.4.4](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.3...v0.4.4) (2024-03-22)
+
+### [0.4.3](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.1...v0.4.3) (2024-03-22)
+
+
+### Bug Fixes
+
+* test ([c2fb361](https://github.com/ViktorZubtsov/my-budget/commit/c2fb36110b05c2b55f1a415b69691aa7f2b24419))
+
+### [0.4.2](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.1...v0.4.2) (2024-03-22)
+
+### [0.4.1](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.12...v0.4.1) (2024-03-22)
+
+
+### Features
+
+* **archivetasklisting:** add ArchiveTaskListingStyled ([8d0f72f](https://github.com/ViktorZubtsov/my-budget/commit/8d0f72f0ae8e25bad67a278956a8b06a11f9c715))
+* **deletetask:** add deleteTask methods ([013998c](https://github.com/ViktorZubtsov/my-budget/commit/013998cb72930b411eb521c116b9f8702cf49aff))
+* **emptylist:** add EmptyList ([755cd16](https://github.com/ViktorZubtsov/my-budget/commit/755cd16c684b3d0d3baa71984b882772cd1159ae))
+* **getgoalbyid, goalx:** integration GoalX ([e843923](https://github.com/ViktorZubtsov/my-budget/commit/e84392303eef6a96de3954c0fa69ffefe43151e3))
+* **getgoalxkey:** add getGoalXKey ([2781bbc](https://github.com/ViktorZubtsov/my-budget/commit/2781bbc8df7c4e3f3dbae3b16033d71cf4cce003))
+* **goalarchivex:** add GoalArchiveX ([7244a96](https://github.com/ViktorZubtsov/my-budget/commit/7244a96c601a2ad225224ad9b70372f5230b2eb3))
+* **goaldatatransform:** add test goalDataTransform ([7a00b13](https://github.com/ViktorZubtsov/my-budget/commit/7a00b13304958adb0b3e558322b061758d362658))
+* **goalx:** add GoalX ([afb3a68](https://github.com/ViktorZubtsov/my-budget/commit/afb3a68d90862e7db77e0f7e652f02a95f690a57))
+* **goalx:** add GoalX ([418708a](https://github.com/ViktorZubtsov/my-budget/commit/418708a1575c7a5e9ad17134a581bf7ea3273c37))
+* **taskelement, taskitem:** add TaskItem, TaskElement ([6f5a3f2](https://github.com/ViktorZubtsov/my-budget/commit/6f5a3f25e2a9e0eaa9c4887cbe5e7d31a518a8a8))
+* **taskitem:** add unit test to TaskItem ([a1a7d14](https://github.com/ViktorZubtsov/my-budget/commit/a1a7d14ad4193a3dd204f986552e2f38a519b7c7))
+* **taskschart:** add TasksChart ([4e83665](https://github.com/ViktorZubtsov/my-budget/commit/4e836650ac6d450ebd091fdb0344257c428a81a3))
+* **tasksum:** add TaskSum ([d469b12](https://github.com/ViktorZubtsov/my-budget/commit/d469b1262d88a4f1c916a718a350f0e3ceee464c))
+* **tasksumstory:** add TaskSumStory ([9e442c0](https://github.com/ViktorZubtsov/my-budget/commit/9e442c07d9f9b6a6af71cff796db1cf7072579bc))
+* **usetaskarchivelist,usetasklist:** add useTaskArchiveList add useTaskList ([a7cb17a](https://github.com/ViktorZubtsov/my-budget/commit/a7cb17ab04fc574a1da9e0b0342de0ffd482774a))
+
 ### [0.3.13](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.12...v0.3.13) (2024-03-09)
 
 ### [0.3.12](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.11...v0.3.12) (2024-03-09)
