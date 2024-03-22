@@ -7,10 +7,12 @@ import {TAccountsColors} from '@/model';
 
 interface IAccountsBadgeProps extends BadgeProps {
     $colorCode: TAccountsColors;
+    $isDone?: boolean;
 }
 
 export const AccountsBadge = styled(Badge)<IAccountsBadgeProps>`
     // @ts-ignore
     background: ${({$colorCode}) => ACCOUNTS_COLORS[$colorCode as keyof typeof ACCOUNTS_COLORS] ?? ACCOUNTS_COLORS.critical};
+    text-decoration: ${({$isDone}) => ($isDone ? 'line-through' : 'none')};
     ${textS}
 `;

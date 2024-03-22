@@ -1,3 +1,4 @@
+import {useContext} from 'react';
 import {toast} from 'react-toastify';
 import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
@@ -6,13 +7,15 @@ import {v4} from 'uuid';
 import {getGoalListKey} from '@/core/SWRKeys';
 import {onError} from '@/helpers';
 import {IGoal, TTask} from '@/model';
+import {AuthContext} from '@/modules/Auth/context';
 import {createGoalQuery} from '@/modules/Goal/actions/addGoalToUser';
 import {removeGoalQuery} from '@/modules/Goal/actions/removeGoalById';
 import {useLoaderStore} from '@/store/loaderStore';
 
 export const useGoal = () => {
-    const userId = 'clpdnwkhm0000dgnrlljhvj2e';
-    const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: false});
+    const {userId} = useContext(AuthContext);
+
+    const {data} = useSWR<IGoal[]>(getGoalListKey(userId), {revalidateOnMount: true});
 
     const {trigger} = useSWRMutation(getGoalListKey(userId), removeGoalQuery, {
         onError,

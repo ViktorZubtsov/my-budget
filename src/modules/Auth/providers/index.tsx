@@ -11,7 +11,8 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         return {
             session: session.status,
             userAvatar: session.data?.user?.image,
-            userId: session.data?.user?.id,
+            // TODO: mock auth
+            userId: 'clpdnwkhm0000dgnrlljhvj2e',
             userName: session.data?.user?.name,
         };
     }, [session]);
