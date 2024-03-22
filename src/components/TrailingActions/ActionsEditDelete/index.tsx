@@ -14,7 +14,7 @@ export const trailingActionsEditDelete = ({handleRemove, handleEdit}: IActionsEd
             <Edit />
         </SwipeAction>
         <SwipeAction destructive={true} onClick={handleRemove}>
-            <Delete />
+            <Delete onClick={handleRemove} />
         </SwipeAction>
     </TrailingActions>
 );

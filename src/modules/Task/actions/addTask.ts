@@ -1,8 +1,5 @@
-'use server';
-import {revalidateTag} from 'next/cache';
-
-import prismaClient from '../../../core/prisma';
-import {IGoal, TTask} from '../../../model';
+import prismaClient from '@/core/prisma';
+import {IGoal, TTask} from '@/model';
 
 interface ICreateTaskParams {
     goalId: IGoal['id'];
@@ -14,12 +11,11 @@ interface ICreateTaskParams {
 }
 
 export const addTask = async ({goalId, task}: ICreateTaskParams) => {
-    await prismaClient.task.create({
+    return prismaClient.task.create({
         data: {
             ...task,
             done: false,
             goal: {connect: {id: goalId}},
         },
     });
-    revalidateTag('task');
 };

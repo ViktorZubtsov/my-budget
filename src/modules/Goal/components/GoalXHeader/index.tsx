@@ -4,15 +4,12 @@ import {Container} from '@salutejs/plasma-ui';
 import {H4} from '@salutejs/plasma-web';
 import {useRouter} from 'next/navigation';
 
-import {IGoal} from '@/model';
+import {IGoal, IGoalShort} from '@/model';
 import {GoalXHeaderContent, GoalXHeaderIcon, GoalXHeaderStyled, Subtitle} from '@/modules/Goal/components/GoalXHeader/styled';
 
-export const GoalXHeader = ({goal}: {goal?: IGoal}) => {
+export const GoalXHeader = ({goal}: {goal: IGoalShort}) => {
     const {back} = useRouter();
-    const {name, description} = goal ?? {
-        description: '',
-        name: '',
-    };
+    const {name, description} = goal;
 
     return (
         <Container>
