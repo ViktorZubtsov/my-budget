@@ -1,17 +1,18 @@
-import {H5, Price, TextM} from '@salutejs/plasma-ui';
 import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
 import {useMemo} from 'react';
 import {Pie} from 'react-chartjs-2';
 
-import {EmptyList} from '../../../../components/EmptyList';
-import {getRandomColors} from '../../../../helpers';
-import {TTask} from '../../../../model';
-
-import styles from './styles.module.scss';
+import {EmptyList} from '@/components/EmptyList';
+import {getRandomColors} from '@/helpers';
+import {TaskSum} from '@/modules/Task/components/TaskSum';
+import {useTask} from '@/modules/Task/hooks/useTask';
+import {TasksChartContent} from '@/modules/Task/sectoin/TasksChart/styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const TasksChart = ({taskList}: {taskList: TTask[]}) => {
+export const TasksChart = () => {
+    const {taskList} = useTask();
+
     const pieData = useMemo(() => {
         return {
             datasets: [
@@ -43,20 +44,10 @@ export const TasksChart = ({taskList}: {taskList: TTask[]}) => {
             {Boolean(taskList.length) && (
                 <>
                     <div>
-                        <div className={styles.SumWrap}>
-                            <H5>Потраченно:</H5>
-                            <Price currency="rub" stroke={false} minimumFractionDigits={2}>
-                                {budgetSum.spent}
-                            </Price>
-                        </div>
-                        <div className={styles.SumWrap}>
-                            <H5>Осталось:</H5>
-                            <Price currency="rub" stroke={false} minimumFractionDigits={2}>
-                                {budgetSum.remainder}
-                            </Price>
-                        </div>
+                        <TaskSum title="Потраченно" sum={budgetSum.spent} />
+                        <TaskSum title="Осталось" sum={budgetSum.remainder} />
                     </div>
-                    <div style={{margin: '0 auto', maxWidth: '500px', width: '100%'}}>
+                    <TasksChartContent>
                         <Pie
                             data={pieData}
                             options={{
@@ -72,7 +63,7 @@ export const TasksChart = ({taskList}: {taskList: TTask[]}) => {
                                 },
                             }}
                         />
-                    </div>
+                    </TasksChartContent>
                 </>
             )}
         </div>

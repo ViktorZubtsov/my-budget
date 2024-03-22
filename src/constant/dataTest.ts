@@ -33,3 +33,14 @@ export const TEST_ID_SOUND_SETTING = {
     SOUND_SETTING_ON: 'soundSettingOn',
     SOUND_SETTING_SWITCH: 'soundSettingSwitch',
 };
+export const TEST_ID_TASK = {
+    TASK_ITEM_BADGE: 'taskItemBadge',
+    TASK_ITEM_PRICE: 'taskItemPrice',
+    TASK_SUM: 'taskSum',
+};
+
+export const TEST_ID_COMMON = {
+    ACCEPT_BUTTON: 'acceptButton',
+    EDIT_BUTTON: 'editButton',
+    REMOVE_BUTTON: 'removeButton',
+};
