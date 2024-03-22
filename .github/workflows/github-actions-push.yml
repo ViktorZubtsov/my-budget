@@ -7,7 +7,7 @@ permissions:
 
 on: [push]
 jobs:
-  lint:
+  check-ts:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,8 +26,8 @@ jobs:
 
       - name: check:ts
         run: npm run check:ts
-  test:
-    needs: [lint]
+  unit-test:
+    needs: [check-ts]
     runs-on: ubuntu-latest
     strategy:
       matrix:
