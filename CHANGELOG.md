@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.12...v0.4.1) (2024-03-22)
+
+
+### Bug Fixes
+
+* test ([c2fb361](https://github.com/ViktorZubtsov/my-budget/commit/c2fb36110b05c2b55f1a415b69691aa7f2b24419))
+
 ### [0.3.13](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.12...v0.3.13) (2024-03-09)
 
 ### [0.3.12](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.11...v0.3.12) (2024-03-09)
