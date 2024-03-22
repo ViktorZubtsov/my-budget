@@ -10,21 +10,24 @@ import {GoalContext} from '@/modules/Goal/context';
 import {addTaskQuery, ICreateTaskParams} from '@/modules/Task/actions/addTask';
 import {checkedTaskQuery} from '@/modules/Task/actions/checkedTask';
 import {removeTaskQuery} from '@/modules/Task/actions/deleteTask';
+import {ITaskUpdateParams, updateTaskQuery} from '@/modules/Task/actions/updateTask';
 import {useLoaderStore} from '@/store/loaderStore';
 
 export const useTask = () => {
     const {id: goalId} = useContext(GoalContext);
+    const taskKey = getTaskListKey(goalId);
     const [isShow, setIsShow] = useState('');
-    const {data} = useSWR<TTask[]>(getTaskListKey(goalId), {revalidateOnMount: false});
+    const {data} = useSWR<TTask[]>(taskKey, {revalidateOnMount: false});
     const taskList = useMemo(() => data ?? [], [data]);
-    const {trigger: checkTaskTrigger} = useSWRMutation(getTaskListKey(goalId), checkedTaskQuery, {
+    const {trigger: checkTaskTrigger} = useSWRMutation(taskKey, checkedTaskQuery, {
         onError,
         onSuccess: () => {
             mobileVibrate();
             toast.success('Задача отмечена', {theme: 'dark'});
         },
     });
-    const {trigger: removeTaskTrigger} = useSWRMutation(getTaskListKey(goalId), removeTaskQuery, {
+
+    const {trigger: removeTaskTrigger} = useSWRMutation(taskKey, removeTaskQuery, {
         onError,
         onSuccess: () => {
             mobileVibrate();
@@ -32,11 +35,20 @@ export const useTask = () => {
             toast.success('Задача удалена', {theme: 'dark'});
         },
     });
-    const {trigger: addTaskTrigger, isMutating: isCreateLoader} = useSWRMutation(getTaskListKey(goalId), addTaskQuery, {
+
+    const {trigger: addTaskTrigger, isMutating: isCreateLoader} = useSWRMutation(taskKey, addTaskQuery, {
         onError,
         onSuccess: () => {
             mobileVibrate();
             toast.success('Задача успешно создана', {theme: 'dark'});
+        },
+    });
+
+    const {trigger: updateTaskTrigger, isMutating: isUpdateLoader} = useSWRMutation(taskKey, updateTaskQuery, {
+        onError,
+        onSuccess: () => {
+            mobileVibrate();
+            toast.success('Задача изменина', {theme: 'dark'});
         },
     });
 
@@ -57,19 +69,12 @@ export const useTask = () => {
         return addTaskTrigger({task: {bankAccount, name, price}});
     };
 
-    // const editTask = async (taskId: TTask['id'], {bankAccount, price, name}: TUseTaskParams) => {
-    //     return new Promise((resolve, reject) => {
-    //         updateTask({task: {bankAccount, name, price}, taskId})
-    //             .then((res) => {
-    //                 toast.success('Задача изменина', {theme: 'dark'});
-    //                 return resolve(res);
-    //             })
-    //             .catch((err) => {
-    //                 toast.error(`${err}`, {theme: 'dark'});
-    //                 reject(errorHandler(err));
-    //             });
-    //     });
-    // };
+    const editTask = async ({taskId, task}: ITaskUpdateParams) => {
+        return updateTaskTrigger({
+            task,
+            taskId,
+        });
+    };
     const checkTask = async (taskId: TTask['id']) => {
         const {done} = data?.find(({id}) => id === taskId) ?? {done: false};
 
@@ -85,13 +90,15 @@ export const useTask = () => {
 
     return {
         checkTask,
+        createTask,
+        editTask,
         isCreateLoader,
         isShow,
+        isUpdateLoader,
         removeTask,
         selectedTask,
         setIsShow,
         sum,
         taskList,
-        createTask,
     };
 };

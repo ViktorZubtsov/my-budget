@@ -4,6 +4,7 @@ import {addTask, ICreateTaskParams} from '@/modules/Task/actions/addTask';
 import {checkedTask, IDeleteTaskParams} from '@/modules/Task/actions/checkedTask';
 import {deleteTask} from '@/modules/Task/actions/deleteTask';
 import {getAllTasksForGoal} from '@/modules/Task/actions/getAllTasksForGoal';
+import {ITaskUpdateParams, updateTask} from '@/modules/Task/actions/updateTask';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
@@ -18,6 +19,14 @@ export async function PATCH(request: NextRequest) {
     const {taskId, isDone} = (await request.json()) as IDeleteTaskParams;
 
     const data = await checkedTask({isDone, taskId});
+
+    return NextResponse.json({data});
+}
+
+export async function PUT(request: NextRequest) {
+    const {taskId, task} = (await request.json()) as ITaskUpdateParams;
+
+    const data = await updateTask({task, taskId});
 
     return NextResponse.json({data});
 }
