@@ -11,6 +11,7 @@ const TEST_VALUE = generateWord(10);
 const TEST_MIN_VALUE = generateWord(2);
 const TEST_MAX_VALUE = generateWord(GOAL_MAX_LENGTH + 1);
 const TEST_DESCR_VALUE = generateWord(12);
+
 const handleClick = vi.fn();
 const handeClose = vi.fn();
 
