@@ -1,9 +1,5 @@
 name: Cypress Tests
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-    pull-requests: write
+permissions: write-all
 on: [push]
 jobs:
   cypress-run:
