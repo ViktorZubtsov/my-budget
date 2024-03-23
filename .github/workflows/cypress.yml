@@ -31,9 +31,11 @@ jobs:
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v6
         with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000' # Waits
           # Starts web server for E2E tests - replace with your own server invocation
           # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-serve
-          wait-on: 'https://my-budget-space.vercel.app' # Waits for above
+         # Waits for above
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
           record: true
