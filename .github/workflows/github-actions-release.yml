@@ -1,11 +1,7 @@
 name: github-actions-release
 run-name: Pull request release branch.
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-    # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using this option
-    pull-requests: write
+permissions: write-all
+    # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using t
 on:
     pull_request:
         branches:
