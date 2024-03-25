@@ -1,7 +1,13 @@
-export const DATA_TEST = {
+export const TEST_ID_GOAL = {
     ADD_GOAL: 'addGoal',
+    GOAL_NAME_DESCRIPTION: 'goalNameDescription',
+    GOAL_NAME_INPUT: 'goalNameInput',
+    GOAL_SUBMIT: 'submitGoal',
 };
 
+export const DATA_TEST = {
+    ADD_GOAL: TEST_ID_GOAL.ADD_GOAL,
+};
 export const TEST_PAGE_HEADER = {
     GO_TO: 'goTo',
 };
