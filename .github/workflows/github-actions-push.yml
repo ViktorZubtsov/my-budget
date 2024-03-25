@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: check:ts
         run: npm run check:ts
@@ -59,7 +59,7 @@ jobs:
             ${{ runner.os }}-
             
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Vitest
         run: npm run test
