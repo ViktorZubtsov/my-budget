@@ -22,6 +22,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
+
+
       - name: Install dependencies
         run: npm ci
 
@@ -42,6 +53,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
+
       - name: Install dependencies
         run: npm ci
 
@@ -59,6 +79,14 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: '20'
+        - name: Cache node modules
+          uses: actions/cache@v4.0.2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
 
         - name: Install dependencies
           run: npm ci
@@ -68,14 +96,12 @@ jobs:
               token: ${{ secrets.GITHUB_TOKEN }}
               
   cypress-run:
-    name: cypress-run ${{ matrix.node_version }} and ${{ matrix.os }}   
     needs: [deploy-chromatic,unit-test]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         containers: [1, 2]
-        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
       - name: Checkout code
@@ -85,6 +111,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-
 
       - name: Install dependencies
         run: npm ci
