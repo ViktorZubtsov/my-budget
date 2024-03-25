@@ -68,12 +68,15 @@ jobs:
               token: ${{ secrets.GITHUB_TOKEN }}
               
   cypress-run:
+    name: cypress-run ${{ matrix.node_version }} and ${{ matrix.os }}   
     needs: [deploy-chromatic,unit-test]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         containers: [1, 2]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
