@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: check:ts
         run: npm run check:ts
@@ -42,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Vitest
         run: npm run test
