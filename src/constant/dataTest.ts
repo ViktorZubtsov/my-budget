@@ -3,6 +3,7 @@ export const TEST_ID_GOAL = {
     GOAL_NAME_DESCRIPTION: 'goalNameDescription',
     GOAL_NAME_INPUT: 'goalNameInput',
     GOAL_SUBMIT: 'submitGoal',
+    LISTING: 'goalListing',
 };
 
 export const DATA_TEST = {

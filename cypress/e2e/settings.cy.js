@@ -1,8 +1,6 @@
 import {LOCAL_STORAGE_KEYS, THEME} from '../../src/constant';
 import {TEST_ID_ACCOUNT, TEST_ID_SOUND_SETTING, TEST_ID_THEME} from '../../src/constant/dataTest';
-const random = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+import {random} from '../../src/helpers/random';
 
 const SELECT_SELECTOR = TEST_ID_ACCOUNT.SELECT;
 const testValue = `New Account ${random(1, 100)}`;

@@ -1,17 +1,26 @@
-import {TEST_ID_GOAL} from '../../src/constant/dataTest';
+import {TEST_ID_COMMON, TEST_ID_GOAL, TEST_ID_GOAL_ITEM} from '../../src/constant/dataTest';
+import {random} from '../../src/helpers/random';
 
-const random = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+const testValue = `GoalName ${random(1, 100)}`;
 
-const testValue = `Goal ${random(1, 100)}`;
 const url = '/';
+const goalItemSelector = `[data-testid="${TEST_ID_GOAL.LISTING}"] [data-testid="${TEST_ID_GOAL_ITEM.GOAL_ITEM}"]`;
+const goalItemButton = `[data-testid="${TEST_ID_COMMON.REMOVE_BUTTON}"]`;
+
 describe('Gaol Page', () => {
-    it('Add goal', () => {
+    it('CRUT goal', () => {
         cy.visit(url);
         cy.get(`#${TEST_ID_GOAL.ADD_GOAL}`).click();
         cy.get(`#${TEST_ID_GOAL.GOAL_NAME_INPUT}`).focus().type(testValue).should('have.value', testValue);
-        cy.get(`#${TEST_ID_GOAL.GOAL_NAME_DESCRIPTION}`).focus().type(testValue).should('have.value', testValue);
         cy.get(`#${TEST_ID_GOAL.GOAL_SUBMIT}`).click();
+        cy.wait(1500);
+        cy.get(goalItemSelector)
+            .last()
+            .should('have.text', testValue)
+            .trigger('mousedown', 'right')
+            .trigger('mousemove', {clientX: 600})
+            .trigger('mouseup');
+        cy.get(goalItemSelector).last().get(goalItemButton).last().click();
+        cy.get(goalItemSelector).last().should('not.have.text', testValue);
     });
 });
