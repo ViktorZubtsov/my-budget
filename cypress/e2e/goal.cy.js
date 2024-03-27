@@ -18,9 +18,9 @@ describe('Gaol Page', () => {
             .last()
             .should('have.text', testValue)
             .trigger('mousedown', 'right')
-            .trigger('mousemove', {clientX: 600})
+            .trigger('mousemove', {clientX: 500})
             .trigger('mouseup');
-        cy.wait(800);
+        cy.wait(1500);
         cy.get(goalItemButton).last().click();
         cy.get(goalItemSelector).last().should('not.have.text', testValue);
     });
