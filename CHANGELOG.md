@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.8...v0.4.9) (2024-03-27)
+
+
+### Features
+
+* **edittask:** add ([35cb0e9](https://github.com/ViktorZubtsov/my-budget/commit/35cb0e94acc2386799d27750c26c0b892c2f4d5c))
+* **goal.cy.js:** add Gaol CLUD Cypress Test ([5beb118](https://github.com/ViktorZubtsov/my-budget/commit/5beb1187b97f5bdeb36003f7fee75f9b360ef409))
+* **settings:** add Settings cypress test ([21aec51](https://github.com/ViktorZubtsov/my-budget/commit/21aec51595fa0bd0b5bde0c40ef946cb0e5cd8bf))
+
 ### [0.4.8](https://github.com/ViktorZubtsov/my-budget/compare/v0.3.12...v0.4.8) (2024-03-22)
 
 
