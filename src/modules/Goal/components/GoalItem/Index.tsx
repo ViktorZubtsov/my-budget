@@ -2,7 +2,7 @@
 
 import {useRouter} from 'next/navigation';
 import React, {memo} from 'react';
-import {SwipeableList, SwipeableListItem} from 'react-swipeable-list';
+import {SwipeableList, SwipeableListItem, Type as ListType} from 'react-swipeable-list';
 
 import {trailingActionDelete} from '@/components/TrailingActions/ActionsDelete';
 import {IGoal} from '@/model';
@@ -26,7 +26,7 @@ export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, 
     return (
         <GoalItemWrap mb="4x">
             {onRemove && (
-                <SwipeableList>
+                <SwipeableList fullSwipe={true} type={ListType.IOS}>
                     <SwipeableListItem
                         blockSwipe={isBlock}
                         maxSwipe={1}

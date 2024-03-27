@@ -1,7 +1,7 @@
 import {toast} from 'react-toastify';
 
 import errorHandler from '@/core/exceptions/ErrorHandler';
-import {IAccount, TAccountsColors} from '@/model';
+import {IAccount} from '@/model';
 
 import {LOCAL_STORAGE_KEYS} from '../constant';
 import Provider from '../core/provider';

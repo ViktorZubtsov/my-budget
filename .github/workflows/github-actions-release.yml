@@ -1,11 +1,6 @@
 name: github-actions-release
 run-name: Pull request release branch.
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-    # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using this option
-    pull-requests: write
+permissions: write-all
 on:
     pull_request:
         branches:
@@ -27,8 +22,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
+
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: check:ts
         run: npm run check:ts
@@ -47,17 +53,24 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Vitest
         run: npm run test
 
   deploy-chromatic:
     needs: [check-ts]
-    # Operating System
     runs-on: ubuntu-latest
-  # Job steps
     steps:
         - uses: actions/checkout@v4
           with:
@@ -66,13 +79,64 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: '20'
+        - name: Cache node modules
+          uses: actions/cache@v4.0.2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-  
 
         - name: Install dependencies
-          run: npm install
-        #👇 Adds Chromatic as a step in the workflow
+          run: npm ci
         - uses: chromaui/action@v1
-          # Options required for Chromatic's GitHub Action
           with:
-              #👇 Chromatic projectToken,
               projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
               token: ${{ secrets.GITHUB_TOKEN }}
+              
+  cypress-run:
+    needs: [deploy-chromatic,unit-test]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v4.0.2
+        with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+                    ${{ runner.os }}-node-
+                    ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev
+          wait-on: 'http://localhost:3000'
+          record: true
+          parallel: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MYSQL_URL: ${{ secrets.MYSQL_URL }}
+          MYSQL_URL_SHADOW: ${{ secrets.MYSQL_URL_SHADOW }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET}}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID}}
+
+              
