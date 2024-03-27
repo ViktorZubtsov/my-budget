@@ -20,7 +20,7 @@ describe('Gaol Page', () => {
             .trigger('mousedown', 'right')
             .trigger('mousemove', {clientX: 500})
             .trigger('mouseup');
-        cy.wait(1500);
+        cy.wait(1000);
         cy.get(goalItemButton).last().click();
         cy.get(goalItemSelector).last().should('not.have.text', testValue);
     });
