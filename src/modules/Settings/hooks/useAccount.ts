@@ -18,7 +18,7 @@ interface IUseAccountResult {
 
 export const useAccount = (): IUseAccountResult => {
     const {userId} = useContext(AuthContext);
-    const {data} = useSWR<IAccount[]>(getAccountKey(userId), {revalidateOnMount: false});
+    const {data} = useSWR<IAccount[]>(getAccountKey(userId), {revalidateOnMount: true});
 
     const {trigger, isMutating} = useSWRMutation(getAccountKey(userId), updateAccounts, {
         onError: (err) => errorHandler(err),
