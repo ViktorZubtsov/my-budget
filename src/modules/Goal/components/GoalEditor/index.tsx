@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 import {ErrorField} from '@/components/Field/Error';
 import {SheetModal} from '@/components/SheetModal';
-import {DATA_TEST, TEST_ID_GOAL} from '@/constant/dataTest';
+import {TEST_ID_GOAL} from '@/constant/dataTest';
 import {GoalEditorContent, GoalEditorFooter} from '@/modules/Goal/components/GoalEditor/styled';
 import {GOAL_FIELDS_SCHEMA} from '@/modules/Goal/constants';
 

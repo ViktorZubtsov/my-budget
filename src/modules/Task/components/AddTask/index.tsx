@@ -10,7 +10,7 @@ interface IAddTask {
 }
 export const AddTask = ({onClose, isOpen}: IAddTask) => {
     const {createTask, isCreateLoader} = useTask();
-    const {accountsList} = useAccount();
+    const {accountsList, addAccount, isMutating} = useAccount();
 
     const handleAddTask = ({price, name, bankAccount}: TTaskFields) => {
         createTask({
@@ -26,8 +26,10 @@ export const AddTask = ({onClose, isOpen}: IAddTask) => {
             isOpen={isOpen}
             onClose={onClose}
             title={TITLE}
+            isAccountsFetching={isMutating}
             isFetching={isCreateLoader}
             isEdit
+            addAccount={addAccount}
             onSubmit={handleAddTask}
         />
     );
