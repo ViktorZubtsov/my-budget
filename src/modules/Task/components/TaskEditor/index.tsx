@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import {AccountsBadge} from '@/components/AccountsBadge';
 import {ErrorField} from '@/components/Field/Error';
 import {SheetModal} from '@/components/SheetModal';
+import {TEST_ID_ACCOUNT, TEST_ID_ADD_TASK} from '@/constant/dataTest';
 import {IAccount, TAccountsColors, TTask} from '@/model';
 import {AccountsCard} from '@/modules/Settings/components/AccountsCard';
 import {TAccountParams} from '@/modules/Settings/type';
@@ -113,11 +114,17 @@ export const TaskEditor = memo<ITaskEditorProps>(
             <SheetModal isOpen={isOpen} title={title} handleClose={handleClose}>
                 <TaskEditorForm onSubmit={handleFormSubmit(handleSubmit)}>
                     <div>
-                        <TextField placeholder="Название задачи" size="l" label="Название задачи" {...register('name')} />
+                        <TextField
+                            data-testid={TEST_ID_ADD_TASK.NAME}
+                            placeholder="Название задачи"
+                            size="l"
+                            label="Название задачи"
+                            {...register('name')}
+                        />
                         <ErrorField text={errors.name?.message} />
                     </div>
                     <div>
-                        <TextField placeholder="Сумма" size="l" label="Сумма" {...register('price')} />
+                        <TextField data-testid={TEST_ID_ADD_TASK.PRICE} placeholder="Сумма" size="l" label="Сумма" {...register('price')} />
                         <ErrorField
                             text={
                                 errors.price?.message?.includes('price must be a `number` type, but the final value was:')
@@ -131,19 +138,32 @@ export const TaskEditor = memo<ITaskEditorProps>(
                             <Select
                                 // @ts-ignore
                                 items={items}
+                                data-testid={TEST_ID_ACCOUNT.SELECT}
                                 value={currentBankAccount}
                                 placeholder="Выберите счет"
                                 helperText="Счет"
                                 onChange={(value) => handleChange(value)}
                             />
                         ) : (
-                            <AccountsCard accountsList={accountsList} addAccount={addAccount} isFetching={isAccountsFetching} />
+                            <AccountsCard
+                                data-testid={TEST_ID_ADD_TASK.ACCOUNTS_CARD}
+                                accountsList={accountsList}
+                                addAccount={addAccount}
+                                isFetching={isAccountsFetching}
+                            />
                         )}
                         <ErrorField text={errors.bankAccount?.message} />
                     </TaskEditorContent>
                     <TaskEditorFooter mt="10x">
                         <Button text="Отменить" size="s" view="secondary" onClick={handleClose} />
-                        <Button isLoading={isFetching} text={buttonText} size="s" view="success" type="submit" />
+                        <Button
+                            data-testid={TEST_ID_ADD_TASK.SUBMIT}
+                            isLoading={isFetching}
+                            text={buttonText}
+                            size="s"
+                            view="success"
+                            type="submit"
+                        />
                     </TaskEditorFooter>
                 </TaskEditorForm>
             </SheetModal>

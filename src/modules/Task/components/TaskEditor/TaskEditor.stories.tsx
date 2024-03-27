@@ -30,7 +30,7 @@ export default meta;
 
 type TStory = StoryObj<typeof meta>;
 
-export const TaskEditorEmptyAccountsStory: TStory = {
+export const TaskEditorEmptyStory: TStory = {
     args: {
         accountsList: [MOCK_ACCOUNT],
         ...args,
@@ -40,7 +40,7 @@ export const TaskEditorEmptyAccountsStory: TStory = {
     },
 };
 
-export const TaskEditorEmptyStory: TStory = {
+export const TaskEditorEmptyAccountsStory: TStory = {
     args: {
         accountsList: [],
         ...args,
