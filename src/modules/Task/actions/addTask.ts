@@ -1,7 +1,7 @@
 import prismaClient from '@/core/prisma';
 import {IGoal, TTask} from '@/model';
 
-interface ICreateTaskParams {
+export interface ICreateTaskParams {
     goalId: IGoal['id'];
     task: {
         name: TTask['name'];
@@ -19,3 +19,14 @@ export const addTask = async ({goalId, task}: ICreateTaskParams) => {
         },
     });
 };
+
+export async function addTaskQuery(url: string, {arg}: {arg: {task: ICreateTaskParams['task']}}) {
+    const {task} = arg;
+
+    await fetch(url, {
+        body: JSON.stringify({
+            task,
+        }),
+        method: 'POST',
+    });
+}

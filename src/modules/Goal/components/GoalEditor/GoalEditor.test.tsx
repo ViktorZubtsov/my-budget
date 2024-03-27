@@ -9,6 +9,7 @@ import {GOAL_ERROR, GOAL_MAX_LENGTH} from '@/modules/Goal/constants';
 
 const TEST_VALUE = generateWord(10);
 const TEST_MIN_VALUE = generateWord(2);
+const TEST_PRE_MIN_VALUE = generateWord(3);
 const TEST_MAX_VALUE = generateWord(GOAL_MAX_LENGTH + 1);
 const TEST_DESCR_VALUE = generateWord(12);
 const handleClick = vi.fn();
@@ -64,6 +65,21 @@ describe('GoalEditor', () => {
         expect(handleClick).toHaveBeenCalledWith({
             description: '',
             name: TEST_VALUE,
+        });
+    });
+
+    test('Check pre-min name value', async () => {
+        fireEvent.change(nameInput, {target: {value: TEST_PRE_MIN_VALUE}});
+
+        expect(nameInput.value).toBe(TEST_PRE_MIN_VALUE);
+
+        await act(async () => {
+            fireEvent.click(submitButton);
+        });
+
+        expect(handleClick).toHaveBeenCalledWith({
+            description: '',
+            name: TEST_PRE_MIN_VALUE,
         });
     });
 

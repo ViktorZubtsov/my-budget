@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import {ErrorField} from '@/components/Field/Error';
 import {SheetModal} from '@/components/SheetModal';
+import {DATA_TEST, TEST_ID_GOAL} from '@/constant/dataTest';
 import {GoalEditorContent, GoalEditorFooter} from '@/modules/Goal/components/GoalEditor/styled';
 import {GOAL_FIELDS_SCHEMA} from '@/modules/Goal/constants';
 
@@ -54,11 +55,18 @@ export const GoalEditor = ({isFetch, onSubmit, isOpen, title, handeClose, submit
             <form onSubmit={handleFormSubmit(handleSubmit)}>
                 <GoalEditorContent>
                     <div>
-                        <TextField placeholder="Название цели" size="l" label="Название цели" {...register('name')} />
+                        <TextField
+                            id={TEST_ID_GOAL.GOAL_NAME_INPUT}
+                            placeholder="Название цели"
+                            size="l"
+                            label="Название цели"
+                            {...register('name')}
+                        />
                         <ErrorField text={errors.name?.message} />
                     </div>
                     <div>
                         <TextField
+                            id={TEST_ID_GOAL.GOAL_NAME_DESCRIPTION}
                             placeholder="Описание цели (Не обязательно)"
                             size="l"
                             label="Описание цели (Не обязательно)"
@@ -69,7 +77,7 @@ export const GoalEditor = ({isFetch, onSubmit, isOpen, title, handeClose, submit
                 </GoalEditorContent>
                 <GoalEditorFooter>
                     <Button text="Отменить" size="s" view="secondary" onClick={onClose} />
-                    <Button text={submitText} size="s" view="success" isLoading={isFetch} type="submit" />
+                    <Button id={TEST_ID_GOAL.GOAL_SUBMIT} text={submitText} size="s" view="success" isLoading={isFetch} type="submit" />
                 </GoalEditorFooter>
             </form>
         </SheetModal>
