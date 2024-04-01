@@ -46,6 +46,13 @@ export const TEST_ID_TASK = {
     TASK_SUM: 'taskSum',
 };
 
+export const TEST_ID_ADD_TASK = {
+    ACCOUNTS_CARD: 'addTaskAccountsCard',
+    NAME: 'addTaskName',
+    PRICE: 'addTaskPrice',
+    SUBMIT: 'addTaskSubmit',
+};
+
 export const TEST_ID_COMMON = {
     ACCEPT_BUTTON: 'acceptButton',
     EDIT_BUTTON: 'editButton',

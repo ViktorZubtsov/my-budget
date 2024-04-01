@@ -14,6 +14,12 @@ export const MOCK_ACCOUNT: IAccount = {
     id: '1',
     name: 'Name',
 };
+export const MOCK_ACCOUNT_TWO: IAccount = {
+    colorCode: 'green',
+    id: '2',
+    name: 'Name 2',
+};
+export const MOCK_ACCOUNT_LIST: IAccount[] = [MOCK_ACCOUNT, MOCK_ACCOUNT_TWO];
 
 export const MOCK_TASK: TTask = {
     bankAccount: MOCK_ACCOUNT.id,

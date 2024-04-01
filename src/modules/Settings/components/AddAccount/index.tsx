@@ -57,6 +57,7 @@ export const AddAccount = memo<IAddAccountProps>(({accountsList, onClick, isFetc
             <Button
                 text="Добавить"
                 id={TEST_ID_ACCOUNT.ADD_ACCOUNT}
+                data-testid={TEST_ID_ACCOUNT.ADD_ACCOUNT}
                 isLoading={isFetching}
                 onClick={handleClick}
                 disabled={buttonIsDisabled}
