@@ -7,8 +7,7 @@ import {generateAccount, generateWord, ResizeObserver} from '@/helpers';
 import {MOCK_ACCOUNT, MOCK_ACCOUNT_LIST, MOCK_ACCOUNT_TWO, MOCK_TASK} from '@/mock';
 import {ACCOUNTS_OPTIONS} from '@/modules/Settings/components/AddAccount/constants';
 import {TaskEditor} from '@/modules/Task/components/TaskEditor/index';
-
-const ACCOUNT = MOCK_TASK.name;
+const ACCOUNT = ACCOUNTS_OPTIONS[0];
 
 const DEFAULT_TASK = {
     bankAccount: MOCK_TASK['bankAccount'],
@@ -119,6 +118,40 @@ describe('TaskEditor', () => {
             bankAccount: MOCK_ACCOUNT_TWO.id,
             name: NAME,
             price: PRICE,
+        });
+    });
+
+    test('Check addAccount', async () => {
+        const handleAddAccount = vi.fn();
+
+        rerender(
+            <TaskEditor
+                accountsList={[]}
+                isOpen={true}
+                onClose={() => {}}
+                title={''}
+                isFetching={false}
+                isAccountsFetching={false}
+                addAccount={handleAddAccount}
+                isEdit={false}
+                onSubmit={() => {}}
+            />
+        );
+        const item = screen.getByLabelText('Название счета') as HTMLInputElement;
+        const selectItem = screen.getByText(ACCOUNT.text);
+        const btn = screen.getByTestId(TEST_ID_ACCOUNT.ADD_ACCOUNT);
+        const TEST_VALUE = generateWord(10);
+
+        fireEvent.change(item, {target: {value: TEST_VALUE}});
+        fireEvent.click(selectItem);
+
+        await act(async () => {
+            fireEvent.click(btn);
+        });
+
+        expect(handleAddAccount).toHaveBeenCalledWith({
+            colorCode: ACCOUNT.value,
+            name: TEST_VALUE,
         });
     });
 });
