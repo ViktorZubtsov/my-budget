@@ -27,5 +27,6 @@ export const ERROR_TEXT = {
     MAX_LENGTH: (value: number) => `Поле должно содержать максимум ${value} символов`,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     MIN_LENGTH: (value: number) => `Поле должно содержать минимум ${value} символа`,
+    NATURAL_NUMBER: 'Поле должно быть положительным числом',
     REQUIRED: 'Поле обязательно для заполнения',
 };

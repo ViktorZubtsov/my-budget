@@ -13,8 +13,8 @@ interface IEditTask {
     onClose: () => void;
 }
 export const EditTask = memo(({onClose, isOpen, taskId}: IEditTask) => {
-    const {accountsList} = useAccount();
     const {selectedTask, editTask, isUpdateLoader} = useTask();
+    const {accountsList, addAccount, isMutating} = useAccount();
 
     const handleSaveTask = ({price, name, bankAccount}: TTaskFields) => {
         return editTask({
@@ -32,7 +32,9 @@ export const EditTask = memo(({onClose, isOpen, taskId}: IEditTask) => {
             accountsList={accountsList}
             isOpen={isOpen}
             onClose={onClose}
+            isAccountsFetching={isMutating}
             title={TITLE}
+            addAccount={addAccount}
             defaultValues={selectedTask(taskId)}
             isFetching={isUpdateLoader}
             isEdit
