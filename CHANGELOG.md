@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.9...v0.5.0) (2024-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **taskeditor:** edit
+
+### Features
+
+* **taskeditor.test.tsx:** add unit test TaskEditor ([1957e1c](https://github.com/ViktorZubtsov/my-budget/commit/1957e1c89fe7b61ea414dc2f5484ae470ab82d9c))
+
+
+* **taskeditor:** refactor TaskEditor ([ba26d59](https://github.com/ViktorZubtsov/my-budget/commit/ba26d59610da3fafda90d144cefc8d0f69c5e3db)), closes [#121](https://github.com/ViktorZubtsov/my-budget/issues/121)
+
 ### [0.4.9](https://github.com/ViktorZubtsov/my-budget/compare/v0.4.8...v0.4.9) (2024-03-27)
 
 
