@@ -17,7 +17,8 @@
     "loki:approve": "loki approve",
     "loki:update": "loki update",
     "test": "vitest run --coverage",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "chromatic": "npx chromatic"
   },
   "lint-staged": {
     "!(*min).{js,jsx,ts,tsx}": [
