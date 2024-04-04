@@ -92,7 +92,7 @@ jobs:
           run: npm ci
         - uses: chromaui/action@v1
           with:
-              projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+              projectToken: ${{ secrets.CHROMATIC_TOKEN }}
               token: ${{ secrets.GITHUB_TOKEN }}
               
   cypress-run:
