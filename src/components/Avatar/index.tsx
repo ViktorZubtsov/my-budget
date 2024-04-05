@@ -1,7 +1,5 @@
-import {memo, useContext, useMemo} from 'react';
+import {memo} from 'react';
 import ReactAvatar from 'react-avatar';
-
-import {AuthContext} from '../../modules/Auth/context';
 
 export interface IAvatar {
     userAvatar: string;
