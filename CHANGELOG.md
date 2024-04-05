@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.9](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.5.9) (2024-04-05)
+
 ### [0.5.8](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.5.8) (2024-04-05)
 
 ### [0.5.7](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.5.7) (2024-04-05)
