@@ -6,9 +6,6 @@ export const TEST_ID_GOAL = {
     LISTING: 'goalListing',
 };
 
-export const DATA_TEST = {
-    ADD_GOAL: TEST_ID_GOAL.ADD_GOAL,
-};
 export const TEST_PAGE_HEADER = {
     GO_TO: 'goTo',
 };
