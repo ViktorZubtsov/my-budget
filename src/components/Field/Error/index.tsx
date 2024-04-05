@@ -1,8 +1,8 @@
-import {TextM} from '@salutejs/plasma-ui';
+import {TextError} from '@/components/Field/Error/styled';
 
 interface IErrorFieldProps {
     text?: string;
 }
 export const ErrorField = ({text}: IErrorFieldProps) => {
-    return <TextM style={{color: '#f04f4f', marginTop: '10px'}}>{text}</TextM>;
+    return <TextError>{text}</TextError>;
 };

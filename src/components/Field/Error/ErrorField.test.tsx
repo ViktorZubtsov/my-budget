@@ -1,14 +1,14 @@
 import {render} from '@testing-library/react';
 import {describe, expect, test} from 'vitest';
 
-import {EmptyList} from '@/components/EmptyList/index';
+import {ErrorField} from '@/components/Field/Error/index';
 
 const TEST_VALUE = 'Список пуст';
 
-describe('EmptyList', () => {
-    const {getByText} = render(<EmptyList text={TEST_VALUE} />);
+describe('ErrorField', () => {
+    const {getByText} = render(<ErrorField text={TEST_VALUE} />);
 
-    test('Renders the title', async () => {
+    test('Render text', async () => {
         expect(getByText(TEST_VALUE));
     });
 });
