@@ -1,4 +1,4 @@
-import {TEST_ID_ACCOUNT, TEST_ID_ADD_TASK, TEST_ID_GOAL, TEST_ID_GOAL_ITEM, TEST_ID_TASK} from '../../src/constant/dataTest';
+import {TEST_ID_ACCOUNT, TEST_ID_ADD_TASK, TEST_ID_COMMON, TEST_ID_GOAL, TEST_ID_GOAL_ITEM, TEST_ID_TASK} from '../../src/constant/dataTest';
 import {random} from '../../src/helpers/random';
 
 const testValue = `GoalName ${random(1, 100)}`;
@@ -25,5 +25,11 @@ describe('Gaol X Page', () => {
         cy.get(`[data-testid="${TEST_ID_ADD_TASK.SUBMIT}"]`).click();
         cy.wait(1500);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.TASK_ITEM_NAME}"]`).last().should('have.text', taskName);
+        cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.ITEM}"]`)
+            .last()
+            .trigger('mousedown', 'right')
+            .trigger('mousemove', {clientX: 500})
+            .trigger('mouseup');
+        cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.REMOVE_BUTTON}"]`).last().click();
     });
 });

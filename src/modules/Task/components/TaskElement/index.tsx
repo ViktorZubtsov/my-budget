@@ -26,7 +26,7 @@ export const TaskElement = memo<ITaskItemElementProps>(({task, accountsList}) =>
     const currentBankAccount = useMemo(() => accountsList.find(({id}) => id === bankAccount) as IAccount, [bankAccount, accountsList]);
 
     return (
-        <TaskElementStyled>
+        <TaskElementStyled data-testid={TEST_ID_TASK.ITEM}>
             <CardContent>
                 <Content>
                     <PricesWrap>
