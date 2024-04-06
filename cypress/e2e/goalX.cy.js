@@ -16,7 +16,7 @@ describe('Gaol X Page', () => {
         cy.get(`#${TEST_ID_GOAL.GOAL_NAME_INPUT}`).focus().type(testValue).should('have.value', testValue);
         cy.get(`#${TEST_ID_GOAL.GOAL_SUBMIT}`).click();
         cy.get(goalItemSelector).last().click();
-        cy.wait(1500);
+        cy.wait(3000);
         cy.get(`[data-testid="${TEST_ID_GOAL.ADD_GOAL}"]`).click();
         cy.wait(1000);
         cy.get(`[data-testid="${TEST_ID_ADD_TASK.NAME}"]`).focus().type(taskName).should('have.value', taskName);
