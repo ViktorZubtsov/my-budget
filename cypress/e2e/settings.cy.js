@@ -12,6 +12,7 @@ describe('Settings Page', () => {
         cy.get(`#${SELECT_SELECTOR}`).click().get(`#${SELECT_SELECTOR}-dropdown`).find(`#${SELECT_SELECTOR}-dropdown-item-0`).click();
         cy.get(`#${TEST_ID_ACCOUNT.NAME}`).focus().type(testValue).should('have.value', testValue);
         cy.get(`#${TEST_ID_ACCOUNT.ADD_ACCOUNT}`).click();
+        cy.wait(2000);
         cy.get(`[data-testid="${TEST_ID_ACCOUNT.LIST}"] div`).last().should('have.text', testValue);
     });
 
