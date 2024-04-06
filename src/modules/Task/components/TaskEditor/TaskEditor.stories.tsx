@@ -1,5 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
+import {TEST_ID_ACCOUNT, TEST_ID_ADD_TASK} from '@/constant/dataTest';
 import {MOCK_ACCOUNT, MOCK_TASK} from '@/mock';
 import {TaskEditor} from '@/modules/Task/components/TaskEditor/index';
 
@@ -7,6 +8,13 @@ import {decorators} from '../../../../helpers';
 
 const args = {
     addAccount: () => {},
+    dataTest: {
+        accountsCard: TEST_ID_ADD_TASK.ACCOUNTS_CARD,
+        button: TEST_ID_ADD_TASK.SUBMIT,
+        name: TEST_ID_ADD_TASK.NAME,
+        price: TEST_ID_ADD_TASK.PRICE,
+        select: TEST_ID_ACCOUNT.SELECT,
+    },
     isAccountsFetching: false,
     isEdit: false,
     isFetching: false,

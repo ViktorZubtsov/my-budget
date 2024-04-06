@@ -26,6 +26,13 @@ interface ITaskEditorProps {
     isFetching: boolean;
     isAccountsFetching: boolean;
     addAccount: (data: TAccountParams) => void;
+    dataTest: {
+        name: string;
+        price: string;
+        select: string;
+        accountsCard: string;
+        button: string;
+    };
     isEdit: boolean;
     defaultValues?: {
         name: string;
@@ -36,7 +43,7 @@ interface ITaskEditorProps {
 }
 
 export const TaskEditor = memo<ITaskEditorProps>(
-    ({isOpen, isFetching, isAccountsFetching, onClose, title, isEdit, defaultValues, onSubmit, accountsList, addAccount}) => {
+    ({isOpen, isFetching, isAccountsFetching, onClose, title, isEdit, defaultValues, onSubmit, accountsList, addAccount, dataTest}) => {
         const {
             name: defaultName,
             price: defaultPrice,
@@ -114,17 +121,11 @@ export const TaskEditor = memo<ITaskEditorProps>(
             <SheetModal isOpen={isOpen} title={title} handleClose={handleClose}>
                 <TaskEditorForm onSubmit={handleFormSubmit(handleSubmit)}>
                     <div>
-                        <TextField
-                            data-testid={TEST_ID_ADD_TASK.NAME}
-                            placeholder="Название задачи"
-                            size="l"
-                            label="Название задачи"
-                            {...register('name')}
-                        />
+                        <TextField data-testid={dataTest.name} placeholder="Название задачи" size="l" label="Название задачи" {...register('name')} />
                         <ErrorField text={errors.name?.message} />
                     </div>
                     <div>
-                        <TextField data-testid={TEST_ID_ADD_TASK.PRICE} placeholder="Сумма" size="l" label="Сумма" {...register('price')} />
+                        <TextField data-testid={dataTest.price} placeholder="Сумма" size="l" label="Сумма" {...register('price')} />
                         <ErrorField
                             text={
                                 errors.price?.message?.includes('price must be a `number` type, but the final value was:')
@@ -138,7 +139,8 @@ export const TaskEditor = memo<ITaskEditorProps>(
                             <Select
                                 // @ts-ignore
                                 items={items}
-                                data-testid={TEST_ID_ACCOUNT.SELECT}
+                                data-testid={dataTest.select}
+                                id={dataTest.select}
                                 value={currentBankAccount}
                                 placeholder="Выберите счет"
                                 helperText="Счет"
@@ -146,7 +148,7 @@ export const TaskEditor = memo<ITaskEditorProps>(
                             />
                         ) : (
                             <AccountsCard
-                                data-testid={TEST_ID_ADD_TASK.ACCOUNTS_CARD}
+                                data-testid={dataTest.accountsCard}
                                 accountsList={accountsList}
                                 addAccount={addAccount}
                                 isFetching={isAccountsFetching}
@@ -156,14 +158,7 @@ export const TaskEditor = memo<ITaskEditorProps>(
                     </TaskEditorContent>
                     <TaskEditorFooter mt="10x">
                         <Button text="Отменить" size="s" view="secondary" onClick={handleClose} />
-                        <Button
-                            data-testid={TEST_ID_ADD_TASK.SUBMIT}
-                            isLoading={isFetching}
-                            text={buttonText}
-                            size="s"
-                            view="success"
-                            type="submit"
-                        />
+                        <Button data-testid={dataTest.button} isLoading={isFetching} text={buttonText} size="s" view="success" type="submit" />
                     </TaskEditorFooter>
                 </TaskEditorForm>
             </SheetModal>

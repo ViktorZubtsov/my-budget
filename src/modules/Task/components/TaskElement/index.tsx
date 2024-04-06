@@ -31,7 +31,7 @@ export const TaskElement = memo<ITaskItemElementProps>(({task, accountsList}) =>
                 <Content>
                     <PricesWrap>
                         <MarkedList>
-                            <TaskElementMarkedItem $isDone={done} style={h5} text={name}>
+                            <TaskElementMarkedItem data-testid={TEST_ID_TASK.TASK_ITEM_NAME} $isDone={done} style={h5} text={name}>
                                 {Boolean(done) && <IconDone size="xs" color={accent} />}
                             </TaskElementMarkedItem>
                         </MarkedList>

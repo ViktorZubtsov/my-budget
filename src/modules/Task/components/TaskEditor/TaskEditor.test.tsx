@@ -20,6 +20,13 @@ export const SAVE_TEXT = 'Сохранить';
 export const ADD_TASK_TEXT = 'Добавить';
 export const NAME = 'NAME';
 export const PRICE = 500;
+const dataTest = {
+    accountsCard: TEST_ID_ADD_TASK.ACCOUNTS_CARD,
+    button: TEST_ID_ADD_TASK.SUBMIT,
+    name: TEST_ID_ADD_TASK.NAME,
+    price: TEST_ID_ADD_TASK.PRICE,
+    select: TEST_ID_ACCOUNT.SELECT,
+};
 
 // eslint-disable-next-line max-lines-per-function
 describe('TaskEditor', () => {
@@ -33,6 +40,7 @@ describe('TaskEditor', () => {
             isOpen={true}
             onClose={() => {}}
             title={''}
+            dataTest={dataTest}
             isFetching={false}
             isAccountsFetching={false}
             addAccount={() => {}}
@@ -55,6 +63,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -94,6 +103,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -133,6 +143,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={handleAddAccount}
@@ -168,6 +179,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -200,6 +212,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -231,6 +244,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -260,6 +274,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -291,6 +306,7 @@ describe('TaskEditor', () => {
                 onClose={() => {}}
                 title={''}
                 isFetching={false}
+                dataTest={dataTest}
                 isAccountsFetching={false}
                 addAccount={() => {}}
                 isEdit={true}
@@ -319,6 +335,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -349,6 +366,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -378,6 +396,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={() => {}}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
@@ -408,6 +427,7 @@ describe('TaskEditor', () => {
                 isOpen={true}
                 onClose={handleClose}
                 title={''}
+                dataTest={dataTest}
                 isFetching={false}
                 isAccountsFetching={false}
                 addAccount={() => {}}
