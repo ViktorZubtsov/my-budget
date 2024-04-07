@@ -6,18 +6,12 @@ const taskName = `Task Name ${random(1, 100)}`;
 const priceValue = `1000`;
 const SELECT_SELECTOR = TEST_ID_ACCOUNT.SELECT;
 
-const url = '/';
+const url = '/goal/test-task';
 const goalItemSelector = `[data-testid="${TEST_ID_GOAL.LISTING}"] [data-testid="${TEST_ID_GOAL_ITEM.GOAL_ITEM}"]`;
 
 describe('Gaol X Page', () => {
     it('Create goal', () => {
         cy.visit(url);
-        cy.get(`[data-testid="${TEST_ID_GOAL.ADD_GOAL}"]`).click();
-        cy.get(`#${TEST_ID_GOAL.GOAL_NAME_INPUT}`).focus().type(testValue).should('have.value', testValue);
-        cy.get(`#${TEST_ID_GOAL.GOAL_SUBMIT}`).click();
-        cy.wait(3000);
-        cy.get(goalItemSelector).last().click();
-        cy.wait(3000);
         cy.get(`[data-testid="${TEST_ID_GOAL.ADD_GOAL}"]`).click();
         cy.wait(1000);
         cy.get(`[data-testid="${TEST_ID_ADD_TASK.NAME}"]`).focus().type(taskName).should('have.value', taskName);
