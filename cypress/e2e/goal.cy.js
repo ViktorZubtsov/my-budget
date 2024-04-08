@@ -10,6 +10,8 @@ const hostname = 'localhost';
 const goalItemSelector = `[data-testid="${TEST_ID_GOAL.LISTING}"] [data-testid="${TEST_ID_GOAL_ITEM.GOAL_ITEM}"]`;
 const goalItemButton = `[data-testid="${TEST_ID_COMMON.REMOVE_BUTTON}"]`;
 
+// TODO: Переписать, добавить создание описание и поиск его в списке https://linear.app/mybudget/issue/MY-41
+
 describe('Gaol Page', () => {
     it('CRUD goal', () => {
         cy.intercept({
@@ -28,7 +30,7 @@ describe('Gaol Page', () => {
             .trigger('mousedown', 'right')
             .trigger('mousemove', {clientX: 600})
             .trigger('mouseup');
-        cy.wait(1000);
+        cy.wait(2000);
         cy.get(goalItemButton).last().click();
         cy.get(goalItemSelector).last().should('have.text', testValue);
     });
