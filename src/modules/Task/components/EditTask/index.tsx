@@ -1,5 +1,6 @@
 import {memo} from 'react';
 
+import {TEST_ID_ACCOUNT, TEST_ID_ADD_TASK, TEST_ID_EDIT_TASK} from '@/constant/dataTest';
 import {TTask} from '@/model';
 import {useAccount} from '@/modules/Settings/hooks/useAccount';
 import {TaskEditor, TTaskFields} from '@/modules/Task/components/TaskEditor';
@@ -34,6 +35,13 @@ export const EditTask = memo(({onClose, isOpen, taskId}: IEditTask) => {
             onClose={onClose}
             isAccountsFetching={isMutating}
             title={TITLE}
+            dataTest={{
+                accountsCard: TEST_ID_EDIT_TASK.ACCOUNTS_CARD,
+                button: TEST_ID_EDIT_TASK.SUBMIT,
+                name: TEST_ID_EDIT_TASK.NAME,
+                price: TEST_ID_EDIT_TASK.PRICE,
+                select: '',
+            }}
             addAccount={addAccount}
             defaultValues={selectedTask(taskId)}
             isFetching={isUpdateLoader}

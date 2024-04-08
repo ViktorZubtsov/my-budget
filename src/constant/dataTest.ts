@@ -38,7 +38,10 @@ export const TEST_ID_SOUND_SETTING = {
     SOUND_SETTING_SWITCH: 'soundSettingSwitch',
 };
 export const TEST_ID_TASK = {
+    ITEM: 'taskITem',
+    LIST: 'taskList',
     TASK_ITEM_BADGE: 'taskItemBadge',
+    TASK_ITEM_NAME: 'taskItemName',
     TASK_ITEM_PRICE: 'taskItemPrice',
     TASK_SUM: 'taskSum',
 };
@@ -49,7 +52,12 @@ export const TEST_ID_ADD_TASK = {
     PRICE: 'addTaskPrice',
     SUBMIT: 'addTaskSubmit',
 };
-
+export const TEST_ID_EDIT_TASK = {
+    ACCOUNTS_CARD: 'editTaskAccountsCard',
+    NAME: 'editTaskName',
+    PRICE: 'editTaskPrice',
+    SUBMIT: 'editTaskSubmit',
+};
 export const TEST_ID_COMMON = {
     ACCEPT_BUTTON: 'acceptButton',
     EDIT_BUTTON: 'editButton',
