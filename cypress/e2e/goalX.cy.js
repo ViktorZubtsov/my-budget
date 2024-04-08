@@ -74,6 +74,7 @@ describe('Gaol X Page', () => {
             .trigger('mousedown', 'right')
             .trigger('mousemove', {clientX: 500})
             .trigger('mouseup');
+        cy.wait(2000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.ACCEPT_BUTTON}"]`).last().click();
         cy.wait('@checkTask');
     });
@@ -90,6 +91,7 @@ describe('Gaol X Page', () => {
             .trigger('mousedown', 'right')
             .trigger('mousemove', {clientX: 500})
             .trigger('mouseup');
+        cy.wait(2000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.REMOVE_BUTTON}"]`).last().click();
         cy.wait('@removeTask');
     });
