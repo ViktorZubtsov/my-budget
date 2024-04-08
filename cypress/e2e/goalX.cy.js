@@ -43,7 +43,7 @@ describe('Gaol X Page', () => {
         cy.wait(1000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.ITEM}"]`)
             .last()
-            .trigger('mousedown', 'center')
+            .trigger('mousedown', 'right')
             .trigger('mousemove', {clientX: 500})
             .trigger('mouseup');
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.EDIT_BUTTON}"]`).last().click();
@@ -66,15 +66,15 @@ describe('Gaol X Page', () => {
         cy.wait(1000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.TASK_ITEM_NAME}"]`)
             .last()
-            .trigger('mousedown', 'center')
-            .trigger('mousemove', {clientX: 500})
+            .trigger('mousedown', 'right')
+            .trigger('mousemove', {clientX: 600})
             .trigger('mouseup');
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.ACCEPT_BUTTON}"]`).last().click();
         cy.wait('@checkTask');
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.TASK_ITEM_NAME}"]`)
             .last()
-            .trigger('mousedown', 'center')
-            .trigger('mousemove', {clientX: 500})
+            .trigger('mousedown', 'right')
+            .trigger('mousemove', {clientX: 600})
             .trigger('mouseup');
         cy.wait(2000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.ACCEPT_BUTTON}"]`).last().click();
@@ -91,8 +91,8 @@ describe('Gaol X Page', () => {
         cy.wait(1000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_TASK.ITEM}"]`)
             .last()
-            .trigger('mousedown', 'center')
-            .trigger('mousemove', {clientX: 500})
+            .trigger('mousedown', 'right')
+            .trigger('mousemove', {clientX: 600})
             .trigger('mouseup');
         cy.wait(2000);
         cy.get(`[data-testid="${TEST_ID_TASK.LIST}"] [data-testid="${TEST_ID_COMMON.REMOVE_BUTTON}"]`).last().click();
