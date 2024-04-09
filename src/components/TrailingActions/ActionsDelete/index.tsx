@@ -6,7 +6,7 @@ import Delete from '@/components/TrailingActions/Delete';
 export const trailingActionDelete = ({handleRemove}: {handleRemove: () => void}) => (
     <TrailingActions>
         <SwipeAction destructive={true} onClick={handleRemove}>
-            <Delete onClick={handleRemove} />
+            <Delete />
         </SwipeAction>
     </TrailingActions>
 );
