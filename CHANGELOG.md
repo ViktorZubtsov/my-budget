@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.6.3) (2024-04-10)
+
+
+### Features
+
+* **accountsbadge:** add AccountsBadge test ([f46dbc9](https://github.com/ViktorZubtsov/my-budget/commit/f46dbc9b29b8272a5b1540400bcee2d9161a5fa0))
+* **auth:** add Auth ([8d8fdc8](https://github.com/ViktorZubtsov/my-budget/commit/8d8fdc809d00e24e85f76a22130db7e2e56079ae))
+* **errorfield:** add test to ErrorField ([4636169](https://github.com/ViktorZubtsov/my-budget/commit/46361692fa912e290bbb0f79afc1a4cf86f0e892))
+* **errorfield:** add test to ErrorField ([4746255](https://github.com/ViktorZubtsov/my-budget/commit/474625526527e45b5dfb655130a68cecae18566c))
+* **gaol x:** add e2e test Gaol X ([8cc0e61](https://github.com/ViktorZubtsov/my-budget/commit/8cc0e61fe49dd732899f6d4bb951d3531b5e7b38))
+* **getalltasksforgoal.ts, usegoal:** add get task list reqest ([de6ceef](https://github.com/ViktorZubtsov/my-budget/commit/de6ceef9ffd8b8bcfc336029c3ac2af1cec36226))
+* **getgoalsarchivelistbyuid:** edit getGoalsArchiveListByUid ([e4e99c2](https://github.com/ViktorZubtsov/my-budget/commit/e4e99c2e4d98a85783b0aa5c540d74ecdf5be730))
+* **goal x:** add test goal x ([6d25b6e](https://github.com/ViktorZubtsov/my-budget/commit/6d25b6ea35c53d51ba8338b0588f018bb5d269d6))
+* **goalx:** add e2e test to goalX ([47a2d6e](https://github.com/ViktorZubtsov/my-budget/commit/47a2d6e0ad56e9719e62da1e8792730dd1b2a328))
+* **trailingactionsdelete:** add untit test ([3594c9b](https://github.com/ViktorZubtsov/my-budget/commit/3594c9b35dc1e1efa49e17cc3f5a67b8ce6c8865))
+
+
+### Bug Fixes
+
+* **pageheader:** refactor PageHeader ([a3bcd90](https://github.com/ViktorZubtsov/my-budget/commit/a3bcd906b4a429a4aeb7b439715d558548c61ffd))
+
 ### [0.6.2](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.6.2) (2024-04-05)
 
 ### [0.6.1](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.6.1) (2024-04-05)
