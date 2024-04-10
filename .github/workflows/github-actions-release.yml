@@ -102,5 +102,6 @@ jobs:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET}}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID}}
+          NEXT_PUBLIC_TEST_USER_ID: ${{ secrets.NEXT_PUBLIC_TEST_USER_ID}}
 
               

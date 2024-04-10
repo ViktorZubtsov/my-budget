@@ -30,3 +30,5 @@ export const ERROR_TEXT = {
     NATURAL_NUMBER: 'Поле должно быть положительным числом',
     REQUIRED: 'Поле обязательно для заполнения',
 };
+
+export const TEST_USER_ID = process.env.NEXT_PUBLIC_TEST_USER_ID;
