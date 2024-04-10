@@ -1,6 +1,7 @@
 import {Session} from 'next-auth';
 
-import {TUid} from '../../model';
+import {TEST_USER_ID} from '@/constant';
+import {TUid} from '@/model';
 
 export class User {
     session: Session | null;
@@ -8,7 +9,6 @@ export class User {
         this.session = session;
     }
     getUid(): TUid {
-        // TODO: для Демо
-        return 'clpdnwkhm0000dgnrlljhvj2e';
+        return TEST_USER_ID ?? this.session?.user.id;
     }
 }
