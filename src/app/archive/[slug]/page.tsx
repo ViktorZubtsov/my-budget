@@ -1,6 +1,7 @@
 import {Suspense} from 'react';
 
 import Loading from '@/app/loading';
+import {$Auth} from '@/core/classes/Auth';
 import {User} from '@/core/classes/User';
 import {SWRProvider} from '@/core/provider/SWRProvider';
 import {getGoalArchiveXKey, getTaskArchiveListKey} from '@/core/SWRKeys';
@@ -9,7 +10,9 @@ import {GoalArchiveX} from '@/modules/Goal/page/GoalArchiveX';
 import {getAllArchiveTasksForGoal} from '@/modules/Task/actions/getAllArchiveTasksForGoal';
 
 const GoalArchiveXPage = async ({params}: {params: {slug: string}}) => {
-    const uid = new User(null).getUid();
+    const session = await $Auth.getSession();
+    const uid = new User(session).getUid();
+
     const goalId = params.slug;
     const goal = await getArchiveGoalById({goalId, uid});
     const archiveTasksList = await getAllArchiveTasksForGoal({goalId});

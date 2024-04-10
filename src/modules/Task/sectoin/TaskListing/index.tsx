@@ -2,6 +2,7 @@ import {memo, useState} from 'react';
 
 import {AddButton} from '@/components/AddButton';
 import {EmptyList} from '@/components/EmptyList';
+import {TEST_ID_ADD_TASK, TEST_ID_TASK} from '@/constant/dataTest';
 import {TTask} from '@/model';
 import {useAccount} from '@/modules/Settings/hooks/useAccount';
 import {AddTask} from '@/modules/Task/components/AddTask';
@@ -24,8 +25,7 @@ export const TaskListing = memo(() => {
     return (
         <>
             {Boolean(sum) && <TaskSum sum={sum} />}
-
-            <GoalXListStyled>
+            <GoalXListStyled data-testid={TEST_ID_TASK.LIST}>
                 {!taskList.length && <EmptyList text="Список задач пуст" />}
                 {Boolean(taskList.length) &&
                     taskList.map((task) => (

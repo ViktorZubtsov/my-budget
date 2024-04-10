@@ -1,7 +1,10 @@
+import {redirect} from 'next/navigation';
 import {ReactNode} from 'react';
 import {Suspense} from 'react';
 
 import Loading from '@/app/loading';
+import {TEST_USER_ID} from '@/constant';
+import {$Auth} from '@/core/classes/Auth';
 import {User} from '@/core/classes/User';
 import {RootProvider} from '@/core/provider/Root';
 import {SWRProvider} from '@/core/provider/SWRProvider';
@@ -10,10 +13,15 @@ import {getGoalsListByUid} from '@/modules/Goal/actions/getGoalsListByUid';
 import {getAccountsList} from '@/modules/Settings/actions/getAccountsList';
 
 export default async function RootLayout({children}: {children: ReactNode}) {
-    const uid = new User(null).getUid();
+    const session = await $Auth.getSession();
+    const uid = new User(session).getUid();
+
     const list = await getAccountsList({uid});
     const goalList = await getGoalsListByUid(uid);
 
+    if (!TEST_USER_ID && !session) {
+        return redirect('/auth');
+    }
     return (
         <html lang="ru">
             <head>

@@ -4,12 +4,13 @@ import useSWR from 'swr';
 import useSWRMutation from 'swr/mutation';
 import {v4} from 'uuid';
 
-import {getGoalListKey} from '@/core/SWRKeys';
+import {getGoalListKey, getTaskListKey} from '@/core/SWRKeys';
 import {onError} from '@/helpers';
 import {IGoal, TTask} from '@/model';
 import {AuthContext} from '@/modules/Auth/context';
 import {createGoalQuery} from '@/modules/Goal/actions/addGoalToUser';
 import {removeGoalQuery} from '@/modules/Goal/actions/removeGoalById';
+import {getTaskListQuery} from '@/modules/Task/actions/getAllTasksForGoal';
 import {useLoaderStore} from '@/store/loaderStore';
 
 export const useGoal = () => {
@@ -37,15 +38,24 @@ export const useGoal = () => {
         });
     };
 
-    const removeGoal = ({id}: {id: IGoal['id']}) => {
+    const removeGoal = async ({id}: {id: IGoal['id']}) => {
         const goal = data?.find((item) => item.id === id);
 
         if (goal) {
             useLoaderStore.setState({isProcessLoader: true});
-            // TODO: Add task by goal Id
-            trigger({goal: {...goal, tasks: [] as TTask[]}, goalId: id}).finally(() => {
-                useLoaderStore.setState({isProcessLoader: false});
-            });
+
+            // TODO: переделать запрос списка задачь
+            getTaskListQuery(getTaskListKey(goal.id) ?? '')
+                .then((res) => {
+                    return res.json();
+                })
+                .then((res) => {
+                    const taskList = res.data;
+
+                    trigger({goal: {...goal, tasks: taskList ?? ([] as TTask[])}, goalId: id}).finally(() => {
+                        useLoaderStore.setState({isProcessLoader: false});
+                    });
+                });
         }
     };
 

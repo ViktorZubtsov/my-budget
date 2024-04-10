@@ -26,12 +26,12 @@ export const TaskElement = memo<ITaskItemElementProps>(({task, accountsList}) =>
     const currentBankAccount = useMemo(() => accountsList.find(({id}) => id === bankAccount) as IAccount, [bankAccount, accountsList]);
 
     return (
-        <TaskElementStyled>
+        <TaskElementStyled data-testid={TEST_ID_TASK.ITEM}>
             <CardContent>
                 <Content>
                     <PricesWrap>
                         <MarkedList>
-                            <TaskElementMarkedItem $isDone={done} style={h5} text={name}>
+                            <TaskElementMarkedItem data-testid={TEST_ID_TASK.TASK_ITEM_NAME} $isDone={done} style={h5} text={name}>
                                 {Boolean(done) && <IconDone size="xs" color={accent} />}
                             </TaskElementMarkedItem>
                         </MarkedList>
