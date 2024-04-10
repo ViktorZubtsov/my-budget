@@ -1,9 +1,10 @@
-import {GetServerSidePropsContext} from 'next';
-import {getSession} from 'next-auth/react';
+import {getServerSession} from 'next-auth';
+
+import {authConfig} from '@/core/auth';
 
 class Auth {
-    getAuthSession(context: GetServerSidePropsContext) {
-        return getSession(context);
+    getSession() {
+        return getServerSession(authConfig);
     }
 }
 

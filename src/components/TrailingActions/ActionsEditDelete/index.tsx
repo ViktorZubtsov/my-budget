@@ -1,6 +1,8 @@
 import React from 'react';
 import {SwipeAction, TrailingActions} from 'react-swipeable-list';
 
+import {TEST_ID_COMMON} from '@/constant/dataTest';
+
 import Delete from '../Delete';
 import Edit from '../Edit';
 
@@ -14,7 +16,7 @@ export const trailingActionsEditDelete = ({handleRemove, handleEdit}: IActionsEd
             <Edit />
         </SwipeAction>
         <SwipeAction destructive={true} onClick={handleRemove}>
-            <Delete onClick={handleRemove} />
+            <Delete />
         </SwipeAction>
     </TrailingActions>
 );

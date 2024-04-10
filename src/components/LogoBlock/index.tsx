@@ -1,7 +1,8 @@
 import {memo} from 'react';
 
+import {PROJECT_NAME} from '@/constant';
+
 import {amatic, LogoImg, LogoTitle, LogoWrap} from './styled';
-import {PROJECT_NAME} from '../../constant';
 
 interface ILogoBlockProps {
     logoImg: string;

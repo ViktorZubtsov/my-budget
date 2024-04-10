@@ -1,6 +1,7 @@
 import {Suspense} from 'react';
 
 import Loading from '@/app/loading';
+import {$Auth} from '@/core/classes/Auth';
 import {User} from '@/core/classes/User';
 import {SWRProvider} from '@/core/provider/SWRProvider';
 import {getGoalXKey, getTaskListKey} from '@/core/SWRKeys';
@@ -9,7 +10,8 @@ import {GoalXPage} from '@/modules/Goal/page/GoalX';
 import {getAllTasksForGoal} from '@/modules/Task/actions/getAllTasksForGoal';
 
 const GoalX = async ({params}: {params: {slug: string}}) => {
-    const uid = new User(null).getUid();
+    const session = await $Auth.getSession();
+    const uid = new User(session).getUid();
     const goalId = params.slug;
     const goal = await getGoalById({goalId, uid});
     const taskList = await getAllTasksForGoal({goalId});

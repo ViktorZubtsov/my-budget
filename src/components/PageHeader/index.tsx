@@ -13,7 +13,7 @@ interface IPageHeaderProps {
 export const PageHeader = memo<IPageHeaderProps>(({onClick, title}) => {
     return (
         <PageHeaderStyled>
-            <div id={TEST_PAGE_HEADER.GO_TO} onClick={onClick}>
+            <div data-testid={TEST_PAGE_HEADER.GO_TO} onClick={onClick}>
                 <PageHeaderIcon />
             </div>
             <div>

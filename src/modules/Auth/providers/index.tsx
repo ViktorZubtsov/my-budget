@@ -1,6 +1,7 @@
 import {useSession} from 'next-auth/react';
 import {ReactNode, useMemo} from 'react';
 
+import {TEST_USER_ID} from '@/constant';
 import {AuthContext} from '@/modules/Auth/context';
 import {IAuthProvider} from '@/modules/Auth/types';
 
@@ -11,8 +12,7 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         return {
             session: session.status,
             userAvatar: session.data?.user?.image,
-            // TODO: mock auth
-            userId: 'clpdnwkhm0000dgnrlljhvj2e',
+            userId: TEST_USER_ID ?? session.data?.user?.id,
             userName: session.data?.user?.name,
         };
     }, [session]);

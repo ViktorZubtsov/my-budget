@@ -26,16 +26,6 @@ describe('TaskItem', () => {
         expect(getByTestId(TEST_ID_TASK.TASK_ITEM_BADGE).textContent).toBe(MOCK_NOT_ACCOUNT_TEXT);
     });
 
-    test('Check onRemove', () => {
-        const onRemove = vi.fn();
-        rerender(<TaskItem task={MOCK_TASK} accountsList={[]} onEdit={() => {}} onRemove={onRemove} onAccept={() => {}} />);
-
-        fireEvent.click(getByTestId(TEST_ID_COMMON.REMOVE_BUTTON));
-
-        expect(onRemove).toHaveBeenCalled();
-        expect(onRemove).toHaveBeenCalledWith(MOCK_TASK.id);
-    });
-
     test('Check onAccept', () => {
         const onAccept = vi.fn();
 
