@@ -8,6 +8,6 @@ export const ArchiveTaskContent = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 96px;
-    overflow-y: auto;
+    overflow: hidden;
     row-gap: 16px;
 `;
