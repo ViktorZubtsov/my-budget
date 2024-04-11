@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/ViktorZubtsov/my-budget/compare/v0.6.3...v0.6.4) (2024-04-11)
+
+
+### Features
+
+* add skeleton ([1df0e91](https://github.com/ViktorZubtsov/my-budget/commit/1df0e91abe9fc5f3ef2e12726c7dfcb0a9b2924c))
+* **archivetaskcontent:** add style ([a29d8ea](https://github.com/ViktorZubtsov/my-budget/commit/a29d8ea30c07bf322a283f2dfb3cca452c038f06))
+* skeleton done ([8711f05](https://github.com/ViktorZubtsov/my-budget/commit/8711f05b99a6d6e314c4351bb49d55724a1092a5))
+* **skeleton:** add skeleton to Goal ([3a4c483](https://github.com/ViktorZubtsov/my-budget/commit/3a4c48399d7239c491e4685cdf3111afb2596597))
+* **user:** add redirect ([a595421](https://github.com/ViktorZubtsov/my-budget/commit/a59542189b9d3906ad011c983152f4563f2cbb37))
+
 ### [0.6.3](https://github.com/ViktorZubtsov/my-budget/compare/v0.5.0...v0.6.3) (2024-04-10)
 
 

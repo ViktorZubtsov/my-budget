@@ -1,5 +1,7 @@
 'use client';
 
+import {SpacingProps} from '@salutejs/plasma-ui';
+import {withSkeleton, WithSkeletonProps} from '@salutejs/plasma-web';
 import {useRouter} from 'next/navigation';
 import React, {memo} from 'react';
 import {SwipeableList, SwipeableListItem, Type as ListType} from 'react-swipeable-list';
@@ -11,11 +13,14 @@ import {GoalItemWrap} from '@/modules/Goal/components/GoalItem/styled';
 
 export interface IGoalItemProps {
     goal: IGoal;
+    skeleton?: boolean;
     isBlock?: boolean;
     onRemove?: ({id}: {id: IGoal['id']}) => void;
 }
 
-export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, isBlock}) {
+const GoalItemWrapSkeleton = withSkeleton<SpacingProps & WithSkeletonProps>(GoalItemWrap);
+
+export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, skeleton, onRemove, isBlock}) {
     const {push} = useRouter();
     const {name, description, id} = goal;
 
@@ -24,7 +29,7 @@ export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, 
     };
 
     return (
-        <GoalItemWrap mb="4x">
+        <GoalItemWrapSkeleton style={{borderRadius: '15px'}} skeleton={skeleton} mb="4x">
             {onRemove && (
                 <SwipeableList fullSwipe={true} type={ListType.IOS}>
                     <SwipeableListItem
@@ -37,7 +42,7 @@ export const GoalItem = memo<IGoalItemProps>(function GoalItem({goal, onRemove, 
                     </SwipeableListItem>
                 </SwipeableList>
             )}
-            {!onRemove && <GoalElement name={name} description={description} />}
-        </GoalItemWrap>
+            {!onRemove && <GoalElement skeleton={skeleton} name={name} description={description} />}
+        </GoalItemWrapSkeleton>
     );
 });

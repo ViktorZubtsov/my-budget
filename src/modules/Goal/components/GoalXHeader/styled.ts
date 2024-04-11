@@ -11,9 +11,11 @@ export const GoalXHeaderStyled = styled.div`
 `;
 
 export const GoalXHeaderContent = styled.div`
-    display: block;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
-    row-gap: 15px;
+    min-height: 44px;
+    row-gap: 5px;
 `;
 
 export const Subtitle = styled(TextM)`

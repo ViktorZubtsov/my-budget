@@ -15,7 +15,7 @@ import {
     TaskElementStyled,
 } from '@/modules/Task/components/TaskElement/styled';
 
-interface ITaskItemElementProps {
+export interface ITaskItemElementProps {
     task: TTask;
     accountsList: IAccount[];
 }

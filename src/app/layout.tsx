@@ -17,7 +17,7 @@ export default async function RootLayout({children}: {children: ReactNode}) {
 
     const list = await getAccountsList({uid});
     const goalList = await getGoalsListByUid(uid);
-    
+
     return (
         <html lang="ru">
             <head>

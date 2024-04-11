@@ -1,6 +1,8 @@
+import {redirect} from 'next/navigation';
 import {Suspense} from 'react';
 
 import Loading from '@/app/loading';
+import {TEST_USER_ID} from '@/constant';
 import {$Auth} from '@/core/classes/Auth';
 import {User} from '@/core/classes/User';
 import {SWRProvider} from '@/core/provider/SWRProvider';
@@ -13,6 +15,9 @@ const GoalArchiveXPage = async ({params}: {params: {slug: string}}) => {
     const session = await $Auth.getSession();
     const uid = new User(session).getUid();
 
+    if (!TEST_USER_ID && !session) {
+        return redirect('/auth');
+    }
     const goalId = params.slug;
     const goal = await getArchiveGoalById({goalId, uid});
     const archiveTasksList = await getAllArchiveTasksForGoal({goalId});
