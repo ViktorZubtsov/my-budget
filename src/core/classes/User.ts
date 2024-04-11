@@ -9,6 +9,6 @@ export class User {
         this.session = session;
     }
     getUid(): TUid {
-        return TEST_USER_ID ?? this.session?.user.id;
+        return Boolean(TEST_USER_ID) ? TEST_USER_ID : this.session?.user.id;
     }
 }
