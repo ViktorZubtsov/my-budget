@@ -10,11 +10,12 @@ import {IGoalShort} from '@/model';
 import {AuthContext} from '@/modules/Auth/context';
 import {GoalXHeaderContent, GoalXHeaderIcon, GoalXHeaderStyled, Subtitle} from '@/modules/Goal/components/GoalXHeader/styled';
 
+const GoalXHeaderContentSkeleton = withSkeleton<WithSkeletonProps>(GoalXHeaderContent);
+
 export const GoalXHeader = ({goal}: {goal: IGoalShort}) => {
     const {session} = useContext(AuthContext);
     const {back} = useRouter();
     const {name, description} = goal;
-    const GoalXHeaderContentSkeleton = withSkeleton<WithSkeletonProps>(GoalXHeaderContent);
 
     return (
         <Container>

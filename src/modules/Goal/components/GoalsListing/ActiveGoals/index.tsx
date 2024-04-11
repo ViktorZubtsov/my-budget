@@ -2,6 +2,7 @@ import {memo, useContext} from 'react';
 
 import {EmptyList} from '@/components/EmptyList';
 import {TEST_ID_GOAL} from '@/constant/dataTest';
+import {MOCK_GOAL} from '@/mock';
 import {AuthContext} from '@/modules/Auth/context';
 import {AddGoal} from '@/modules/Goal/components/AddGoal';
 import {GoalItem} from '@/modules/Goal/components/GoalItem/Index';
@@ -19,7 +20,10 @@ export const ActiveGoals = memo(() => {
     return (
         <ActiveGoalsStyled pb="16x" data-testid={TEST_ID_GOAL.LISTING}>
             {!goalsList.length && !isLoader && <EmptyList text="Список целей пуст" />}
-            {goalsList && goalsList.map((goal) => <GoalItem isBlock={isProcessLoader} key={goal.id} goal={goal} onRemove={removeGoal} />)}
+            {isLoader && [1, 2, 3, 4, 5, 6].map((value) => <GoalItem key={value} skeleton isBlock goal={MOCK_GOAL} />)}
+            {goalsList &&
+                !isLoader &&
+                goalsList.map((goal) => <GoalItem isBlock={isProcessLoader} key={goal.id} goal={goal} onRemove={removeGoal} />)}
             <AddGoal />
         </ActiveGoalsStyled>
     );

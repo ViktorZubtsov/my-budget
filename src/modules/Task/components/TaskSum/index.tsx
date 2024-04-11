@@ -12,9 +12,9 @@ interface ITaskSumParams {
     sum: number | undefined;
 }
 
-export const TaskSum = memo<ITaskSumParams>(function TaskSum({sum, title, skeleton, digits = 2}) {
-    const PriceSkeleton = withSkeleton<PriceProps & WithSkeletonProps>(Price);
+const PriceSkeleton = withSkeleton<PriceProps & WithSkeletonProps>(Price);
 
+export const TaskSum = memo<ITaskSumParams>(function TaskSum({sum, title, skeleton, digits = 2}) {
     return (
         <TaskSumStyled>
             <H5>{title ? title : 'Сумма'}</H5>
