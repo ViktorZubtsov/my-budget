@@ -3,7 +3,6 @@ import {SwipeableList, SwipeableListItem, Type as ListType} from 'react-swipeabl
 
 import {leadingActionsAccept} from '@/components/TrailingActions/ActionsAccept';
 import {trailingActionsEditDelete} from '@/components/TrailingActions/ActionsEditDelete';
-import {TEST_ID_TASK} from '@/constant/dataTest';
 import {IAccount, TTask} from '@/model';
 import {TaskElement} from '@/modules/Task/components/TaskElement';
 
