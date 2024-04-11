@@ -2,10 +2,11 @@ import {Container} from '@salutejs/plasma-ui';
 import {useRouter} from 'next/navigation';
 import {memo, useContext} from 'react';
 
-import {ProcessLoaderContext} from '../../context';
-import {AuthContext} from '../../modules/Auth/context';
-import {LogoBlock} from '../LogoBlock';
-import Menu from '../Menu';
+import {LogoBlock} from '@/components/LogoBlock';
+import Menu from '@/components/Menu';
+import {ProcessLoaderContext} from '@/context';
+import {AuthContext} from '@/modules/Auth/context';
+
 import {HeaderSpinner, HeaderStyled, LeftContainer} from './styled';
 
 interface IHeaderProps {
