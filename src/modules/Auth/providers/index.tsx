@@ -12,7 +12,7 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         return {
             session: session.status,
             userAvatar: session.data?.user?.image,
-            userId: TEST_USER_ID ?? session.data?.user?.id,
+            userId: Boolean(TEST_USER_ID) ? TEST_USER_ID : session.data?.user?.id,
             userName: session.data?.user?.name,
         };
     }, [session]);
