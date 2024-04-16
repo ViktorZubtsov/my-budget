@@ -1,6 +1,6 @@
 import {redirect} from 'next/navigation';
 
 const GoalPage = () => {
-    return redirect(2);
+    return redirect(3);
 };
 export default GoalPage;
