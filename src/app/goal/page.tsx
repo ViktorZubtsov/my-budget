@@ -1,7 +1,6 @@
 import {redirect} from 'next/navigation';
-// test
 
 const GoalPage = () => {
-    return redirect(4);
+    return redirect('/');
 };
 export default GoalPage;
