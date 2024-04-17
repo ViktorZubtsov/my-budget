@@ -3,10 +3,10 @@ import {Sheet, TextM} from '@salutejs/plasma-ui';
 import {signOut} from 'next-auth/react';
 import {memo, useState} from 'react';
 
+import {useFetch} from '../../hooks';
 import {Avatar, IAvatar} from '../Avatar';
 import {MENU_TITLE} from './constants';
 import {MenuButton, MenuContent, MenuStyled, MenuTitle} from './styled';
-import {useFetch} from '../../hooks';
 
 interface IMenuProps {
     userAvatar: IAvatar['userAvatar'];

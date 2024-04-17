@@ -1,0 +1,34 @@
+
+> my-budget@0.6.4 build-storybook
+> storybook build -o docs-build --output-dir /tmp/chromatic--24288-iAzdHbf6EMqX
+
+@storybook/cli v7.6.17
+
+info => Cleaning outputDir: /tmp/chromatic--24288-iAzdHbf6EMqX
+info => Loading presets
+info => Building manager..
+info => Manager built (195 ms)
+info => Building preview..
+info => Copying static files: /home/viktor/develop/my-budget/node_modules/@storybook/manager/static at /tmp/chromatic--24288-iAzdHbf6EMqX/sb-common-assets
+info Using Babel compiler
+info Addon-docs: using MDX2
+info => Using implicit CSS loaders
+info => Using default Webpack5 setup
+info => Copying static files: /home/viktor/develop/my-budget/.storybook/public at /tmp/chromatic--24288-iAzdHbf6EMqX/
+WARN No story files found for the specified pattern: src/**/*.mdx
+WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+WARN This can impact web performance.
+WARN Assets: 
+WARN   71.725c76b2.iframe.bundle.js (583 KiB)
+WARN   835.83a2fc3e.iframe.bundle.js (797 KiB)
+WARN   307.c28bcc5c.iframe.bundle.js (918 KiB)
+WARN   579.ea84c377.iframe.bundle.js (716 KiB)
+WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+WARN Entrypoints:
+WARN   main (934 KiB)
+WARN       runtime~main.a3516deb.iframe.bundle.js
+WARN       307.c28bcc5c.iframe.bundle.js
+WARN       main.169b0e29.iframe.bundle.js
+WARN 
+info => Preview built (18 s)
+info => Output directory: /tmp/chromatic--24288-iAzdHbf6EMqX
