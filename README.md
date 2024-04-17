@@ -1,4 +1,4 @@
-
+[![github-actions-release](https://github.com/ViktorZubtsov/my-budget/actions/workflows/github-actions-release.yml/badge.svg?event=pull_request)](https://github.com/ViktorZubtsov/my-budget/actions/workflows/github-actions-release.yml)
 
 git flow 
 
