@@ -2,11 +2,8 @@ name: github-actions-release
 run-name: Pull request release branch.
 permissions: write-all
 on:
-  pull_request:
+  push:
     branches:
-      - 'release/*'
-      - 'main'
-    paths-ignore:
       - 'dependabot/**'
 jobs:
   check-ts:
