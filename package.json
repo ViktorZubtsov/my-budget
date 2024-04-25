@@ -90,7 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/coverage-v8": "^1.5.1",
     "chromatic": "^11.3.0",
     "commitizen": "^4.3.0",
     "cypress": "^13.7.1",
