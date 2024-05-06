@@ -37,7 +37,7 @@
     "@next-auth/prisma-adapter": "^1.0.7",
     "@next/bundle-analyzer": "^14.2.3",
     "@prisma/client": "^5.13.0",
-    "@salutejs/plasma-icons": "1.191.0",
+    "@salutejs/plasma-icons": "1.192.0",
     "@salutejs/plasma-tokens": "^1.80.0",
     "@salutejs/plasma-tokens-b2b": "^1.39.0",
     "@salutejs/plasma-tokens-b2c": "^0.50.0",
