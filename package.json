@@ -46,7 +46,7 @@
     "@salutejs/plasma-web": "^1.318.0",
     "@salutejs/use-virtual": "2.0.0",
     "@types/node": "20.12.11",
-    "@types/react": "18.3.1",
+    "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.11",
