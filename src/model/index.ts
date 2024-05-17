@@ -1,8 +1,6 @@
-import {User} from '@prisma/client';
+import {Goal, Task, User} from '@prisma/client';
 
 import {ACCOUNTS_COLORS} from '@/constant';
-
-import {Goal, Task} from '.prisma/client';
 
 export interface IUser extends User {}
 
