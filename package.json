@@ -18,8 +18,7 @@
     "loki:update": "loki update",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "chromatic": "npx chromatic",
-    "prepare": "husky"
+    "chromatic": "npx chromatic"
   },
   "lint-staged": {
     "!(*min).{js,jsx,ts,tsx}": [
