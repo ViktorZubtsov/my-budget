@@ -1,9 +1,4 @@
-#!/bin/sh
-npx lint-staged && npm run check:ts
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-
-# Если команда завершилась с ошибкой, прерываем коммит
-if [ $? -ne 0 ]; then
- echo "Ошибка проверки. Коммит отменён."
- exit 1
-fi
+npx lint-staged
