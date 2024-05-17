@@ -5,7 +5,6 @@ import {H4} from '@salutejs/plasma-web';
 import {useTabs} from '@/hooks';
 import {GoalXListingStyled} from '@/modules/Goal/components/GoalXListing/styled';
 import {TaskListing} from '@/modules/Task/sectoin/TaskListing';
-import {TasksChart} from '@/modules/Task/sectoin/TasksChart';
 
 export const GoalXListing = () => {
     const {currentTab, setCurrentTab} = useTabs({});
@@ -22,7 +21,6 @@ export const GoalXListing = () => {
             </Tabs>
             <div>
                 {0 === currentTab && <TaskListing />}
-                {1 === currentTab && <TasksChart />}
             </div>
         </GoalXListingStyled>
     );
