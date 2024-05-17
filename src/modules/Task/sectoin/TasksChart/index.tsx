@@ -1,4 +1,4 @@
-//@ts-ignore
+// @ts-ignore
 import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
 import {useMemo} from 'react';
 import {Pie} from 'react-chartjs-2';
