@@ -4,7 +4,7 @@
 <h1 align="center">My Budget <img src="./public/logo.svg" height="76"/>
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 </div>
-<h2 align="center">Это приложение для планирование бюджета</h2>
+<h2 align="center">Это приложение для планирования бюджета</h2>
 
 | Прод        |         https://my-budget-space.vercel.app/                                                                                                        |
 |-------------| ------------------------------------------------------------------------------------------------------------------- |
@@ -39,15 +39,17 @@
     npm i
 ```
 <h3>Шаг 2:</h3>
+
 ```
     создайте .env файл и скопируйте туда значения из  .env.example
 ```
 <h3>Шаг 3:</h3>
+
 ```
     npm run dev
 ```
 
-⚠️ Если вы хотите авторизацю через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID	
+⚠️ Если вы хотите авторизацию через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID
 получить можно тут
 https://console.cloud.google.com/apis/credentials
-А по зашит NEXT_PUBLIC_TEST_USER_ID пользователь будет тестовый. 
+А пока зашит NEXT_PUBLIC_TEST_USER_ID, пользователь будет тестовый.
