@@ -46,3 +46,7 @@
 ```
     npm run dev
 ```
+
+⚠️ Если вы хотите авторизацю через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID	
+получить можно тут
+https://console.cloud.google.com/apis/credentials
