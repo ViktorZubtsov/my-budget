@@ -50,4 +50,4 @@
 ⚠️ Если вы хотите авторизацю через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID	
 получить можно тут
 https://console.cloud.google.com/apis/credentials
-А по зашит NEXT_PUBLIC_TEST_USER_ID польхователь будет тестовый. 
+А по зашит NEXT_PUBLIC_TEST_USER_ID пользователь будет тестовый. 
