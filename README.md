@@ -42,15 +42,12 @@
 ```
     создайте .env файл и скопируйте туда значения из  .env.example
 ```
-⚠️ MYSQL_URL, и MYSQL_URL_SHADOW раверните SQL, и подставьте свои значение, если умпею прикреплю свою базу 
 <h3>Шаг 3:</h3>
-```
-    prisma deploy
-```
-<h3>Шаг 4:</h3>
 ```
     npm run dev
 ```
+
 ⚠️ Если вы хотите авторизацю через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID	
 получить можно тут
 https://console.cloud.google.com/apis/credentials
+А по зашит NEXT_PUBLIC_TEST_USER_ID польхователь будет тестовый. 
