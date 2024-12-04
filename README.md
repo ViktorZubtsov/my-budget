@@ -19,9 +19,6 @@
 | ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)         | 5.12.1 |
 | ![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)       | 1.4.0 |
 
-
-
-
 <h2 >Demo:</h3>
 <h3 >Авторизация</h4>
 <img src="./dock/auth.gif" height="740"/></h1>
@@ -35,20 +32,16 @@
 
 
 
-
-
-
-
-
-
-git flow 
-
-1 переключиться на ветку dev
-
-2 run: npm run release  
-
-3  npx git-cz
-
-4 bump 
-
-5 publish 
+<h2>Установка</h2>
+<h3>Шаг 1:</h3>
+\```
+    npm i
+\```
+<h3>Шаг 2:</h3>
+\```
+    создайте .env файл и скопируйте туда значения из  .env.example
+\```
+<h3>Шаг 3:</h3>
+\```
+    npm run dev
+\```
