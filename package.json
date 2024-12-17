@@ -63,7 +63,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-google-button": "^0.7.2",
-    "react-hook-form": "^7.51.2",
+    "react-hook-form": "^7.53.0",
     "react-swipeable-list": "^1.9.3",
     "react-toastify": "^10.0.5",
     "styled-components": "^5.3.11",
