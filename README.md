@@ -19,6 +19,43 @@
 | ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)         | 5.12.1 |
 | ![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)       | 1.4.0 |
 
+<h2>Как развернуть проект локально</h2>
+
+### Установка зависимостей
+Для установки зависимостей, выполните команду:
+```
+    npm i
+```
+
+### Поднять базу данных
+Выполните команду:
+```
+    docker compose up -d
+```
+
+### Создайте окружение.
+Создайе файл `.env` и скопируйте туда значения из `.env.example`
+
+### Создайте миграцию бд.
+Выполните команду:
+```
+    npm run migrate:dev
+```
+
+### Сделать миграцию бд.
+Выполните команду:
+```
+    npm run migrate:dev
+```
+
+### Запустите локальный сервер.
+Выполните команду:
+```
+    npm run dev
+```
+
+### Готово :`)
+
 <h2 >Demo:</h3>
 <h3 >Авторизация</h4>
 <img src="./dock/auth.gif" height="740"/></h1>
@@ -29,27 +66,3 @@
 <h3 >Прочий функционал</h4>
 <img src="./dock/Other.gif" height="740"/></h1>
 <img src="./dock/Other2.gif" height="740"/></h1>
-
-
-
-<h2>Установка</h2>
-<h3>Шаг 1:</h3>
-
-```
-    npm i
-```
-<h3>Шаг 2:</h3>
-
-```
-    создайте .env файл и скопируйте туда значения из  .env.example
-```
-<h3>Шаг 3:</h3>
-
-```
-    npm run dev
-```
-
-⚠️ Если вы хотите авторизацию через Google, вам необходимо добавить GOOGLE_SECRET, GOOGLE_CLIENT_ID
-получить можно тут
-https://console.cloud.google.com/apis/credentials
-А пока зашит NEXT_PUBLIC_TEST_USER_ID, пользователь будет тестовый.
