@@ -6,7 +6,7 @@ import {SSRProvider} from '@salutejs/plasma-ui';
 import {DeviceThemeProvider} from '@salutejs/plasma-ui';
 import {NotificationsProvider} from '@salutejs/plasma-web';
 import dynamic from 'next/dynamic';
-import {memo, ReactNode, useCallback, useEffect, useState} from 'react';
+import {memo, ReactNode, useEffect, useState} from 'react';
 import {ToastContainer} from 'react-toastify';
 import {createGlobalStyle} from 'styled-components';
 
@@ -48,9 +48,9 @@ const Provider = ({children}: {children: ReactNode}) => {
 
     const ThemeStyle = createGlobalStyle(currentTheme());
 
-    const handleSuccess = useCallback(() => {
+    const handleSuccess = () => {
         return setIsLoading(false);
-    }, []);
+    };
 
     return (
         <>
