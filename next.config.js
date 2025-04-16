@@ -15,6 +15,7 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = {
+    basePath: '/test',
     async headers() {
         return [
             {

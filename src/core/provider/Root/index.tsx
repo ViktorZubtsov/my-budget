@@ -9,7 +9,7 @@ import {ProcessLoaderProvider} from '@/providers';
 export const RootProvider = ({children}: {children: ReactNode}) => {
     return (
         <StrictMode>
-            <SessionProvider>
+            <SessionProvider basePath={`/test/api/auth`}>
                 <AuthProvider>
                     <ProcessLoaderProvider>
                         <RootLayout>{children}</RootLayout>

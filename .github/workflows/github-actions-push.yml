@@ -8,7 +8,7 @@ permissions:
 on: [push]
 jobs:
   check-ts:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [ 20 ]
@@ -28,7 +28,7 @@ jobs:
         run: npm run check:ts
   unit-test:
     needs: [check-ts]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [ 20 ]
