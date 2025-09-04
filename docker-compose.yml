@@ -1,22 +1,66 @@
-version: '3.1'
+version: '3.8'
 
 services:
+  # Основная база данных
   db1:
-      image: mysql:latest
-      environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: dev
-        MYSQL_USER: user1
-        MYSQL_PASSWORD: pass
-      ports:
-        - "3306:3306"
-
-  db2:
-    image: mysql:latest
+    image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dev_shadow
-      MYSQL_USER: user1
-      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3307:3306"
+      - "${DB1_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  # Shadow база данных для Prisma
+  db2:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_SHADOW_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${DB2_PORT}:3306"
+    volumes:
+      - mysql_shadow_data:/var/lib/mysql
+    restart: unless-stopped
+
+  # PHPMyAdmin для управления базами данных
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: unless-stopped
+    ports:
+      - "${PHPMYADMIN_PORT}:80"
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - db1
+      - db2
+
+  # Next.js приложение
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT}:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MYSQL_URL=${MYSQL_URL}
+      - MYSQL_URL_SHADOW=${MYSQL_URL_SHADOW}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_SECRET=${GOOGLE_SECRET}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+    depends_on:
+      - db1
+      - db2
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  mysql_shadow_data:

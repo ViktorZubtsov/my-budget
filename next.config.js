@@ -15,6 +15,11 @@ const withPWA = require('next-pwa')({
 });
 
 const nextConfig = {
+    output: 'standalone',
+    eslint: {
+        // Отключаем ESLint во время сборки для Docker
+        ignoreDuringBuilds: process.env.DISABLE_ESLINT_PLUGIN === 'true',
+    },
     async headers() {
         return [
             {
