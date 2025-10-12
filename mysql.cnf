@@ -1,0 +1,15 @@
+[mysqld]
+# Разрешаем подключения с любого IP
+bind-address = 0.0.0.0
+
+# Настройки для лучшей совместимости
+default_authentication_plugin = mysql_native_password
+
+# Настройки производительности
+max_connections = 200
+innodb_buffer_pool_size = 128M
+
+# Логирование
+general_log = 1
+general_log_file = /var/log/mysql/general.log
+

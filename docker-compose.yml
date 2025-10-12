@@ -13,7 +13,9 @@ services:
       - "${DB1_PORT}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/conf.d/custom.cnf
     restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
 
   # Shadow база данных для Prisma
   db2:
@@ -27,7 +29,9 @@ services:
       - "${DB2_PORT}:3306"
     volumes:
       - mysql_shadow_data:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/conf.d/custom.cnf
     restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
 
   # PHPMyAdmin для управления базами данных
   phpmyadmin:

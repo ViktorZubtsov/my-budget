@@ -17,3 +17,25 @@ export const AuthBlockStyled = styled.div<SpacingProps>`
     overflow: hidden;
     ${applySpacing}
 `;
+
+export const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+`;
+
+export const ToggleButton = styled.button`
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 16px;
+    text-decoration: underline;
+
+    &:hover {
+        color: #0056b3;
+    }
+`;

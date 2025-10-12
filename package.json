@@ -5,7 +5,7 @@
     "bump": "standard-version --skip.tag",
     "release": "git flow release start `sh scripts/nextver.sh`",
     "publish": "git flow release finish `sh scripts/ver.sh`",
-    "dev": "next  dev -p 3000",
+    "dev": "next  dev -p 3001",
     "build": "prisma generate && next build",
     "migrate:dev": "prisma migrate dev",
     "start": "next start",
@@ -46,9 +46,11 @@
     "@salutejs/plasma-ui": "^1.242.0",
     "@salutejs/plasma-web": "^1.299.0",
     "@salutejs/use-virtual": "2.0.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "20.12.4",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.24",
+    "bcryptjs": "^3.0.2",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.10",
     "encoding": "^0.1.13",
@@ -73,6 +75,7 @@
     "uuid": "^9.0.1",
     "yup": "^1.4.0",
     "yup-locale-ru": "^1.0.1",
+    "zod": "^4.1.5",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
